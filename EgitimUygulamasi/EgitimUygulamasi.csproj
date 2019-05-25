@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CC597E7-4F92-438D-AC92-521545EBCB65}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EgitimUygulamasi</RootNamespace>
+    <AssemblyName>EgitimUygulamasi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>959D112E17A90D575D82B09CD024BC0285734BD0</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>EgitimUygulamasi_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\Downloads\Bunifu Ui Winform 1.10.0.0\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.7.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.7.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Windows.Forms.HintTextBox, Version=1.3.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TextBox.1.3.12\lib\net45\Windows.Forms.HintTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFormsControlLibrary1">
+      <HintPath>..\..\WindowsFormsControlLibrary1\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Database\Delete.cs" />
+    <Compile Include="Database\InitialCreate.cs" />
+    <Compile Include="Database\Insert.cs" />
+    <Compile Include="Database\Select.cs" />
+    <Compile Include="Database\Update.cs" />
+    <Compile Include="MaterialColors.cs" />
+    <Compile Include="MD5Sifreleme.cs" />
+    <Compile Include="Model\BirlesikSoru.cs" />
+    <Compile Include="Model\Calisan.cs" />
+    <Compile Include="Model\Medya.cs" />
+    <Compile Include="Model\Puan.cs" />
+    <Compile Include="Model\Secenekler.cs" />
+    <Compile Include="Model\Soru.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Session.cs" />
+    <Compile Include="View\Ayarlar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Ayarlar.Designer.cs">
+      <DependentUpon>Ayarlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Calisan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Calisan.Designer.cs">
+      <DependentUpon>Calisan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CalisanDuzenle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\CalisanDuzenle.Designer.cs">
+      <DependentUpon>CalisanDuzenle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\IcerikEkleme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\IcerikEkleme.Designer.cs">
+      <DependentUpon>IcerikEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\KategoriCekilisi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\KategoriCekilisi.Designer.cs">
+      <DependentUpon>KategoriCekilisi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\KategoriDuzenleme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\KategoriDuzenleme.Designer.cs">
+      <DependentUpon>KategoriDuzenleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedyaDegistir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MedyaDegistir.Designer.cs">
+      <DependentUpon>MedyaDegistir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedyaEkraniSoru.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MedyaEkraniSoru.Designer.cs">
+      <DependentUpon>MedyaEkraniSoru.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedyaGor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MedyaGor.Designer.cs">
+      <DependentUpon>MedyaGor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedyaYukle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MedyaYukle.Designer.cs">
+      <DependentUpon>MedyaYukle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuestionScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\QuestionScreen.Designer.cs">
+      <DependentUpon>QuestionScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\KategoriEkleme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\KategoriEkleme.Designer.cs">
+      <DependentUpon>KategoriEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Kategori.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\ResimVideo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ResimVideo.Designer.cs">
+      <DependentUpon>ResimVideo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Secenekler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Secenekler.Designer.cs">
+      <DependentUpon>Secenekler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SoruDuzenleme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SoruDuzenleme.Designer.cs">
+      <DependentUpon>SoruDuzenleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SoruEkleme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SoruEkleme.Designer.cs">
+      <DependentUpon>SoruEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SoruEkrani.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SoruEkrani.Designer.cs">
+      <DependentUpon>SoruEkrani.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SSoru1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SSoru1.Designer.cs">
+      <DependentUpon>SSoru1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StepOneApp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\StepOneApp.Designer.cs">
+      <DependentUpon>StepOneApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UyariEkranics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UyariEkranics.Designer.cs">
+      <DependentUpon>UyariEkranics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\YeniMedya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\YeniMedya.Designer.cs">
+      <DependentUpon>YeniMedya.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Ayarlar.resx">
+      <DependentUpon>Ayarlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Calisan.resx">
+      <DependentUpon>Calisan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CalisanDuzenle.resx">
+      <DependentUpon>CalisanDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\IcerikEkleme.resx">
+      <DependentUpon>IcerikEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\KategoriCekilisi.resx">
+      <DependentUpon>KategoriCekilisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\KategoriDuzenleme.resx">
+      <DependentUpon>KategoriDuzenleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MedyaDegistir.resx">
+      <DependentUpon>MedyaDegistir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MedyaEkraniSoru.resx">
+      <DependentUpon>MedyaEkraniSoru.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MedyaGor.resx">
+      <DependentUpon>MedyaGor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MedyaYukle.resx">
+      <DependentUpon>MedyaYukle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\QuestionScreen.resx">
+      <DependentUpon>QuestionScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\KategoriEkleme.resx">
+      <DependentUpon>KategoriEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\ResimVideo.resx">
+      <DependentUpon>ResimVideo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Secenekler.resx">
+      <DependentUpon>Secenekler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SoruDuzenleme.resx">
+      <DependentUpon>SoruDuzenleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SoruEkleme.resx">
+      <DependentUpon>SoruEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SoruEkrani.resx">
+      <DependentUpon>SoruEkrani.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SSoru1.resx">
+      <DependentUpon>SSoru1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StepOneApp.resx">
+      <DependentUpon>StepOneApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UyariEkranics.resx">
+      <DependentUpon>UyariEkranics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\YeniMedya.resx">
+      <DependentUpon>YeniMedya.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="EgitimUygulamasi_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="program.dat" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Media\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
