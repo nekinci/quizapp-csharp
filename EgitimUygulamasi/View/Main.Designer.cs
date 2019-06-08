@@ -89,9 +89,9 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Eğitim Uygulaması";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label2_MouseDown);
-            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label2_MouseMove);
-            this.label2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label2_MouseUp);
+            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            this.label2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
             // panel2
             // 
@@ -105,6 +105,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(768, 61);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
@@ -155,6 +156,9 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(218, 61);
             this.panel3.TabIndex = 0;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
             // pictureBox1
             // 
@@ -183,6 +187,9 @@
             this.label1.Size = new System.Drawing.Size(128, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Admin Panel";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
             // board
             // 
@@ -199,6 +206,7 @@
             this.board.TabIndex = 1;
             this.board.Text = "Board";
             this.board.UseVisualStyleBackColor = false;
+            this.board.Click += new System.EventHandler(this.board_Click);
             // 
             // kategoriekle
             // 

@@ -24,9 +24,30 @@ namespace EgitimUygulamasi.Database
         }
 
 
+        public static void SoruSoruldu(SoruSorulma _var)
+        {
+            //Hiç kayıt yoksa ekleyecek ama kayıt varsa napcak? Cevap basit güncelleyecek ama nasıl? Bende merak ediyorum doğrusu ama dur bakalım hallolur bi şekilde.
+            string sql = "insert into sorulmatarihleri values(0," + _var.SoruID + "," + _var.CalisanID + ",'"+_var.Tarih.ToString("yyyy-MM-dd") + "')";
+
+            //Her şartta bu bilgileri veritabanına ekliyoruzki daha sonra istatistiki bir durum olursa diye.
+            string sql1 = "insert into calisancevaplari values(0," + _var.SoruID + "," + _var.CalisanID + ",'"+_var.Tarih.ToString("yyyy-MM-dd") + "','"+_var.Sure+"','"+_var.Cevap+"')";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = sql1;
+            cmd.ExecuteNonQuery();
+            
+
+            _connection.Close();
+        }
+
+        
+
         public static void CalisanEkleme(Calisan _calisan)
         {
-            string sqlCommand = "insert into calisan values(0,'" + _calisan.Ad + "','" + _calisan.Soyad + "','"+_calisan.Mail+"','" + _calisan.Kadi + "','" + _calisan.Sifre + "') ";
+            string sqlCommand = "insert into calisan values(0,'" + _calisan.Ad + "','" + _calisan.Soyad + "','" + _calisan.Mail + "','" + _calisan.Kadi + "','" + _calisan.Sifre + "') ";
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(sqlCommand, _connection);
             int a = cmd.ExecuteNonQuery();
@@ -100,7 +121,7 @@ namespace EgitimUygulamasi.Database
 
             int result = cmd.ExecuteNonQuery();
             _connection.Close();
-            if(result != -1)
+            if (result != -1)
             {
                 MessageBox.Show("Başarıyla eklendi.");
                 return true;

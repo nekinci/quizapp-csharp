@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EgitimUygulamasi.Model
 {
-    public class BirlesikSoru
+    class ZorlukPuanlari
     {
-        public Soru soru { get; set; }
-        public Secenekler secenekler { get; set; }
-        public Medya medya { get; set; }
+        public int Kolay { get; set; }
+        public int Orta { get; set; }
+        public int Zor { get; set; }
     }
 }

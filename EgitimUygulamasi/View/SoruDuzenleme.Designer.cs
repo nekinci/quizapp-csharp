@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SorularTablosu = new System.Windows.Forms.DataGridView();
             this.txtAra = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabSorular = new System.Windows.Forms.TabControl();
             this.sorutab = new System.Windows.Forms.TabPage();
+            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.btnIlerle = new MaterialSkin.Controls.MaterialFlatButton();
@@ -54,7 +55,6 @@
             this.cmbFiltreZorluk = new MetroFramework.Controls.MetroComboBox();
             this.cmbFiltreKategori = new MetroFramework.Controls.MetroComboBox();
             this.lblFiltre = new System.Windows.Forms.Label();
-            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.SorularTablosu)).BeginInit();
             this.tabSorular.SuspendLayout();
             this.sorutab.SuspendLayout();
@@ -68,14 +68,14 @@
             this.SorularTablosu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SorularTablosu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.SorularTablosu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SorularTablosu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SorularTablosu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.SorularTablosu.ColumnHeadersHeight = 45;
             this.SorularTablosu.Cursor = System.Windows.Forms.Cursors.Default;
             this.SorularTablosu.GridColor = System.Drawing.SystemColors.ControlLightLight;
@@ -87,7 +87,7 @@
             this.SorularTablosu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SorularTablosu.ShowEditingIcon = false;
             this.SorularTablosu.Size = new System.Drawing.Size(414, 383);
-            this.SorularTablosu.TabIndex = 0;
+            this.SorularTablosu.TabIndex = 18;
             this.SorularTablosu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.SorularTablosu.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.SorularTablosu_RowEnter);
             // 
@@ -103,7 +103,7 @@
             this.txtAra.SelectionLength = 0;
             this.txtAra.SelectionStart = 0;
             this.txtAra.Size = new System.Drawing.Size(445, 23);
-            this.txtAra.TabIndex = 1;
+            this.txtAra.TabIndex = 17;
             this.txtAra.UseSystemPasswordChar = false;
             this.txtAra.Click += new System.EventHandler(this.txtAra_Click);
             this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
@@ -119,7 +119,7 @@
             this.tabSorular.SelectedIndex = 0;
             this.tabSorular.Size = new System.Drawing.Size(323, 336);
             this.tabSorular.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabSorular.TabIndex = 3;
+            this.tabSorular.TabIndex = 0;
             // 
             // sorutab
             // 
@@ -141,6 +141,23 @@
             this.sorutab.TabIndex = 0;
             this.sorutab.Text = "Soru";
             // 
+            // materialFlatButton2
+            // 
+            this.materialFlatButton2.AutoSize = true;
+            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton2.Depth = 0;
+            this.materialFlatButton2.Location = new System.Drawing.Point(67, 210);
+            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton2.Name = "materialFlatButton2";
+            this.materialFlatButton2.Primary = false;
+            this.materialFlatButton2.Size = new System.Drawing.Size(89, 36);
+            this.materialFlatButton2.TabIndex = 5;
+            this.materialFlatButton2.TabStop = false;
+            this.materialFlatButton2.Text = "Medya Gör";
+            this.materialFlatButton2.UseVisualStyleBackColor = true;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click_1);
+            // 
             // materialFlatButton1
             // 
             this.materialFlatButton1.AutoSize = true;
@@ -152,7 +169,8 @@
             this.materialFlatButton1.Name = "materialFlatButton1";
             this.materialFlatButton1.Primary = false;
             this.materialFlatButton1.Size = new System.Drawing.Size(121, 36);
-            this.materialFlatButton1.TabIndex = 4;
+            this.materialFlatButton1.TabIndex = 6;
+            this.materialFlatButton1.TabStop = false;
             this.materialFlatButton1.Text = "medya değiştir";
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
@@ -181,7 +199,8 @@
             this.btnIlerle.Name = "btnIlerle";
             this.btnIlerle.Primary = false;
             this.btnIlerle.Size = new System.Drawing.Size(55, 36);
-            this.btnIlerle.TabIndex = 2;
+            this.btnIlerle.TabIndex = 7;
+            this.btnIlerle.TabStop = false;
             this.btnIlerle.Text = "İLERLE";
             this.btnIlerle.UseVisualStyleBackColor = true;
             this.btnIlerle.Click += new System.EventHandler(this.materialFlatButton2_Click);
@@ -198,7 +217,8 @@
             this.cmbZorlukSeviyesi.Name = "cmbZorlukSeviyesi";
             this.cmbZorlukSeviyesi.PromptText = "Zorluk seviyesi seçiniz";
             this.cmbZorlukSeviyesi.Size = new System.Drawing.Size(251, 29);
-            this.cmbZorlukSeviyesi.TabIndex = 1;
+            this.cmbZorlukSeviyesi.TabIndex = 2;
+            this.cmbZorlukSeviyesi.TabStop = false;
             this.cmbZorlukSeviyesi.UseSelectable = true;
             // 
             // cmbKategori
@@ -210,6 +230,7 @@
             this.cmbKategori.PromptText = "Kategori seçiniz";
             this.cmbKategori.Size = new System.Drawing.Size(251, 29);
             this.cmbKategori.TabIndex = 1;
+            this.cmbKategori.TabStop = false;
             this.cmbKategori.UseSelectable = true;
             this.cmbKategori.SelectedIndexChanged += new System.EventHandler(this.txtMedya_TextChanged);
             this.cmbKategori.SelectionChangeCommitted += new System.EventHandler(this.cmbKategori_SelectionChangeCommitted);
@@ -226,7 +247,8 @@
             this.txtSure.SelectionLength = 0;
             this.txtSure.SelectionStart = 0;
             this.txtSure.Size = new System.Drawing.Size(219, 23);
-            this.txtSure.TabIndex = 0;
+            this.txtSure.TabIndex = 3;
+            this.txtSure.TabStop = false;
             this.txtSure.UseSystemPasswordChar = false;
             this.txtSure.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSure_KeyPress);
             this.txtSure.TextChanged += new System.EventHandler(this.txtSure_TextChanged);
@@ -243,7 +265,8 @@
             this.txtMedya.SelectionLength = 0;
             this.txtMedya.SelectionStart = 0;
             this.txtMedya.Size = new System.Drawing.Size(251, 23);
-            this.txtMedya.TabIndex = 0;
+            this.txtMedya.TabIndex = 4;
+            this.txtMedya.TabStop = false;
             this.txtMedya.UseSystemPasswordChar = false;
             this.txtMedya.TextChanged += new System.EventHandler(this.txtMedya_TextChanged);
             // 
@@ -260,6 +283,7 @@
             this.txtSoruBasligi.SelectionStart = 0;
             this.txtSoruBasligi.Size = new System.Drawing.Size(251, 23);
             this.txtSoruBasligi.TabIndex = 0;
+            this.txtSoruBasligi.TabStop = false;
             this.txtSoruBasligi.UseSystemPasswordChar = false;
             // 
             // secenektab
@@ -319,7 +343,8 @@
             this.cmbDogru.Name = "cmbDogru";
             this.cmbDogru.PromptText = "Dogru cevabı seçiniz";
             this.cmbDogru.Size = new System.Drawing.Size(251, 29);
-            this.cmbDogru.TabIndex = 2;
+            this.cmbDogru.TabIndex = 13;
+            this.cmbDogru.TabStop = false;
             this.cmbDogru.UseSelectable = true;
             // 
             // txtE
@@ -334,7 +359,8 @@
             this.txtE.SelectionLength = 0;
             this.txtE.SelectionStart = 0;
             this.txtE.Size = new System.Drawing.Size(251, 23);
-            this.txtE.TabIndex = 1;
+            this.txtE.TabIndex = 12;
+            this.txtE.TabStop = false;
             this.txtE.UseSystemPasswordChar = false;
             // 
             // txtD
@@ -349,7 +375,8 @@
             this.txtD.SelectionLength = 0;
             this.txtD.SelectionStart = 0;
             this.txtD.Size = new System.Drawing.Size(251, 23);
-            this.txtD.TabIndex = 1;
+            this.txtD.TabIndex = 11;
+            this.txtD.TabStop = false;
             this.txtD.UseSystemPasswordChar = false;
             // 
             // txtC
@@ -364,7 +391,8 @@
             this.txtC.SelectionLength = 0;
             this.txtC.SelectionStart = 0;
             this.txtC.Size = new System.Drawing.Size(251, 23);
-            this.txtC.TabIndex = 1;
+            this.txtC.TabIndex = 10;
+            this.txtC.TabStop = false;
             this.txtC.UseSystemPasswordChar = false;
             // 
             // txtB
@@ -379,7 +407,8 @@
             this.txtB.SelectionLength = 0;
             this.txtB.SelectionStart = 0;
             this.txtB.Size = new System.Drawing.Size(251, 23);
-            this.txtB.TabIndex = 1;
+            this.txtB.TabIndex = 9;
+            this.txtB.TabStop = false;
             this.txtB.UseSystemPasswordChar = false;
             // 
             // txtA
@@ -394,7 +423,8 @@
             this.txtA.SelectionLength = 0;
             this.txtA.SelectionStart = 0;
             this.txtA.Size = new System.Drawing.Size(251, 23);
-            this.txtA.TabIndex = 1;
+            this.txtA.TabIndex = 8;
+            this.txtA.TabStop = false;
             this.txtA.UseSystemPasswordChar = false;
             this.txtA.Click += new System.EventHandler(this.materialSingleLineTextField2_Click_1);
             // 
@@ -406,7 +436,7 @@
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
             this.materialRaisedButton1.Size = new System.Drawing.Size(319, 41);
-            this.materialRaisedButton1.TabIndex = 4;
+            this.materialRaisedButton1.TabIndex = 14;
             this.materialRaisedButton1.Text = "Kaydı Sil";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
             this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
@@ -416,6 +446,7 @@
             this.cmbFiltreZorluk.FormattingEnabled = true;
             this.cmbFiltreZorluk.ItemHeight = 23;
             this.cmbFiltreZorluk.Items.AddRange(new object[] {
+            "Tümü",
             "Kolay",
             "Orta",
             "Zor"});
@@ -423,9 +454,10 @@
             this.cmbFiltreZorluk.Name = "cmbFiltreZorluk";
             this.cmbFiltreZorluk.PromptText = "Zorluk Seviyesi";
             this.cmbFiltreZorluk.Size = new System.Drawing.Size(141, 29);
-            this.cmbFiltreZorluk.TabIndex = 6;
+            this.cmbFiltreZorluk.TabIndex = 16;
             this.cmbFiltreZorluk.UseSelectable = true;
             this.cmbFiltreZorluk.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
+            this.cmbFiltreZorluk.SelectionChangeCommitted += new System.EventHandler(this.cmbFiltreZorluk_SelectionChangeCommitted);
             // 
             // cmbFiltreKategori
             // 
@@ -435,8 +467,10 @@
             this.cmbFiltreKategori.Name = "cmbFiltreKategori";
             this.cmbFiltreKategori.PromptText = "Kategori";
             this.cmbFiltreKategori.Size = new System.Drawing.Size(141, 29);
-            this.cmbFiltreKategori.TabIndex = 6;
+            this.cmbFiltreKategori.TabIndex = 15;
             this.cmbFiltreKategori.UseSelectable = true;
+            this.cmbFiltreKategori.SelectedIndexChanged += new System.EventHandler(this.cmbFiltreKategori_SelectedIndexChanged);
+            this.cmbFiltreKategori.SelectionChangeCommitted += new System.EventHandler(this.cmbFiltreKategori_SelectionChangeCommitted);
             // 
             // lblFiltre
             // 
@@ -448,22 +482,6 @@
             this.lblFiltre.Size = new System.Drawing.Size(118, 17);
             this.lblFiltre.TabIndex = 7;
             this.lblFiltre.Text = "Listeleme Kısıtları:";
-            // 
-            // materialFlatButton2
-            // 
-            this.materialFlatButton2.AutoSize = true;
-            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Location = new System.Drawing.Point(67, 210);
-            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton2.Name = "materialFlatButton2";
-            this.materialFlatButton2.Primary = false;
-            this.materialFlatButton2.Size = new System.Drawing.Size(89, 36);
-            this.materialFlatButton2.TabIndex = 8;
-            this.materialFlatButton2.Text = "Medya Gör";
-            this.materialFlatButton2.UseVisualStyleBackColor = true;
-            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click_1);
             // 
             // SoruDuzenleme
             // 

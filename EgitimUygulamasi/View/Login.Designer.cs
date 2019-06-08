@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlSol = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,6 +70,7 @@
             this.cmbGirisTuru.PromptText = "Giriş Türü";
             this.cmbGirisTuru.Style = MetroFramework.MetroColorStyle.Brown;
             this.cmbGirisTuru.UseSelectable = true;
+            this.cmbGirisTuru.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKullaniciAdi_KeyDown);
             // 
             // btnGirisYap
             // 
@@ -91,7 +93,10 @@
             this.txtSifre.SelectedText = "";
             this.txtSifre.SelectionLength = 0;
             this.txtSifre.SelectionStart = 0;
+            this.txtSifre.TabStop = false;
             this.txtSifre.UseSystemPasswordChar = false;
+            this.txtSifre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKullaniciAdi_KeyDown);
+            this.txtSifre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSifre_KeyPress);
             // 
             // txtKullaniciAdi
             // 
@@ -104,14 +109,23 @@
             this.txtKullaniciAdi.SelectedText = "";
             this.txtKullaniciAdi.SelectionLength = 0;
             this.txtKullaniciAdi.SelectionStart = 0;
+            this.txtKullaniciAdi.TabStop = false;
             this.txtKullaniciAdi.UseSystemPasswordChar = false;
+            this.txtKullaniciAdi.Click += new System.EventHandler(this.txtKullaniciAdi_Click);
+            this.txtKullaniciAdi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKullaniciAdi_KeyDown);
+            this.txtKullaniciAdi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKullaniciAdi_KeyPress);
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.button1);
             resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // button2
             // 
@@ -136,6 +150,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -148,11 +163,21 @@
             // pnlSol
             // 
             this.pnlSol.BackColor = System.Drawing.Color.Black;
+            this.pnlSol.Controls.Add(this.panel1);
             this.pnlSol.Controls.Add(this.label2);
             this.pnlSol.Controls.Add(this.label1);
             resources.ApplyResources(this.pnlSol, "pnlSol");
             this.pnlSol.Name = "pnlSol";
             this.pnlSol.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSol_Paint);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // timer1
             // 
@@ -189,5 +214,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlSol;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -36,9 +36,9 @@
             this.btnMin = new System.Windows.Forms.Button();
             this.btnCikis = new System.Windows.Forms.Button();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.medyaEkraniSoru1 = new EgitimUygulamasi.View.MedyaEkraniSoru();
             this.soruEkrani1 = new EgitimUygulamasi.View.SoruEkrani();
             this.stepOneApp1 = new EgitimUygulamasi.View.StepOneApp();
-            this.medyaEkraniSoru1 = new EgitimUygulamasi.View.MedyaEkraniSoru();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,9 @@
             this.panel1.Size = new System.Drawing.Size(780, 46);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // btnOturumuKapat
             // 
@@ -90,6 +93,9 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // label1
             // 
@@ -100,6 +106,9 @@
             this.label1.Size = new System.Drawing.Size(156, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Eğitim Uygulaması";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // btnMin
             // 
@@ -142,6 +151,17 @@
             this.metroLink1.Text = "metroLink1";
             this.metroLink1.UseSelectable = true;
             // 
+            // medyaEkraniSoru1
+            // 
+            this.medyaEkraniSoru1.BackColor = System.Drawing.Color.White;
+            this.medyaEkraniSoru1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.medyaEkraniSoru1.Location = new System.Drawing.Point(0, 47);
+            this.medyaEkraniSoru1.Name = "medyaEkraniSoru1";
+            this.medyaEkraniSoru1.Size = new System.Drawing.Size(780, 490);
+            this.medyaEkraniSoru1.TabIndex = 7;
+            this.medyaEkraniSoru1.Visible = false;
+            this.medyaEkraniSoru1.Load += new System.EventHandler(this.medyaEkraniSoru1_Load);
+            // 
             // soruEkrani1
             // 
             this.soruEkrani1.BackColor = System.Drawing.Color.Cornsilk;
@@ -163,17 +183,6 @@
             this.stepOneApp1.TabIndex = 5;
             this.stepOneApp1.Load += new System.EventHandler(this.stepOneApp1_Load);
             // 
-            // medyaEkraniSoru1
-            // 
-            this.medyaEkraniSoru1.BackColor = System.Drawing.Color.White;
-            this.medyaEkraniSoru1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.medyaEkraniSoru1.Location = new System.Drawing.Point(0, 47);
-            this.medyaEkraniSoru1.Name = "medyaEkraniSoru1";
-            this.medyaEkraniSoru1.Size = new System.Drawing.Size(780, 490);
-            this.medyaEkraniSoru1.TabIndex = 7;
-            this.medyaEkraniSoru1.Visible = false;
-            this.medyaEkraniSoru1.Load += new System.EventHandler(this.medyaEkraniSoru1_Load);
-            // 
             // QuestionScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +198,7 @@
             this.Name = "QuestionScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EgitimUygulamasi";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuestionScreen_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

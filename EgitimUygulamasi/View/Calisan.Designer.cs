@@ -50,6 +50,7 @@
             this.txtAd.SelectionStart = 0;
             this.txtAd.Size = new System.Drawing.Size(311, 23);
             this.txtAd.TabIndex = 0;
+            this.txtAd.TabStop = false;
             this.txtAd.UseSystemPasswordChar = false;
             // 
             // txtSoyad
@@ -64,7 +65,8 @@
             this.txtSoyad.SelectionLength = 0;
             this.txtSoyad.SelectionStart = 0;
             this.txtSoyad.Size = new System.Drawing.Size(311, 23);
-            this.txtSoyad.TabIndex = 0;
+            this.txtSoyad.TabIndex = 1;
+            this.txtSoyad.TabStop = false;
             this.txtSoyad.UseSystemPasswordChar = false;
             // 
             // txtKadi
@@ -79,7 +81,8 @@
             this.txtKadi.SelectionLength = 0;
             this.txtKadi.SelectionStart = 0;
             this.txtKadi.Size = new System.Drawing.Size(311, 23);
-            this.txtKadi.TabIndex = 0;
+            this.txtKadi.TabIndex = 2;
+            this.txtKadi.TabStop = false;
             this.txtKadi.UseSystemPasswordChar = false;
             // 
             // txtSifre
@@ -94,7 +97,8 @@
             this.txtSifre.SelectionLength = 0;
             this.txtSifre.SelectionStart = 0;
             this.txtSifre.Size = new System.Drawing.Size(311, 23);
-            this.txtSifre.TabIndex = 0;
+            this.txtSifre.TabIndex = 4;
+            this.txtSifre.TabStop = false;
             this.txtSifre.UseSystemPasswordChar = false;
             // 
             // btnKaydet
@@ -108,7 +112,7 @@
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Primary = false;
             this.btnKaydet.Size = new System.Drawing.Size(63, 36);
-            this.btnKaydet.TabIndex = 1;
+            this.btnKaydet.TabIndex = 6;
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
@@ -124,7 +128,8 @@
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Primary = false;
             this.btnTemizle.Size = new System.Drawing.Size(67, 36);
-            this.btnTemizle.TabIndex = 1;
+            this.btnTemizle.TabIndex = 5;
+            this.btnTemizle.TabStop = false;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = true;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
@@ -141,7 +146,8 @@
             this.txtMail.SelectionLength = 0;
             this.txtMail.SelectionStart = 0;
             this.txtMail.Size = new System.Drawing.Size(311, 23);
-            this.txtMail.TabIndex = 0;
+            this.txtMail.TabIndex = 3;
+            this.txtMail.TabStop = false;
             this.txtMail.UseSystemPasswordChar = false;
             // 
             // Calisan

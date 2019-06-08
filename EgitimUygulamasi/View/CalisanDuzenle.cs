@@ -14,7 +14,7 @@ namespace EgitimUygulamasi.View
     {
         private int selectedid = -1;
         public Main main;
-
+        private DataTable table;
         public CalisanDuzenle()
         {
             InitializeComponent();
@@ -27,7 +27,8 @@ namespace EgitimUygulamasi.View
 
         private void CalisanDuzenle_Load(object sender, EventArgs e)
         {
-            CalisanlarTablosu.DataSource = Database.Select.calisanlariCek();
+            table = Database.Select.calisanlariCek(); ;
+            CalisanlarTablosu.DataSource = table;
             CalisanlarTablosu.Columns["id"].HeaderText = "ID";
             CalisanlarTablosu.Columns["ad"].HeaderText = "Ad";
             CalisanlarTablosu.Columns["soyad"].HeaderText = "Soyad";
@@ -95,6 +96,7 @@ namespace EgitimUygulamasi.View
             if (VerifyTexts())
             {
                 Model.Calisan calisan = new Model.Calisan();
+                calisan.ID = selectedid;
                 calisan.Ad = txtAd.Text;
                 calisan.Soyad = txtSoyad.Text;
                 calisan.Kadi = txtKadi.Text;
@@ -110,6 +112,12 @@ namespace EgitimUygulamasi.View
         {
             CalisanlarTablosu.DataSource = Database.Select.calisanlariCek();
             CalisanlarTablosu.Update();
+        }
+
+        private void txtAra_TextChanged(object sender, EventArgs e)
+        {
+            table.DefaultView.RowFilter = "ad Like '%" + txtAra.Text + "%' or soyad Like '%" + txtAra.Text + "%' or kadi like '%"+txtAra.Text+"%'";
+            CalisanlarTablosu.DataSource = table;
         }
     }
 }

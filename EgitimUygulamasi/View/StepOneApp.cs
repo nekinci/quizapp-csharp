@@ -15,10 +15,11 @@ namespace EgitimUygulamasi.View
     {
         private Kategori _kategori;
         private QuestionScreen main;
-
+        private Model.Calisan calisan = Database.Select.Calisanlar().Find(x => x.ID == Database.Select.CalisanCekID(Session.KullaniciAdiAl()));
         public StepOneApp()
         {
             InitializeComponent();
+            lblHosgeldiniz.Text = "Hoşgeldiniz " + calisan.Ad + " "+calisan.Soyad;
         }
 
         public void setMain(QuestionScreen main)
@@ -50,12 +51,12 @@ namespace EgitimUygulamasi.View
                     timer1.Start();
                 }
                 else
-                    MessageBox.Show("Soru çekilemedi. \nOlası Nedenler: Kategoriye ait hiçbir soru eklenmedi.\nZorluk Türünde soru yok.\n--Lütfen Yöneticinizle iletişime geçin--");
+                    MessageBox.Show("Soru çekilemedi. \nOlası Nedenler: \nKategoriye ait hiçbir soru eklenmedi.\nZorluk Türünde soru yok.\nTüm soruları cevapladınız(Yöneticinizin belirlediği süre boyunca aynı soruyu göremeyeceksiniz)\n--Lütfen Yöneticinizle iletişime geçin--");
             }
 
         }
 
-        
+
 
         private void StepOneApp_Load(object sender, EventArgs e)
         {
@@ -64,7 +65,7 @@ namespace EgitimUygulamasi.View
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+
             if (saniye != 3000)
             {
                 saniye += 250;
@@ -72,7 +73,8 @@ namespace EgitimUygulamasi.View
                 _kategori = liste.ElementAt(new Random().Next(0, liste.Count));
                 lblKategori.Text = _kategori.Ad;
             }
-            else {
+            else
+            {
                 timer1.Stop(); saniye = 0;
                 lblHosgeldiniz.Visible = true;
                 lblBilgilendirme.Visible = true;
@@ -100,7 +102,9 @@ namespace EgitimUygulamasi.View
             this.Visible = false;
             string kategori = lblKategori.Text;
             string zorluk = cmbZorluk.SelectedItem.ToString();
-            main.SoruAktarici(kategori,zorluk);
+            SoruBilgileri.KategoriAdi = kategori;
+            SoruBilgileri.ZorlukSeviyesi = zorluk;
+            main.SoruAktarici(kategori, zorluk);
 
         }
 
@@ -117,6 +121,15 @@ namespace EgitimUygulamasi.View
         private void lblHosgeldiniz_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void Resetle()
+        {
+            lblHosgeldiniz.Text = "Tekrar hoşgeldiniz, " + calisan.Ad + " " + calisan.Soyad;
+            lblBilgilendirme.Text = "Önce kategori seçin";
+            btnSoruSor.Enabled = false;
+            lblKategori.Text = "<Kategori Adi>";
+            cmbZorluk.SelectedIndex = -1;
         }
     }
 }

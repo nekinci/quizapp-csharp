@@ -15,8 +15,8 @@ namespace EgitimUygulamasi
 {
     public partial class Main : Form
     {
-        private bool isMouseDown = false;
-        int firstX, firstY;
+        private bool mouseDown;
+        private Point lastLocation;
         public Main()
         {
             InitializeComponent();
@@ -51,21 +51,18 @@ namespace EgitimUygulamasi
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
-            firstX = e.X;
-            firstY = e.Y;
-            if (e.Button == MouseButtons.Left)
-            {
-                isMouseDown = true;
-            }
+            mouseDown = true;
+            lastLocation = e.Location;
         }
 
         private void panel2_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isMouseDown)
+            if (mouseDown)
             {
-                Point koordinatlar = Control.MousePosition;
-                koordinatlar.Offset(-firstX, -firstY);
-                Location = koordinatlar;
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
             }
         }
 
@@ -123,38 +120,27 @@ namespace EgitimUygulamasi
 
             if (result == DialogResult.Yes)
             {
+                Session.OturumKapat();
                 this.Hide();
                 Login login = new Login();
                 login.Show();
+
             }
         }
 
         private void label2_MouseDown(object sender, MouseEventArgs e)
         {
-            firstX = e.X;
-            firstY = e.Y;
-            if (e.Button == MouseButtons.Left)
-            {
-                isMouseDown = true;
-            }
+          
         }
 
         private void label2_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isMouseDown)
-            {
-                Point koordinatlar = Control.MousePosition;
-                koordinatlar.Offset(-firstX, -firstY);
-                Location = koordinatlar;
-            }
+           
         }
 
         private void label2_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                isMouseDown = false;
-            }
+           
         }
 
         private void calisanislemleri_Click(object sender, EventArgs e)
@@ -180,12 +166,18 @@ namespace EgitimUygulamasi
             ayarlar1.Visible = true;
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void panel2_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                isMouseDown = false;
-            }
+            mouseDown = false;
+        }
+
+        private void board_Click(object sender, EventArgs e)
+        {
         }
     }
 }

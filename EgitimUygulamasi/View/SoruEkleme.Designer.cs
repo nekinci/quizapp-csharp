@@ -49,19 +49,23 @@
             this.txtB = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtA = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.checkKlasik = new MaterialSkin.Controls.MaterialCheckBox();
+            this.btnTamEkran = new MaterialSkin.Controls.MaterialFlatButton();
+            this.videoMedya = new AxWMPLib.AxWindowsMediaPlayer();
             this.soru.SuspendLayout();
             this.sorupage.SuspendLayout();
             this.secenektab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).BeginInit();
             this.SuspendLayout();
             // 
             // imageLists
             // 
             this.imageLists.FormattingEnabled = true;
-            this.imageLists.Location = new System.Drawing.Point(10, 198);
+            this.imageLists.Location = new System.Drawing.Point(10, 224);
             this.imageLists.Name = "imageLists";
-            this.imageLists.Size = new System.Drawing.Size(223, 251);
-            this.imageLists.TabIndex = 0;
+            this.imageLists.Size = new System.Drawing.Size(223, 225);
+            this.imageLists.TabIndex = 12;
             this.imageLists.SelectedIndexChanged += new System.EventHandler(this.imageLists_SelectedIndexChanged);
             // 
             // txtAra
@@ -75,8 +79,8 @@
             this.txtAra.SelectedText = "";
             this.txtAra.SelectionLength = 0;
             this.txtAra.SelectionStart = 0;
-            this.txtAra.Size = new System.Drawing.Size(223, 23);
-            this.txtAra.TabIndex = 1;
+            this.txtAra.Size = new System.Drawing.Size(169, 23);
+            this.txtAra.TabIndex = 15;
             this.txtAra.UseSystemPasswordChar = false;
             // 
             // btnYukle
@@ -87,7 +91,7 @@
             this.btnYukle.Name = "btnYukle";
             this.btnYukle.Primary = true;
             this.btnYukle.Size = new System.Drawing.Size(223, 46);
-            this.btnYukle.TabIndex = 3;
+            this.btnYukle.TabIndex = 14;
             this.btnYukle.Text = "Yeni İçerik Yükle";
             this.btnYukle.UseVisualStyleBackColor = true;
             this.btnYukle.Click += new System.EventHandler(this.btnYukle_Click);
@@ -131,7 +135,7 @@
             this.btnIlerle.Name = "btnIlerle";
             this.btnIlerle.Primary = false;
             this.btnIlerle.Size = new System.Drawing.Size(55, 36);
-            this.btnIlerle.TabIndex = 1;
+            this.btnIlerle.TabIndex = 5;
             this.btnIlerle.Text = "ilerle";
             this.btnIlerle.UseVisualStyleBackColor = true;
             this.btnIlerle.Click += new System.EventHandler(this.btnIlerle_Click);
@@ -161,7 +165,8 @@
             this.cmbZorluk.Name = "cmbZorluk";
             this.cmbZorluk.PromptText = "Zorluk Seviyesi seçin";
             this.cmbZorluk.Size = new System.Drawing.Size(365, 29);
-            this.cmbZorluk.TabIndex = 2;
+            this.cmbZorluk.TabIndex = 3;
+            this.cmbZorluk.TabStop = false;
             this.cmbZorluk.UseSelectable = true;
             // 
             // cmbKategori
@@ -173,6 +178,7 @@
             this.cmbKategori.PromptText = "Kategori seçin";
             this.cmbKategori.Size = new System.Drawing.Size(365, 29);
             this.cmbKategori.TabIndex = 2;
+            this.cmbKategori.TabStop = false;
             this.cmbKategori.UseSelectable = true;
             this.cmbKategori.SelectedIndexChanged += new System.EventHandler(this.cmbKategori_SelectedIndexChanged);
             // 
@@ -189,6 +195,7 @@
             this.txtSoruBasligi.SelectionStart = 0;
             this.txtSoruBasligi.Size = new System.Drawing.Size(365, 23);
             this.txtSoruBasligi.TabIndex = 1;
+            this.txtSoruBasligi.TabStop = false;
             this.txtSoruBasligi.UseSystemPasswordChar = false;
             // 
             // txtSure
@@ -203,7 +210,8 @@
             this.txtSure.SelectionLength = 0;
             this.txtSure.SelectionStart = 0;
             this.txtSure.Size = new System.Drawing.Size(330, 23);
-            this.txtSure.TabIndex = 1;
+            this.txtSure.TabIndex = 4;
+            this.txtSure.TabStop = false;
             this.txtSure.UseSystemPasswordChar = false;
             // 
             // secenektab
@@ -234,7 +242,7 @@
             this.materialFlatButton1.Name = "materialFlatButton1";
             this.materialFlatButton1.Primary = false;
             this.materialFlatButton1.Size = new System.Drawing.Size(63, 36);
-            this.materialFlatButton1.TabIndex = 4;
+            this.materialFlatButton1.TabIndex = 13;
             this.materialFlatButton1.Text = "Kaydet";
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
@@ -253,7 +261,8 @@
             this.cmbDogru.Name = "cmbDogru";
             this.cmbDogru.PromptText = "Doğru Seçeneği Seçin";
             this.cmbDogru.Size = new System.Drawing.Size(365, 29);
-            this.cmbDogru.TabIndex = 3;
+            this.cmbDogru.TabIndex = 11;
+            this.cmbDogru.TabStop = false;
             this.cmbDogru.UseSelectable = true;
             this.cmbDogru.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
             // 
@@ -269,7 +278,8 @@
             this.txtE.SelectionLength = 0;
             this.txtE.SelectionStart = 0;
             this.txtE.Size = new System.Drawing.Size(365, 23);
-            this.txtE.TabIndex = 2;
+            this.txtE.TabIndex = 10;
+            this.txtE.TabStop = false;
             this.txtE.UseSystemPasswordChar = false;
             this.txtE.Click += new System.EventHandler(this.txtE_Click);
             // 
@@ -285,7 +295,8 @@
             this.txtD.SelectionLength = 0;
             this.txtD.SelectionStart = 0;
             this.txtD.Size = new System.Drawing.Size(365, 23);
-            this.txtD.TabIndex = 2;
+            this.txtD.TabIndex = 9;
+            this.txtD.TabStop = false;
             this.txtD.UseSystemPasswordChar = false;
             this.txtD.Click += new System.EventHandler(this.txtD_Click);
             // 
@@ -301,7 +312,8 @@
             this.txtC.SelectionLength = 0;
             this.txtC.SelectionStart = 0;
             this.txtC.Size = new System.Drawing.Size(365, 23);
-            this.txtC.TabIndex = 2;
+            this.txtC.TabIndex = 8;
+            this.txtC.TabStop = false;
             this.txtC.UseSystemPasswordChar = false;
             this.txtC.Click += new System.EventHandler(this.txtC_Click);
             // 
@@ -317,7 +329,8 @@
             this.txtB.SelectionLength = 0;
             this.txtB.SelectionStart = 0;
             this.txtB.Size = new System.Drawing.Size(365, 23);
-            this.txtB.TabIndex = 2;
+            this.txtB.TabIndex = 7;
+            this.txtB.TabStop = false;
             this.txtB.UseSystemPasswordChar = false;
             this.txtB.Click += new System.EventHandler(this.txtB_Click);
             // 
@@ -333,7 +346,8 @@
             this.txtA.SelectionLength = 0;
             this.txtA.SelectionStart = 0;
             this.txtA.Size = new System.Drawing.Size(365, 23);
-            this.txtA.TabIndex = 2;
+            this.txtA.TabIndex = 6;
+            this.txtA.TabStop = false;
             this.txtA.UseSystemPasswordChar = false;
             this.txtA.Click += new System.EventHandler(this.txtA_Click);
             // 
@@ -342,15 +356,62 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(10, 68);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(223, 124);
+            this.pictureBox1.Size = new System.Drawing.Size(223, 138);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // checkKlasik
+            // 
+            this.checkKlasik.AutoSize = true;
+            this.checkKlasik.Depth = 0;
+            this.checkKlasik.Font = new System.Drawing.Font("Roboto", 10F);
+            this.checkKlasik.Location = new System.Drawing.Point(646, 57);
+            this.checkKlasik.Margin = new System.Windows.Forms.Padding(0);
+            this.checkKlasik.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.checkKlasik.MouseState = MaterialSkin.MouseState.HOVER;
+            this.checkKlasik.Name = "checkKlasik";
+            this.checkKlasik.Ripple = true;
+            this.checkKlasik.Size = new System.Drawing.Size(99, 30);
+            this.checkKlasik.TabIndex = 16;
+            this.checkKlasik.Text = "Klasik Soru";
+            this.checkKlasik.UseVisualStyleBackColor = true;
+            this.checkKlasik.CheckedChanged += new System.EventHandler(this.checkKlasik_CheckedChanged);
+            // 
+            // btnTamEkran
+            // 
+            this.btnTamEkran.AutoSize = true;
+            this.btnTamEkran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTamEkran.Depth = 0;
+            this.btnTamEkran.Location = new System.Drawing.Point(176, 30);
+            this.btnTamEkran.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnTamEkran.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnTamEkran.Name = "btnTamEkran";
+            this.btnTamEkran.Primary = false;
+            this.btnTamEkran.Size = new System.Drawing.Size(89, 36);
+            this.btnTamEkran.TabIndex = 17;
+            this.btnTamEkran.Text = "tam ekran";
+            this.btnTamEkran.UseVisualStyleBackColor = true;
+            this.btnTamEkran.Visible = false;
+            this.btnTamEkran.Click += new System.EventHandler(this.materialFlatButton2_Click);
+            // 
+            // videoMedya
+            // 
+            this.videoMedya.Enabled = true;
+            this.videoMedya.Location = new System.Drawing.Point(10, 68);
+            this.videoMedya.Name = "videoMedya";
+            this.videoMedya.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoMedya.OcxState")));
+            this.videoMedya.Size = new System.Drawing.Size(223, 150);
+            this.videoMedya.TabIndex = 18;
+            this.videoMedya.Visible = false;
             // 
             // SoruEkleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.videoMedya);
+            this.Controls.Add(this.btnTamEkran);
+            this.Controls.Add(this.checkKlasik);
             this.Controls.Add(this.soru);
             this.Controls.Add(this.btnYukle);
             this.Controls.Add(this.pictureBox1);
@@ -365,7 +426,9 @@
             this.secenektab.ResumeLayout(false);
             this.secenektab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -391,5 +454,8 @@
         private MetroFramework.Controls.MetroComboBox cmbDogru;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private MaterialSkin.Controls.MaterialCheckBox checkKlasik;
+        private MaterialSkin.Controls.MaterialFlatButton btnTamEkran;
+        private AxWMPLib.AxWindowsMediaPlayer videoMedya;
     }
 }

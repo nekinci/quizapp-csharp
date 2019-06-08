@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EgitimUygulamasi.Model;
 
 namespace EgitimUygulamasi.View
 {
@@ -25,7 +26,9 @@ namespace EgitimUygulamasi.View
 
         private void btnSoruyaGec_Click(object sender, EventArgs e)
         {
+            videoMedya.Ctlcontrols.stop();
             this.Visible = false;
+            main.SoruGoster();
         }
 
         private void MedyaEkraniSoru_Load(object sender, EventArgs e)
@@ -33,6 +36,32 @@ namespace EgitimUygulamasi.View
 
         }
 
+        public void Goster(BirlesikSoru soru)
+        {
+            this.Visible = true;
+            if (MedyaKontrol.ResimKontrol(soru.medya.Path))
+            {
+                pictureBox1.ImageLocation = soru.medya.Path;
+                pictureBox1.Visible = true;
+                videoMedya.Visible = false;
+                videoMedya.URL = "";
+                btnTamEkran.Visible = false;
+                videoMedya.Ctlcontrols.stop();
+            }
+            if (MedyaKontrol.VideoKontrol(soru.medya.Path))
+            {
+                pictureBox1.Visible = false;
+                pictureBox1.ImageLocation = "";
+                videoMedya.URL = soru.medya.Path;
+                videoMedya.Ctlcontrols.stop();
+                videoMedya.Visible = true;
+                btnTamEkran.Visible = true;
+            }
+        }
 
+        private void btnTamEkran_Click(object sender, EventArgs e)
+        {
+            videoMedya.fullScreen = true;
+        }
     }
 }

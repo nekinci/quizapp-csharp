@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IcerikEkleme));
             this.cmbKategori = new MetroFramework.Controls.MetroComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.txtIsim = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -35,7 +36,10 @@
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.pictureMedya = new System.Windows.Forms.PictureBox();
+            this.videoMedya = new AxWMPLib.AxWindowsMediaPlayer();
+            this.btnTamEkran = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMedya)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbKategori
@@ -123,11 +127,42 @@
             this.pictureMedya.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureMedya.TabIndex = 8;
             this.pictureMedya.TabStop = false;
+            this.pictureMedya.Visible = false;
+            // 
+            // videoMedya
+            // 
+            this.videoMedya.Enabled = true;
+            this.videoMedya.Location = new System.Drawing.Point(241, 21);
+            this.videoMedya.Name = "videoMedya";
+            this.videoMedya.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoMedya.OcxState")));
+            this.videoMedya.Size = new System.Drawing.Size(326, 211);
+            this.videoMedya.TabIndex = 9;
+            this.videoMedya.Visible = false;
+            this.videoMedya.Enter += new System.EventHandler(this.videoMedya_Enter);
+            // 
+            // btnTamEkran
+            // 
+            this.btnTamEkran.AutoSize = true;
+            this.btnTamEkran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTamEkran.Depth = 0;
+            this.btnTamEkran.Location = new System.Drawing.Point(574, 196);
+            this.btnTamEkran.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnTamEkran.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnTamEkran.Name = "btnTamEkran";
+            this.btnTamEkran.Primary = false;
+            this.btnTamEkran.Size = new System.Drawing.Size(89, 36);
+            this.btnTamEkran.TabIndex = 10;
+            this.btnTamEkran.Text = "tam ekran";
+            this.btnTamEkran.UseVisualStyleBackColor = true;
+            this.btnTamEkran.Visible = false;
+            this.btnTamEkran.Click += new System.EventHandler(this.materialFlatButton3_Click);
             // 
             // IcerikEkleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnTamEkran);
+            this.Controls.Add(this.videoMedya);
             this.Controls.Add(this.pictureMedya);
             this.Controls.Add(this.materialFlatButton2);
             this.Controls.Add(this.materialFlatButton1);
@@ -138,6 +173,7 @@
             this.Size = new System.Drawing.Size(768, 522);
             this.Load += new System.EventHandler(this.IcerikEkleme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureMedya)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +188,7 @@
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
         private System.Windows.Forms.PictureBox pictureMedya;
+        private AxWMPLib.AxWindowsMediaPlayer videoMedya;
+        private MaterialSkin.Controls.MaterialFlatButton btnTamEkran;
     }
 }

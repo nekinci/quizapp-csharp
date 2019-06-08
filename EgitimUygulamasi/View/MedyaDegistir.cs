@@ -57,7 +57,25 @@ namespace EgitimUygulamasi.View
             if (imageLists.SelectedIndex >= 0)
             {
                 _medya = (Medya)imageLists.SelectedItem;
-                secilenResim.ImageLocation = _medya.Path;
+                if (_medya == null)
+                    return;
+                if (MedyaKontrol.ResimKontrol(_medya.Path))
+                {
+                    secilenResim.ImageLocation = _medya.Path;
+                    secilenResim.Visible = true;
+                    videoMedya.Visible = false;
+                    videoMedya.URL = "";
+                    videoMedya.Ctlcontrols.stop();
+                    btnTamEkran.Visible = false;
+                }
+                if (MedyaKontrol.VideoKontrol(_medya.Path))
+                {
+                    videoMedya.URL = _medya.Path;
+                    videoMedya.Visible = true;
+                    secilenResim.Visible = false;
+                    secilenResim.ImageLocation = "";
+                    videoMedya.Ctlcontrols.stop();
+                }
                 txtIsim.Text = _medya.Ad;
                 txtPath.Text = _medya.Path;
                 materialFlatButton1.Enabled = true;
@@ -116,6 +134,11 @@ namespace EgitimUygulamasi.View
                 e.Cancel = true;
                 MessageBox.Show("Kategori değiştiğinde haliyle medya da değişmek zorunda çünkü medyalar kategorilere göre ayrıldı.");
             }
+        }
+
+        private void btnTamEkran_Click(object sender, EventArgs e)
+        {
+            videoMedya.fullScreen = true;
         }
     }
 }

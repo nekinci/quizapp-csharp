@@ -12,6 +12,10 @@ namespace EgitimUygulamasi.View
 {
     public partial class Login : Form
     {
+
+
+        private bool mouseDown;
+        private Point lastLocation;
         public Login()
         {
             InitializeComponent();
@@ -35,17 +39,29 @@ namespace EgitimUygulamasi.View
             }
             else
             {
-                if ( cmbGirisTuru . SelectedIndex == 0)
+                if (cmbGirisTuru.SelectedIndex == 0)
                 {
-                    this.Hide();
-                    QuestionScreen qs = new QuestionScreen();
-                    qs.Show();
+                    bool kontrol = Database.Select.KullaniciGirisKontrol(txtKullaniciAdi.Text, MD5Sifreleme.MD5Sifrele(txtSifre.Text));
+                    if (kontrol)
+                    {
+                        Session.OturumAc(txtKullaniciAdi.Text);
+                        this.Hide();
+                        QuestionScreen qs = new QuestionScreen();
+                        qs.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Girilen kullanıcı adı veya şifre hatalı");
+                        txtKullaniciAdi.Clear();
+                        txtSifre.Clear();
+                    }
                 }
                 else
                 {
                     bool kontrol = Database.Select.AdminGirisiKontrol(txtKullaniciAdi.Text, txtSifre.Text);
                     if (kontrol)
                     {
+                        Session.OturumAc(txtKullaniciAdi.Text);
                         this.Hide();
                         Main m = new Main();
                         m.Show();
@@ -56,7 +72,7 @@ namespace EgitimUygulamasi.View
                         txtKullaniciAdi.Clear();
                         txtSifre.Clear();
                     }
-                        
+
                 }
             }
         }
@@ -95,13 +111,67 @@ namespace EgitimUygulamasi.View
             if (i == 0 && j == 0 && k == 0)
                 flag = false;
             pnlSol.BackColor = Color.FromArgb(0 + i, 0 + j, 0 + k);
-            label1.ForeColor = Color.FromArgb(pnlSol.BackColor.ToArgb()^0xffffff);
+            label1.ForeColor = Color.FromArgb(pnlSol.BackColor.ToArgb() ^ 0xffffff);
             label2.ForeColor = Color.FromArgb(pnlSol.BackColor.ToArgb() ^ 0xffffff);
         }
+
 
         private void pnlSol_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtKullaniciAdi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtKullaniciAdi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtKullaniciAdi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnGirisYap_Click(sender, e);
+        }
+
+        private void txtSifre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
         }
     }
 }

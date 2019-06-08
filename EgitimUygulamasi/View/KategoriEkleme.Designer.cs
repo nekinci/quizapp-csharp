@@ -45,7 +45,8 @@
             this.txtAd.SelectionLength = 0;
             this.txtAd.SelectionStart = 0;
             this.txtAd.Size = new System.Drawing.Size(305, 23);
-            this.txtAd.TabIndex = 22;
+            this.txtAd.TabIndex = 0;
+            this.txtAd.TabStop = false;
             this.txtAd.UseSystemPasswordChar = false;
             // 
             // txtAciklama
@@ -60,7 +61,8 @@
             this.txtAciklama.SelectionLength = 0;
             this.txtAciklama.SelectionStart = 0;
             this.txtAciklama.Size = new System.Drawing.Size(305, 23);
-            this.txtAciklama.TabIndex = 22;
+            this.txtAciklama.TabIndex = 1;
+            this.txtAciklama.TabStop = false;
             this.txtAciklama.UseSystemPasswordChar = false;
             // 
             // btnKaydet
@@ -69,7 +71,7 @@
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(166, 38);
             this.btnKaydet.Style = MetroFramework.MetroColorStyle.Brown;
-            this.btnKaydet.TabIndex = 24;
+            this.btnKaydet.TabIndex = 2;
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.Theme = MetroFramework.MetroThemeStyle.Light;
             this.btnKaydet.UseSelectable = true;

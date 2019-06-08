@@ -57,7 +57,9 @@ namespace EgitimUygulamasi.View
                 KategoriIsimler.Add(Kategoriler.ElementAt(i).Ad);
             }
             cmbKategori.DataSource = KategoriIsimler;
+            KategoriIsimler.Add("Tümü");
             cmbFiltreKategori.DataSource = KategoriIsimler;
+
             cmbFiltreKategori.SelectedIndex = -1;
 
         }
@@ -246,8 +248,7 @@ namespace EgitimUygulamasi.View
 
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            table.DefaultView.RowFilter = "zorlukSeviyesi = '" + cmbFiltreZorluk.SelectedItem.ToString() + "'";
-            SorularTablosu.DataSource = table;
+
         }
 
         public void temizle()
@@ -293,7 +294,7 @@ namespace EgitimUygulamasi.View
 
         private void txtMedya_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void cmbKategori_SelectionChangeCommitted(object sender, EventArgs e)
@@ -304,6 +305,29 @@ namespace EgitimUygulamasi.View
             medyaDegistir.setSoruDuzenleme1(this, x.ID);
             medyaDegistir.KategoriDegisti(true);
             medyaDegistir.Show();
+        }
+
+        private void cmbFiltreKategori_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbFiltreKategori_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmbFiltreKategori.SelectedItem.ToString() == "Tümü")
+                table.DefaultView.RowFilter = "";
+            else
+                table.DefaultView.RowFilter = "ad = '" + cmbFiltreKategori.SelectedItem.ToString() + "'";
+            SorularTablosu.DataSource = table;
+        }
+
+        private void cmbFiltreZorluk_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmbFiltreZorluk.SelectedItem.ToString() == "Tümü")
+                table.DefaultView.RowFilter = "";
+            else
+                table.DefaultView.RowFilter = "zorlukSeviyesi = '" + cmbFiltreZorluk.SelectedItem.ToString() + "'";
+            SorularTablosu.DataSource = table;
         }
     }
 }

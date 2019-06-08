@@ -67,7 +67,7 @@
             this.KategorilerTablosu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.KategorilerTablosu.ShowEditingIcon = false;
             this.KategorilerTablosu.Size = new System.Drawing.Size(414, 383);
-            this.KategorilerTablosu.TabIndex = 3;
+            this.KategorilerTablosu.TabIndex = 5;
             this.KategorilerTablosu.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.KategorilerTablosu_RowEnter);
             // 
             // panel1
@@ -79,7 +79,7 @@
             this.panel1.Location = new System.Drawing.Point(440, 88);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(315, 335);
-            this.panel1.TabIndex = 6;
+            this.panel1.TabIndex = 0;
             // 
             // materialFlatButton2
             // 
@@ -109,7 +109,8 @@
             this.txtAciklama.SelectionLength = 0;
             this.txtAciklama.SelectionStart = 0;
             this.txtAciklama.Size = new System.Drawing.Size(262, 23);
-            this.txtAciklama.TabIndex = 0;
+            this.txtAciklama.TabIndex = 1;
+            this.txtAciklama.TabStop = false;
             this.txtAciklama.UseSystemPasswordChar = false;
             // 
             // txtKategoriAdi
@@ -125,6 +126,7 @@
             this.txtKategoriAdi.SelectionStart = 0;
             this.txtKategoriAdi.Size = new System.Drawing.Size(262, 23);
             this.txtKategoriAdi.TabIndex = 0;
+            this.txtKategoriAdi.TabStop = false;
             this.txtKategoriAdi.UseSystemPasswordChar = false;
             // 
             // materialRaisedButton1
@@ -135,7 +137,7 @@
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
             this.materialRaisedButton1.Size = new System.Drawing.Size(319, 41);
-            this.materialRaisedButton1.TabIndex = 5;
+            this.materialRaisedButton1.TabIndex = 3;
             this.materialRaisedButton1.Text = "Kaydı Sil";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
             this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
@@ -163,7 +165,7 @@
             this.txtAra.SelectionLength = 0;
             this.txtAra.SelectionStart = 0;
             this.txtAra.Size = new System.Drawing.Size(414, 23);
-            this.txtAra.TabIndex = 8;
+            this.txtAra.TabIndex = 4;
             this.txtAra.UseSystemPasswordChar = false;
             this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 

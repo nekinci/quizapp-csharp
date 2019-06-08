@@ -114,20 +114,26 @@
     <Compile Include="Database\Insert.cs" />
     <Compile Include="Database\Select.cs" />
     <Compile Include="Database\Update.cs" />
+    <Compile Include="MailServisi.cs" />
     <Compile Include="MaterialColors.cs" />
     <Compile Include="MD5Sifreleme.cs" />
+    <Compile Include="MedyaKontrol.cs" />
+    <Compile Include="Model\Ayarlar.cs" />
     <Compile Include="Model\BirlesikSoru.cs" />
     <Compile Include="Model\Calisan.cs" />
     <Compile Include="Model\Medya.cs" />
     <Compile Include="Model\Puan.cs" />
     <Compile Include="Model\Secenekler.cs" />
     <Compile Include="Model\Soru.cs" />
+    <Compile Include="Model\SoruSorulma.cs" />
+    <Compile Include="Model\ZorlukPuanlari.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
     <Compile Include="Session.cs" />
+    <Compile Include="SoruBilgileri.cs" />
     <Compile Include="View\Ayarlar.cs">
       <SubType>UserControl</SubType>
     </Compile>

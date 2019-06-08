@@ -28,12 +28,34 @@ namespace EgitimUygulamasi.View
         {
             this._medya = _medya;
 
-            pictureBox1.ImageLocation = _medya.Path;
+            if (MedyaKontrol.ResimKontrol(_medya.Path))
+            {
+                pictureBox1.ImageLocation = _medya.Path;
+                pictureBox1.Visible = true;
+                videoMedya.Visible = false;
+                videoMedya.Ctlcontrols.stop();
+                videoMedya.URL = "";
+                btnTamEkran.Visible = false;
+            }
+            if (MedyaKontrol.VideoKontrol(_medya.Path))
+            {
+                pictureBox1.ImageLocation = "";
+                pictureBox1.Visible = false;
+                videoMedya.URL = _medya.Path;
+                videoMedya.Visible = true;
+                videoMedya.Ctlcontrols.stop();
+                btnTamEkran.Visible = true;
+            }
             medyaIsim.Text = _medya.Ad;
         }
         private void MedyaGor_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTamEkran_Click(object sender, EventArgs e)
+        {
+            videoMedya.fullScreen = true;
         }
     }
 }

@@ -35,11 +35,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGuncelle = new MaterialSkin.Controls.MaterialFlatButton();
             this.txtSifre = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtMail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtKadi = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtSoyad = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtAd = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblFiltre = new System.Windows.Forms.Label();
-            this.txtMail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             ((System.ComponentModel.ISupportInitialize)(this.CalisanlarTablosu)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +70,7 @@
             this.CalisanlarTablosu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CalisanlarTablosu.ShowEditingIcon = false;
             this.CalisanlarTablosu.Size = new System.Drawing.Size(414, 383);
-            this.CalisanlarTablosu.TabIndex = 1;
+            this.CalisanlarTablosu.TabIndex = 8;
             this.CalisanlarTablosu.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.CalisanlarTablosu_RowEnter);
             // 
             // txtAra
@@ -85,8 +85,9 @@
             this.txtAra.SelectionLength = 0;
             this.txtAra.SelectionStart = 0;
             this.txtAra.Size = new System.Drawing.Size(414, 23);
-            this.txtAra.TabIndex = 11;
+            this.txtAra.TabIndex = 7;
             this.txtAra.UseSystemPasswordChar = false;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // btnSil
             // 
@@ -96,7 +97,7 @@
             this.btnSil.Name = "btnSil";
             this.btnSil.Primary = true;
             this.btnSil.Size = new System.Drawing.Size(319, 41);
-            this.btnSil.TabIndex = 9;
+            this.btnSil.TabIndex = 6;
             this.btnSil.Text = "Kaydı Sil";
             this.btnSil.UseVisualStyleBackColor = true;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
@@ -113,7 +114,7 @@
             this.panel1.Location = new System.Drawing.Point(438, 88);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(315, 335);
-            this.panel1.TabIndex = 10;
+            this.panel1.TabIndex = 0;
             // 
             // btnGuncelle
             // 
@@ -126,7 +127,7 @@
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Primary = false;
             this.btnGuncelle.Size = new System.Drawing.Size(79, 36);
-            this.btnGuncelle.TabIndex = 2;
+            this.btnGuncelle.TabIndex = 5;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
@@ -143,8 +144,25 @@
             this.txtSifre.SelectionLength = 0;
             this.txtSifre.SelectionStart = 0;
             this.txtSifre.Size = new System.Drawing.Size(262, 23);
-            this.txtSifre.TabIndex = 0;
+            this.txtSifre.TabIndex = 4;
+            this.txtSifre.TabStop = false;
             this.txtSifre.UseSystemPasswordChar = false;
+            // 
+            // txtMail
+            // 
+            this.txtMail.Depth = 0;
+            this.txtMail.Hint = "Mail";
+            this.txtMail.Location = new System.Drawing.Point(31, 204);
+            this.txtMail.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtMail.Name = "txtMail";
+            this.txtMail.PasswordChar = '\0';
+            this.txtMail.SelectedText = "";
+            this.txtMail.SelectionLength = 0;
+            this.txtMail.SelectionStart = 0;
+            this.txtMail.Size = new System.Drawing.Size(262, 23);
+            this.txtMail.TabIndex = 3;
+            this.txtMail.TabStop = false;
+            this.txtMail.UseSystemPasswordChar = false;
             // 
             // txtKadi
             // 
@@ -158,7 +176,8 @@
             this.txtKadi.SelectionLength = 0;
             this.txtKadi.SelectionStart = 0;
             this.txtKadi.Size = new System.Drawing.Size(262, 23);
-            this.txtKadi.TabIndex = 0;
+            this.txtKadi.TabIndex = 2;
+            this.txtKadi.TabStop = false;
             this.txtKadi.UseSystemPasswordChar = false;
             // 
             // txtSoyad
@@ -173,7 +192,8 @@
             this.txtSoyad.SelectionLength = 0;
             this.txtSoyad.SelectionStart = 0;
             this.txtSoyad.Size = new System.Drawing.Size(262, 23);
-            this.txtSoyad.TabIndex = 0;
+            this.txtSoyad.TabIndex = 1;
+            this.txtSoyad.TabStop = false;
             this.txtSoyad.UseSystemPasswordChar = false;
             // 
             // txtAd
@@ -189,6 +209,7 @@
             this.txtAd.SelectionStart = 0;
             this.txtAd.Size = new System.Drawing.Size(262, 23);
             this.txtAd.TabIndex = 0;
+            this.txtAd.TabStop = false;
             this.txtAd.UseSystemPasswordChar = false;
             // 
             // lblFiltre
@@ -201,21 +222,6 @@
             this.lblFiltre.Size = new System.Drawing.Size(118, 17);
             this.lblFiltre.TabIndex = 12;
             this.lblFiltre.Text = "Listeleme Kısıtları:";
-            // 
-            // txtMail
-            // 
-            this.txtMail.Depth = 0;
-            this.txtMail.Hint = "Mail";
-            this.txtMail.Location = new System.Drawing.Point(31, 204);
-            this.txtMail.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtMail.Name = "txtMail";
-            this.txtMail.PasswordChar = '\0';
-            this.txtMail.SelectedText = "";
-            this.txtMail.SelectionLength = 0;
-            this.txtMail.SelectionStart = 0;
-            this.txtMail.Size = new System.Drawing.Size(262, 23);
-            this.txtMail.TabIndex = 0;
-            this.txtMail.UseSystemPasswordChar = false;
             // 
             // CalisanDuzenle
             // 

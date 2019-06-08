@@ -40,7 +40,7 @@ namespace EgitimUygulamasi.View
         {
 
             openFileDialog1.Title = "Lütfen Medya dosyasını seçin";
-            openFileDialog1.Filter = "JPEG |*.jpg|GIF|*.gif|MP4 Video|*.mp4|WMV Video|*.wmv|MP3 Audio|*.mp3";
+            openFileDialog1.Filter = "Medya|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff;*.gif;*.mp4;*.wmv;*.mp3;*.mkv;*.asf;*.avi;*.mov|JPEG |*.jpg|GIF|*.gif|MP4 Video|*.mp4|WMV Video|*.wmv|MP3 Audio|*.mp3";
 
             dosyayolu = "";
             dosyaadi = "";
@@ -55,8 +55,24 @@ namespace EgitimUygulamasi.View
                 txtDosya.Text = dosyayolu;
             }
 
-            pictureMedya.ImageLocation = dosyayolu;
+            if (MedyaKontrol.ResimKontrol(dosyaadi))
+            {
+                videoMedya.Ctlcontrols.stop();
+                videoMedya.URL = "";
+                videoMedya.Visible = false;
+                pictureMedya.ImageLocation = dosyayolu;
+                pictureMedya.Visible = true;
+                btnTamEkran.Visible = false;
 
+            }
+
+            if (MedyaKontrol.VideoKontrol(dosyaadi))
+            {
+                pictureMedya.ImageLocation = "";
+                videoMedya.URL = dosyayolu;
+                videoMedya.Visible = true;
+                btnTamEkran.Visible = true;
+            }
         }
 
         private void materialFlatButton2_Click(object sender, EventArgs e)
@@ -130,6 +146,16 @@ namespace EgitimUygulamasi.View
 
             cmbKategori.DataSource = strkategori;
             cmbKategori.SelectedIndex = -1;
+
+        }
+
+        private void materialFlatButton3_Click(object sender, EventArgs e)
+        {
+            videoMedya.fullScreen = true;
+        }
+
+        private void videoMedya_Enter(object sender, EventArgs e)
+        {
 
         }
     }

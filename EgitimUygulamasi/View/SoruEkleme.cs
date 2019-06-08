@@ -20,7 +20,8 @@ namespace EgitimUygulamasi.View
         }
 
 
-        public void MedyaYukle() {
+        public void MedyaYukle()
+        {
             _medyalar = Database.Select.MedyaCek(_kategoriler.ElementAt(cmbKategori.SelectedIndex).ID);
             imageLists.Items.Clear();
             foreach (var i in _medyalar)
@@ -88,6 +89,13 @@ namespace EgitimUygulamasi.View
             {
                 message += "Zorluk seviyesi seçilmedi.\n"; kontrol = false;
             }
+
+            if (imageLists.SelectedIndex < 0)
+            {
+                message += "Medya seçilmedi.(Medya yoksa sorunun eklenmek istediği kategoriye önce medya eklemelisiniz. Bkz.Yeni İçerik Yükle)"; kontrol = false;
+            }
+
+
             if (!kontrol)
                 MessageBox.Show(message);
             return kontrol;
@@ -97,6 +105,8 @@ namespace EgitimUygulamasi.View
         {
             string message = "";
             bool kontrol = true;
+            if (checkedklasik)
+                return true;
 
             if (txtA.Text == "")
             {
@@ -123,14 +133,12 @@ namespace EgitimUygulamasi.View
             {
                 message += "Doğru cevap seçilmedi. \n"; kontrol = false;
             }
-            
-            if(imageLists.SelectedIndex < 0)
-            {
-                message += "Medya seçilmedi.(Medya yoksa sorunun eklenmek istediği kategoriye önce medya eklemelisiniz. Bkz.Yeni İçerik Yükle)"; kontrol = false;
-            }
+
+
 
             if (!kontrol)
                 MessageBox.Show(message);
+
             return kontrol;
         }
 
@@ -154,7 +162,10 @@ namespace EgitimUygulamasi.View
                 _secenekler.CSecenegi = txtC.Text;
                 _secenekler.DSecenegi = txtD.Text;
                 _secenekler.ESecenegi = txtE.Text;
-                _secenekler.DogruCevap = cmbDogru.SelectedItem.ToString();
+                if (cmbDogru.SelectedIndex < 0)
+                    _secenekler.DogruCevap = "";
+                else
+                    _secenekler.DogruCevap = cmbDogru.SelectedItem.ToString();
                 _secenekler.SoruID = _soru.ID;
 
                 BirlesikSoru soru = new BirlesikSoru();
@@ -190,7 +201,27 @@ namespace EgitimUygulamasi.View
         {
             Model.Medya _medya = (Model.Medya)imageLists.SelectedItem;
 
-            pictureBox1.ImageLocation = _medya.Path;
+
+            if (_medya == null)
+                return;
+            if (MedyaKontrol.ResimKontrol(_medya.Path))
+            {
+                pictureBox1.Visible = true;
+                pictureBox1.ImageLocation = _medya.Path;
+                videoMedya.Ctlcontrols.stop();
+                videoMedya.Visible = false;
+                btnTamEkran.Visible = false;
+                videoMedya.URL = "";
+            }
+            if (MedyaKontrol.VideoKontrol(_medya.Path))
+            {
+                pictureBox1.Visible = false;
+                pictureBox1.ImageLocation = "";
+                videoMedya.URL = _medya.Path;
+                videoMedya.Ctlcontrols.stop();
+                videoMedya.Visible = true;
+                btnTamEkran.Visible = true;
+            }
 
         }
 
@@ -200,6 +231,26 @@ namespace EgitimUygulamasi.View
 
             MedyaYukle();
 
+        }
+
+        private void materialFlatButton2_Click(object sender, EventArgs e)
+        {
+            videoMedya.fullScreen = true;
+        }
+        private bool checkedklasik = false;
+        private void checkKlasik_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkedklasik)
+            {
+                checkedklasik = true;
+                txtA.Enabled = false; txtB.Enabled = false; txtC.Enabled = false; txtD.Enabled = false; txtE.Enabled = false; cmbDogru.Enabled = false;
+            }
+            else
+            {
+                checkedklasik = false;
+                txtA.Enabled = true; txtB.Enabled = true; txtC.Enabled = true; txtD.Enabled = true; txtE.Enabled = true; cmbDogru.Enabled = true;
+
+            }
         }
     }
 }
