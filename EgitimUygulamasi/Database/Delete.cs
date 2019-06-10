@@ -41,5 +41,17 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
             return result != -1;
         }
+
+        public static bool MedyaSil(int id)
+        {
+            string query = "DELETE from medya where id = " + id;
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(query, _connection);
+            int res = cmd.ExecuteNonQuery();
+
+            if (res != -1)
+                return true;
+            return false;
+        }
     }
 }

@@ -19,12 +19,12 @@ namespace EgitimUygulamasi.View
         public StepOneApp()
         {
             InitializeComponent();
-            lblHosgeldiniz.Text = "Hoşgeldiniz " + calisan.Ad + " "+calisan.Soyad;
         }
 
         public void setMain(QuestionScreen main)
         {
             this.main = main;
+            lblHosgeldiniz.Text = "Hoşgeldiniz " + calisan.Ad + " " + calisan.Soyad;
         }
         int saniye = 0;
         List<Kategori> liste = new List<Kategori>();

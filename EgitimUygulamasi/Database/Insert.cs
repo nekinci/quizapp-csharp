@@ -23,14 +23,26 @@ namespace EgitimUygulamasi.Database
 
         }
 
+        public static void BildirimOlustur(Bildirim bildirim)
+        {
+            string query = "insert into bildirimler values(0," + bildirim.GonderenID + "," + bildirim.SoruID + "," + bildirim.CevapID + ",'" + bildirim.Tarih.ToString("yyyy-MM-dd") + "'," + bildirim.OkunduMu + ","+bildirim.GorulduMu+")";
+            _connection.Open();
 
+            MySqlCommand cmd = new MySqlCommand(query, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+
+            _connection.Close();
+        }
+
+     
         public static void SoruSoruldu(SoruSorulma _var)
         {
             //Hiç kayıt yoksa ekleyecek ama kayıt varsa napcak? Cevap basit güncelleyecek ama nasıl? Bende merak ediyorum doğrusu ama dur bakalım hallolur bi şekilde.
-            string sql = "insert into sorulmatarihleri values(0," + _var.SoruID + "," + _var.CalisanID + ",'"+_var.Tarih.ToString("yyyy-MM-dd") + "')";
+            string sql = "insert into sorulmatarihleri values(0," + _var.SoruID + "," + _var.CalisanID + ",'" + _var.Tarih.ToString("yyyy-MM-dd") + "')";
 
             //Her şartta bu bilgileri veritabanına ekliyoruzki daha sonra istatistiki bir durum olursa diye.
-            string sql1 = "insert into calisancevaplari values(0," + _var.SoruID + "," + _var.CalisanID + ",'"+_var.Tarih.ToString("yyyy-MM-dd") + "','"+_var.Sure+"','"+_var.Cevap+"')";
+            string sql1 = "insert into calisancevaplari values(0," + _var.SoruID + "," + _var.CalisanID + ",'" + _var.Tarih.ToString("yyyy-MM-dd") + "','" + _var.Sure + "','" + _var.Cevap + "')";
 
             _connection.Open();
 
@@ -38,12 +50,12 @@ namespace EgitimUygulamasi.Database
             cmd.ExecuteNonQuery();
             cmd.CommandText = sql1;
             cmd.ExecuteNonQuery();
-            
+
 
             _connection.Close();
         }
 
-        
+
 
         public static void CalisanEkleme(Calisan _calisan)
         {
@@ -66,7 +78,7 @@ namespace EgitimUygulamasi.Database
 
         public static void SoruEkleme(BirlesikSoru _soru)
         {
-            string sql = "insert into sorular values(0," + _soru.soru.KategoriID + "," + _soru.soru.MedyaID + "," + _soru.soru.Sure + ",'" + _soru.soru.SoruBasligi + "','" + _soru.soru.ZorlukSeviyesi + "')";
+            string sql = "insert into sorular values(0," + _soru.soru.KategoriID + "," + _soru.soru.MedyaID + "," + _soru.soru.Sure + ",'" + _soru.soru.SoruBasligi + "','" + _soru.soru.ZorlukSeviyesi + "'," + _soru.soru.KlasikSoru + ")";
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(sql, _connection);
             int res = cmd.ExecuteNonQuery();
@@ -134,6 +146,15 @@ namespace EgitimUygulamasi.Database
 
         }
 
+        public static void CevapEkle(KlasikCevap cevap)
+        {
+            string sql = "insert into cevaplar values(0,"+cevap.CalisanID+","+cevap.SoruID+",'"+cevap.Cevap+"','"+cevap.Tarih.ToString("yyyy-MM-dd")+"',0)";
 
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace EgitimUygulamasi.Model
         public int KategoriID { get; set; }
         public int MedyaID { get; set; }
         public string ZorlukSeviyesi { get; set; }
+        public bool KlasikSoru { get; set; }
     }
 }

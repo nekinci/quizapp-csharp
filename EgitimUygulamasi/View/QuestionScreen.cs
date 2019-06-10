@@ -21,10 +21,12 @@ namespace EgitimUygulamasi.View
             stepOneApp1.setMain(this);
             soruEkrani1.setMain(this);
             medyaEkraniSoru1.setMain(this);
+            uiProfil1.setMain(this);
         }
 
         private void init()
         {
+            this.uiProfil1 = new EgitimUygulamasi.View.UIProfil();
             this.medyaEkraniSoru1 = new EgitimUygulamasi.View.MedyaEkraniSoru();
             this.soruEkrani1 = new EgitimUygulamasi.View.SoruEkrani();
             this.stepOneApp1 = new EgitimUygulamasi.View.StepOneApp();
@@ -57,6 +59,14 @@ namespace EgitimUygulamasi.View
             this.stepOneApp1.TabIndex = 5;
             this.stepOneApp1.Load += new System.EventHandler(this.stepOneApp1_Load);
 
+            this.uiProfil1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiProfil1.Location = new System.Drawing.Point(0, 46);
+            this.uiProfil1.Name = "uiProfil1";
+            this.uiProfil1.Size = new System.Drawing.Size(780, 1);
+            this.uiProfil1.TabIndex = 9;
+            this.uiProfil1.Visible = false;
+
+            this.uiProfil1.setMain(this);
             this.stepOneApp1.setMain(this);
             this.soruEkrani1.setMain(this);
             this.medyaEkraniSoru1.setMain(this);
@@ -127,10 +137,13 @@ namespace EgitimUygulamasi.View
             soruEkrani1.Visible = false;
             medyaEkraniSoru1.Visible = false;
             stepOneApp1.Visible = false;
+            uiProfil1.Visible = false;
             init();
+            this.Controls.Add(this.uiProfil1);
             this.Controls.Add(this.medyaEkraniSoru1);
             this.Controls.Add(this.soruEkrani1);
             this.Controls.Add(this.stepOneApp1);
+            
             stepOneApp1.Visible = true;
         }
 
@@ -169,6 +182,26 @@ namespace EgitimUygulamasi.View
         private void QuestionScreen_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            ButonDegistir();
+        }
+
+        public void ButonDegistir()
+        {
+            if (uiProfil1.Visible)
+            {
+                btnProfile.BackColor = Color.White;
+                uiProfil1.Visible = false;
+            }
+
+            else
+            {
+                btnProfile.BackColor = Color.DarkCyan;
+                uiProfil1.Visible = true;
+            }
         }
     }
 }

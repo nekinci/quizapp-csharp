@@ -25,6 +25,8 @@ namespace EgitimUygulamasi.Database
         private string ayarlar = "Create table if not exists ayarlar(id int primary key auto_increment, ad varchar(50), deger int) engine=innodb; ";
         private string sorulmatarihleri = "create table if not exists sorulmatarihleri(id int primary key auto_increment,soru_id int,calisan_id int, tarih date,foreign key (soru_id) references sorular(id),foreign key (calisan_id) references calisan(id)) engine = innodb;";
         private string calisancevaplari = "create table if not exists calisancevaplari(id int primary key auto_increment,soru_id int,calisan_id int ,tarih date,sure int,cevap varchar(10),foreign key(soru_id) references sorular(id),foreign key (calisan_id) references calisan(id)) engine = innodb; ";
+        private string cevaplar = "create table if not exists cevaplar (id int primary key auto_increment,calisan_id int,soru_id int,cevap text,tarih date,durum int,foreign key(calisan_id) references calisan(id),foreign key(soru_id) references sorular(id)) engine = innodb;";
+        private string bildirimler = "create table if not exists bildirimler(id int primary key auto_increment,gonderen_id int,soru_id int,cevap_id int,tarih date,okundumu bool,foreign key(gonderen_id) references calisan(id),foreign key(soru_id) references sorular(id),foreign key(cevap_id) references cevaplar(id)) engine =innodb;";
 
         MySqlConnection _connection = new MySqlConnection("server=localhost;uid=root;");
         MySqlConnection _connection1 = null;
@@ -73,6 +75,10 @@ namespace EgitimUygulamasi.Database
                 cmdTablolar.CommandText = sorulmatarihleri;
                 cmdTablolar.ExecuteNonQuery();
                 cmdTablolar.CommandText = calisancevaplari;
+                cmdTablolar.ExecuteNonQuery();
+                cmdTablolar.CommandText = cevaplar;
+                cmdTablolar.ExecuteNonQuery();
+                cmdTablolar.CommandText = bildirimler;
                 cmdTablolar.ExecuteNonQuery();
                 _connection1.Close();
 

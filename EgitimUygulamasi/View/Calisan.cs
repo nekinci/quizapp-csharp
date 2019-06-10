@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EgitimUygulamasi.Model;
 
 namespace EgitimUygulamasi.View
 {
@@ -32,6 +33,8 @@ namespace EgitimUygulamasi.View
         {
             this.temizle();
         }
+
+
 
         private void temizle()
         {

@@ -15,9 +15,49 @@ namespace EgitimUygulamasi.Database
     {
         //Bu class'ın görevi veritabanından veri çekmektir.
 
-        private Select()
-        {
+        private static MySqlConnection _connection = new MySqlConnection("server=localhost;userid=root;database=egitim");
+        private Select() { }
 
+        public static int LastInsertedCevap()
+        {
+            string sql = "select max(id) from cevaplar";
+
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            int res = -1;
+            if (reader.Read())
+                res = reader.GetInt32(0);
+
+            _connection.Close();
+            return res;
+        }
+        public static List<Bildirim> BildirimleriCek()
+        {
+            List<Bildirim> bildirimler = new List<Bildirim>();
+            string query = "select *from bildirimler";
+
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(query, _connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Bildirim b = new Bildirim();
+                b.ID = reader.GetInt32(0);
+                b.GonderenID = reader.GetInt32(1);
+                b.SoruID = reader.GetInt32(2);
+                b.CevapID = reader.GetInt32(3);
+                b.Tarih = reader.GetDateTime(4);
+                b.OkunduMu = reader.GetBoolean(5);
+                b.GorulduMu = reader.GetBoolean(6);
+                bildirimler.Add(b);
+            }
+            _connection.Close();
+            return bildirimler;
         }
 
         public static int CalisanCekID(string kadi)
@@ -31,7 +71,7 @@ namespace EgitimUygulamasi.Database
             int id = -1;
             if (reader.Read())
                 id = reader.GetInt32(0);
-               
+
             _connection.Close();
 
             return id;
@@ -57,11 +97,10 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
             return ayar;
         }
-        private static MySqlConnection _connection = new MySqlConnection("server=localhost;userid=root;database=egitim");
 
         public static List<Kategori> KategoriCek()
         {
-            String sqlCommand = "select *from kategoriler";
+            string sqlCommand = "select *from kategoriler";
             Kategori _kategori = new Kategori();
             List<Kategori> kategoriler = new List<Kategori>();
             try
@@ -98,7 +137,7 @@ namespace EgitimUygulamasi.Database
             _conn.Open();
             string sqlCommand = "select sorular.id,sorular.soruBasligi,sorular.zorlukSeviyesi,sorular.sure, kategoriler.ad, " +
                 "secenekler.asecenegi,secenekler.bsecenegi, secenekler.csecenegi," +
-                "secenekler.dsecenegi,secenekler.esecenegi,secenekler.dogru,medya.medya_path from " +
+                "secenekler.dsecenegi,secenekler.esecenegi,secenekler.dogru,medya.medya_path,sorular.klasiksoru from " +
                 "sorular inner join secenekler on sorular.id = secenekler.soru_id " +
                 "inner join kategoriler on kategoriler.id = sorular.kategori_id inner join medya on medya.id = sorular.medya_id";
             MySqlDataAdapter da = new MySqlDataAdapter(sqlCommand, _conn);
@@ -165,9 +204,9 @@ namespace EgitimUygulamasi.Database
         {
             List<BirlesikSoru> sorular = new List<BirlesikSoru>();
             string sql = "select sorular.soruBasligi,sorular.sure,secenekler.*,medya.medya_path,sorular.id from sorular inner join secenekler on secenekler.soru_id = sorular.id inner join medya on medya.id = sorular.medya_id where sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' and sorular.kategori_id = (select id from kategoriler where ad = '" + kategori_ad + "')";
-            string query = "SELECT sorular.soruBasligi,sorular.sure,secenekler.*,medya.medya_path,sorular.id FROM sorular,secenekler,medya WHERE sorular.id = secenekler.soru_id AND sorular.medya_id = medya.id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =(SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id IN(SELECT sorulmatarihleri.soru_id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " AND DATEDIFF( CURRENT_DATE,sorulmatarihleri.tarih) >(SELECT ayarlar.deger FROM ayarlar WHERE ayarlar.id = 2))";
+            string query = "SELECT sorular.soruBasligi,sorular.sure,secenekler.*,medya.medya_path,sorular.id,sorular.klasiksoru FROM sorular,secenekler,medya WHERE sorular.id = secenekler.soru_id AND sorular.medya_id = medya.id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =(SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id IN(SELECT sorulmatarihleri.soru_id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " AND DATEDIFF( CURRENT_DATE,sorulmatarihleri.tarih) >(SELECT ayarlar.deger FROM ayarlar WHERE ayarlar.id = 2))";
 
-            string query1 = "SELECT sorular.soruBasligi, sorular.sure, secenekler.*, medya.medya_path, sorular.id FROM sorular, secenekler, medya WHERE sorular.id = secenekler.soru_id AND sorular.medya_id = medya.id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =( SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id NOT IN( SELECT sorular.id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " )";
+            string query1 = "SELECT sorular.soruBasligi, sorular.sure, secenekler.*, medya.medya_path, sorular.id,sorular.klasiksoru FROM sorular, secenekler, medya WHERE sorular.id = secenekler.soru_id AND sorular.medya_id = medya.id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =( SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id NOT IN( SELECT sorular.id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " )";
 
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(query, _connection);
@@ -181,7 +220,6 @@ namespace EgitimUygulamasi.Database
                 Medya _medya = new Medya();
                 _soru.SoruBasligi = reader.GetValue(0).ToString();
                 _soru.Sure = Convert.ToInt32(reader.GetValue(1));
-
                 _secenekler.ASecenegi = reader.GetValue(3).ToString();
                 _secenekler.BSecenegi = reader.GetValue(4).ToString();
                 _secenekler.CSecenegi = reader.GetValue(5).ToString();
@@ -190,6 +228,7 @@ namespace EgitimUygulamasi.Database
                 _secenekler.DogruCevap = reader.GetValue(8).ToString();
                 _medya.Path = reader.GetValue(9).ToString();
                 _soru.ID = Convert.ToInt32(reader.GetValue(10));
+                _soru.KlasikSoru = reader.GetBoolean(11);
                 BirlesikSoru soru = new BirlesikSoru();
                 soru.soru = _soru;
                 soru.secenekler = _secenekler;
@@ -220,6 +259,7 @@ namespace EgitimUygulamasi.Database
                 _secenekler.DogruCevap = reader1.GetValue(8).ToString();
                 _medya.Path = reader1.GetValue(9).ToString();
                 _soru.ID = Convert.ToInt32(reader1.GetValue(10));
+                _soru.KlasikSoru = reader1.GetBoolean(11);
                 BirlesikSoru soru = new BirlesikSoru();
                 soru.soru = _soru;
                 soru.secenekler = _secenekler;
@@ -465,6 +505,128 @@ namespace EgitimUygulamasi.Database
             }
             _connection.Close();
             return calisanlar;
+        }
+        public static List<KlasikCevap> Cevaplar()
+        {
+            string sql = "select *from cevaplar";
+
+            List<KlasikCevap> cevaplar = new List<KlasikCevap>();
+
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                KlasikCevap cevap = new KlasikCevap();
+                cevap.ID = reader.GetInt32(0);
+                cevap.CalisanID = reader.GetInt32(1);
+                cevap.SoruID = reader.GetInt32(2);
+                cevap.Cevap = reader.GetString(3);
+                cevap.Tarih = reader.GetDateTime(4);
+                cevap.Durum = reader.GetInt32(5);
+                cevaplar.Add(cevap);
+            }
+            _connection.Close();
+            return cevaplar;
+        }
+
+        public static List<Puan> Puanlar()
+        {
+            _connection.Open();
+
+            string sql = "select *from puanlar";
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            List<Puan> puanlar = new List<Puan>();
+            while (reader.Read())
+            {
+                Puan puan = new Puan();
+                puan.CalisanID = reader.GetInt32(0);
+                puan.CalisanPuani = reader.GetInt32(1);
+                puanlar.Add(puan);
+            }
+
+            _connection.Close();
+            return puanlar;
+        }
+
+        public static List<CalisanCevaplari> CalisanCevaplari()
+        {
+            _connection.Open();
+            string sql = "select *from calisancevaplari";
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            List<CalisanCevaplari> cevaplar = new List<CalisanCevaplari>();
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                CalisanCevaplari cevap = new CalisanCevaplari();
+                cevap.ID = reader.GetInt32(0);
+                cevap.SoruID = reader.GetInt32(1);
+                cevap.CalisanID = reader.GetInt32(2);
+                cevap.Tarih = reader.GetDateTime(3);
+                cevap.Sure = reader.GetInt32(4);
+                cevap.Cevap = reader.GetString(5);
+
+                cevaplar.Add(cevap);
+            }
+            _connection.Close();
+            return cevaplar;
+        }
+
+        public static List<BirlesikSoru> Sorular()
+        {
+
+            //Bu Metod sadece soruları çekmekle yükümlü Cevaplar veya Soruldumu kontrolünü sağlamaz. Sorulan sorulmayan tüm soruları çeker.
+            // E günün birinde lazım olur tabi böyle şeyleri yapmak lazım.
+            _connection.Open();
+            string sql = "select *from sorular,secenekler,medya where secenekler.soru_id = sorular.id and sorular.medya_id = medya.id";
+            List<BirlesikSoru> sorular = new List<BirlesikSoru>();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Soru soru = new Soru();
+                Secenekler secenekler = new Secenekler();
+                Medya medya = new Medya();
+
+                soru.ID = reader.GetInt32(0);
+                soru.KategoriID = reader.GetInt32(1);
+                soru.MedyaID = reader.GetInt32(2);
+                soru.Sure = reader.GetInt32(3);
+                soru.SoruBasligi = reader.GetString(4);
+                soru.ZorlukSeviyesi = reader.GetString(5);
+                soru.KlasikSoru = reader.GetBoolean(6);
+
+                secenekler.SoruID = reader.GetInt32(7);
+                secenekler.ASecenegi = reader.GetString(8);
+                secenekler.BSecenegi = reader.GetString(9);
+                secenekler.CSecenegi = reader.GetString(10);
+                secenekler.DSecenegi = reader.GetString(11);
+                secenekler.ESecenegi = reader.GetString(12);
+                secenekler.DogruCevap = reader.GetString(13);
+
+                medya.ID = reader.GetInt32(14);
+                medya.KategoriID = reader.GetInt32(15);
+                medya.Path = reader.GetString(16);
+                medya.Ad = reader.GetString(17);
+
+                BirlesikSoru Soru = new BirlesikSoru();
+                Soru.soru = soru;
+                Soru.secenekler = secenekler;
+                Soru.medya = medya;
+
+                sorular.Add(Soru);
+            }
+            _connection.Close();
+            return sorular;
         }
     }
 }

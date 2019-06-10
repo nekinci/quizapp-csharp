@@ -11,5 +11,6 @@ namespace EgitimUygulamasi.Model
         public int GunSayisi { get; set; }
         public int GeriCekilme { get; set; }
         public int YanlisCevap { get; set; }
+
     }
 }

@@ -119,8 +119,11 @@
     <Compile Include="MD5Sifreleme.cs" />
     <Compile Include="MedyaKontrol.cs" />
     <Compile Include="Model\Ayarlar.cs" />
+    <Compile Include="Model\Bildirim.cs" />
     <Compile Include="Model\BirlesikSoru.cs" />
     <Compile Include="Model\Calisan.cs" />
+    <Compile Include="Model\CalisanCevaplari.cs" />
+    <Compile Include="Model\KlasikCevap.cs" />
     <Compile Include="Model\Medya.cs" />
     <Compile Include="Model\Puan.cs" />
     <Compile Include="Model\Secenekler.cs" />
@@ -169,6 +172,12 @@
     </Compile>
     <Compile Include="View\KategoriDuzenleme.Designer.cs">
       <DependentUpon>KategoriDuzenleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\KlasikCevaplar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\KlasikCevaplar.Designer.cs">
+      <DependentUpon>KlasikCevaplar.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
@@ -263,6 +272,24 @@
     <Compile Include="View\StepOneApp.Designer.cs">
       <DependentUpon>StepOneApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\UCBildirim.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UCBildirim.Designer.cs">
+      <DependentUpon>UCBildirim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UICevapItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UICevapItem.Designer.cs">
+      <DependentUpon>UICevapItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UIProfil.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UIProfil.Designer.cs">
+      <DependentUpon>UIProfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UyariEkranics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\KategoriDuzenleme.resx">
       <DependentUpon>KategoriDuzenleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\KlasikCevaplar.resx">
+      <DependentUpon>KlasikCevaplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -352,6 +382,15 @@
     <EmbeddedResource Include="View\StepOneApp.resx">
       <DependentUpon>StepOneApp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\UCBildirim.resx">
+      <DependentUpon>UCBildirim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UICevapItem.resx">
+      <DependentUpon>UICevapItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UIProfil.resx">
+      <DependentUpon>UIProfil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UyariEkranics.resx">
       <DependentUpon>UyariEkranics.cs</DependentUpon>
     </EmbeddedResource>
@@ -403,6 +442,39 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_bell_96px_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_bell_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_bell_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_bell_24px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_dashboard_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_dashboard_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_training_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_training_64px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_user_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_user_male_circle_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_user_male_circle_60px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

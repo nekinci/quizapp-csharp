@@ -98,6 +98,7 @@ namespace EgitimUygulamasi.View
                 _kategori.Aciklama = txtAciklama.Text;
 
                 Database.Update.KategoriGuncelle(_kategori);
+                this.main.YenidenCiz();
                 KomponentleriTemizle();
             }
             

@@ -1,5 +1,7 @@
 ﻿using EgitimUygulamasi.Database;
+using EgitimUygulamasi.Model;
 using EgitimUygulamasi.View;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,12 @@ namespace EgitimUygulamasi
     {
         private bool mouseDown;
         private Point lastLocation;
+        List<Bildirim> bildirimler = Database.Select.BildirimleriCek();
+
+        /* Bildirim gösterme Sınırı */
+        private readonly int Sinir = 5;
+
+
         public Main()
         {
             InitializeComponent();
@@ -25,13 +33,48 @@ namespace EgitimUygulamasi
             kategoriDuzenleme1.setMain(this);
             kategoriEkleme1.setMain(this);
             soruDuzenleme1.setMain(this);
+            klasikCevaplar1.SetMain(this);
+            if (bildirimler.FindAll(x => x.GorulduMu == false).Count > 0)
+                btnBildirim.Image = Properties.Resources.bildirimvar;
+            else
+                btnBildirim.Image = Properties.Resources.bildirimyok;
+
+            bildirimler.Sort((a, b) => b.Tarih.CompareTo(a.Tarih));
+            foreach (var i in bildirimler.FindAll(x=>x.OkunduMu==false).Take(Sinir))
+            {
+                UCBildirim bildirim = new UCBildirim();
+                bildirim.Main = this;
+                bildirim.SetBildirim(i);
+                flowLayoutPanel1.Controls.Add(bildirim);
+            }
+            MaterialFlatButton tumunugor = new MaterialFlatButton();
+            tumunugor.Text = "Tümünü gör";
+            tumunugor.Dock = DockStyle.Bottom;
+
+            tumunugor.Click += Tumunugor_Click;
+            flowLayoutPanel1.Controls.Add(tumunugor);
         }
 
+        private void Tumunugor_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Visible = false;
+            HepsiniGizle();
+            klasikCevaplar1.Visible = true;
+        }
+
+        public void CevapGoster(KlasikCevap cevap)
+        {
+            flowLayoutPanel1.Visible = false;
+            HepsiniGizle();
+            klasikCevaplar1.Visible = true;
+            klasikCevaplar1.SeciliCevap(cevap);
+        }
         public void YenidenCiz()
         {
             soruDuzenleme1.yenidenCiz();
             kategoriDuzenleme1.yenidenCiz();
             calisanDuzenle1.yenidenCiz();
+            klasikCevaplar1.yenidenCiz();
         }
 
         private void btnCikis_Click(object sender, EventArgs e)
@@ -82,6 +125,7 @@ namespace EgitimUygulamasi
             calisan1.Visible = false;
             calisanDuzenle1.Visible = false;
             ayarlar1.Visible = false;
+            klasikCevaplar1.Visible = false;
 
         }
 
@@ -95,11 +139,6 @@ namespace EgitimUygulamasi
         {
             HepsiniGizle();
             soruDuzenleme1.Visible = true;
-        }
-
-        private void soruDuzenleme1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void kategoriduzenle_Click(object sender, EventArgs e)
@@ -128,20 +167,6 @@ namespace EgitimUygulamasi
             }
         }
 
-        private void label2_MouseDown(object sender, MouseEventArgs e)
-        {
-          
-        }
-
-        private void label2_MouseMove(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void label2_MouseUp(object sender, MouseEventArgs e)
-        {
-           
-        }
 
         private void calisanislemleri_Click(object sender, EventArgs e)
         {
@@ -155,10 +180,6 @@ namespace EgitimUygulamasi
             calisanDuzenle1.Visible = true;
         }
 
-        private void calisanDuzenle1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void ayarlar_Click(object sender, EventArgs e)
         {
@@ -166,18 +187,41 @@ namespace EgitimUygulamasi
             ayarlar1.Visible = true;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void panel2_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
 
-        private void board_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            foreach(var i in bildirimler.FindAll(x=>x.OkunduMu).Take(Sinir))
+            {
+                i.GorulduMu = true;
+                Database.Update.BildirimGoruldu(i);
+            }
+            btnBildirim.Image = Properties.Resources.bildirimyok;
+            flowLayoutPanel1.Visible = !flowLayoutPanel1.Visible;
+        }
+
+        private void ayarlar1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void calisanDuzenle1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void soruDuzenleme1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

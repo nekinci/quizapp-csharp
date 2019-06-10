@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.btnCikis = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnBildirim = new System.Windows.Forms.Button();
             this.btnOturumuKapat = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.board = new System.Windows.Forms.Button();
             this.kategoriekle = new System.Windows.Forms.Button();
@@ -54,9 +53,10 @@
             this.soruDuzenleme1 = new EgitimUygulamasi.View.SoruDuzenleme();
             this.kategoriEkleme1 = new EgitimUygulamasi.KategoriEkleme();
             this.soruEkleme1 = new EgitimUygulamasi.View.SoruEkleme();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.klasikCevaplar1 = new EgitimUygulamasi.View.KlasikCevaplar();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +96,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btnBildirim);
             this.panel2.Controls.Add(this.btnOturumuKapat);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.btnMin);
@@ -109,6 +110,19 @@
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
+            // 
+            // btnBildirim
+            // 
+            this.btnBildirim.BackColor = System.Drawing.Color.White;
+            this.btnBildirim.FlatAppearance.BorderSize = 0;
+            this.btnBildirim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBildirim.Image = global::EgitimUygulamasi.Properties.Resources.bildirimyok;
+            this.btnBildirim.Location = new System.Drawing.Point(437, 0);
+            this.btnBildirim.Name = "btnBildirim";
+            this.btnBildirim.Size = new System.Drawing.Size(70, 61);
+            this.btnBildirim.TabIndex = 5;
+            this.btnBildirim.UseVisualStyleBackColor = false;
+            this.btnBildirim.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnOturumuKapat
             // 
@@ -149,7 +163,6 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(35)))), ((int)(((byte)(51)))));
-            this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
@@ -159,19 +172,6 @@
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(52, 61);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -206,7 +206,6 @@
             this.board.TabIndex = 1;
             this.board.Text = "Board";
             this.board.UseVisualStyleBackColor = false;
-            this.board.Click += new System.EventHandler(this.board_Click);
             // 
             // kategoriekle
             // 
@@ -385,7 +384,6 @@
             this.calisanDuzenle1.Size = new System.Drawing.Size(768, 522);
             this.calisanDuzenle1.TabIndex = 7;
             this.calisanDuzenle1.Visible = false;
-            this.calisanDuzenle1.Load += new System.EventHandler(this.calisanDuzenle1_Load);
             // 
             // calisan1
             // 
@@ -413,7 +411,6 @@
             this.soruDuzenleme1.Size = new System.Drawing.Size(768, 522);
             this.soruDuzenleme1.TabIndex = 4;
             this.soruDuzenleme1.Visible = false;
-            this.soruDuzenleme1.Load += new System.EventHandler(this.soruDuzenleme1_Load);
             // 
             // kategoriEkleme1
             // 
@@ -434,12 +431,38 @@
             this.soruEkleme1.TabIndex = 2;
             this.soruEkleme1.Visible = false;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(572, 61);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(261, 247);
+            this.flowLayoutPanel1.TabIndex = 6;
+            this.flowLayoutPanel1.Visible = false;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // klasikCevaplar1
+            // 
+            this.klasikCevaplar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klasikCevaplar1.Location = new System.Drawing.Point(218, 61);
+            this.klasikCevaplar1.Name = "klasikCevaplar1";
+            this.klasikCevaplar1.Size = new System.Drawing.Size(768, 522);
+            this.klasikCevaplar1.TabIndex = 6;
+            this.klasikCevaplar1.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(986, 583);
+            this.Controls.Add(this.klasikCevaplar1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.ayarlar1);
             this.Controls.Add(this.calisanDuzenle1);
             this.Controls.Add(this.calisan1);
@@ -458,7 +481,6 @@
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -470,7 +492,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button board;
         private System.Windows.Forms.Button kategoriekle;
@@ -491,6 +512,9 @@
         private System.Windows.Forms.Button ayarlar;
         private View.CalisanDuzenle calisanDuzenle1;
         private View.Ayarlar ayarlar1;
+        private System.Windows.Forms.Button btnBildirim;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private View.KlasikCevaplar klasikCevaplar1;
     }
 }
 

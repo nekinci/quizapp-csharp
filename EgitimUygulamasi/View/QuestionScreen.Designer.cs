@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuestionScreen));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnProfile = new System.Windows.Forms.Button();
             this.btnOturumuKapat = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.medyaEkraniSoru1 = new EgitimUygulamasi.View.MedyaEkraniSoru();
             this.soruEkrani1 = new EgitimUygulamasi.View.SoruEkrani();
             this.stepOneApp1 = new EgitimUygulamasi.View.StepOneApp();
+            this.uiProfil1 = new EgitimUygulamasi.View.UIProfil();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +48,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnProfile);
             this.panel1.Controls.Add(this.btnOturumuKapat);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -60,6 +63,18 @@
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            // 
+            // btnProfile
+            // 
+            this.btnProfile.FlatAppearance.BorderSize = 0;
+            this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfile.Image = global::EgitimUygulamasi.Properties.Resources.icons8_user_male_circle_30px;
+            this.btnProfile.Location = new System.Drawing.Point(434, 0);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(75, 47);
+            this.btnProfile.TabIndex = 6;
+            this.btnProfile.UseVisualStyleBackColor = true;
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             // 
             // btnOturumuKapat
             // 
@@ -83,14 +98,14 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::EgitimUygulamasi.Properties.Resources.icons8_training_64px_1;
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 3, 3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.pictureBox1.Size = new System.Drawing.Size(55, 46);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(69, 46);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
@@ -179,9 +194,18 @@
             this.stepOneApp1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stepOneApp1.Location = new System.Drawing.Point(0, 46);
             this.stepOneApp1.Name = "stepOneApp1";
-            this.stepOneApp1.Size = new System.Drawing.Size(780, 491);
-            this.stepOneApp1.TabIndex = 5;
-            this.stepOneApp1.Load += new System.EventHandler(this.stepOneApp1_Load);
+            this.stepOneApp1.Size = new System.Drawing.Size(780, 1);
+            this.stepOneApp1.TabIndex = 8;
+            // 
+            // uiProfil1
+            // 
+            this.uiProfil1.BackColor = System.Drawing.Color.White;
+            this.uiProfil1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiProfil1.Location = new System.Drawing.Point(0, 46);
+            this.uiProfil1.Name = "uiProfil1";
+            this.uiProfil1.Size = new System.Drawing.Size(780, 1);
+            this.uiProfil1.TabIndex = 9;
+            this.uiProfil1.Visible = false;
             // 
             // QuestionScreen
             // 
@@ -189,9 +213,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(780, 537);
+            this.Controls.Add(this.uiProfil1);
+            this.Controls.Add(this.stepOneApp1);
             this.Controls.Add(this.medyaEkraniSoru1);
             this.Controls.Add(this.soruEkrani1);
-            this.Controls.Add(this.stepOneApp1);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -215,8 +240,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnOturumuKapat;
-        private StepOneApp stepOneApp1;
         private SoruEkrani soruEkrani1;
         private MedyaEkraniSoru medyaEkraniSoru1;
+        private System.Windows.Forms.Button btnProfile;
+        private StepOneApp stepOneApp1;
+        private UIProfil uiProfil1;
     }
 }

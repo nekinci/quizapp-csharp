@@ -26,6 +26,7 @@ namespace EgitimUygulamasi.View
         private int soru_id;
         private int sure;
         private int tmpsure;
+        private bool KlasikSoru;
         private BirlesikSoru soru;
         public void SoruCek(BirlesikSoru soru)
         {
@@ -35,7 +36,19 @@ namespace EgitimUygulamasi.View
             sure = soru.soru.Sure;
             tmpsure = soru.soru.Sure;
             soru_id = soru.soru.ID;
+            KlasikSoru = soru.soru.KlasikSoru;
             lblSoruBasligi.Text = soru.soru.SoruBasligi;
+
+            if (KlasikSoru)
+            {
+                asecenegi.Visible = false;
+                bsecenegi.Visible = false;
+                csecenegi.Visible = false;
+                dsecenegi.Visible = false;
+                esecenegi.Visible = false;
+                richTextBox1.Visible = true;
+                btnKlasikCevap.Visible = true;
+            }
 
             asecenegi.Text = soru.secenekler.ASecenegi;
             bsecenegi.Text = soru.secenekler.BSecenegi;
@@ -55,8 +68,8 @@ namespace EgitimUygulamasi.View
 
         private void DogruCevap(string cevap)
         {
-            MessageBox.Show("Doğru bildiniz!");
             timer1.Stop();
+            MessageBox.Show("Doğru bildiniz!");
             SecenekleriKapat();
 
             Database.Update.PuanGuncelle(Session.KullaniciAdiAl(), SoruBilgileri.ZorlukSeviyesi, true, false);
@@ -84,8 +97,8 @@ namespace EgitimUygulamasi.View
 
         private void YanlisCevap(string cevap)
         {
-            MessageBox.Show("Bilemediniz. Puanınız güncellenmiştir.");
             timer1.Stop();
+            MessageBox.Show("Bilemediniz. Puanınız güncellenmiştir.");
             SecenekleriKapat();
 
             Database.Update.PuanGuncelle(Session.KullaniciAdiAl(), SoruBilgileri.ZorlukSeviyesi, false, false);
@@ -211,12 +224,23 @@ namespace EgitimUygulamasi.View
             {
                 sure--;
                 lblSure.Text = "Süre : " + sure;
+                Console.WriteLine("sayiyo1r");
+                
             }
             else
             {
-                MessageBox.Show("Süreniz doldu. Bilemediniz.");
+                Console.WriteLine("sayiyor");
                 timer1.Stop();
+                MessageBox.Show("Süreniz doldu. Bilemediniz.");
                 SecenekleriKapat();
+                if (soru.soru.KlasikSoru)
+                {
+                    KlasikCevap("\n\nSüre Doldu.--Bu mesaj sistem tarafından otomatik olarak oluşturulmuştur. "+DateTime.Now);
+                }
+                else
+                    YanlisCevap("S");
+
+                AnasayfayaDon();
             }
         }
 
@@ -251,6 +275,65 @@ namespace EgitimUygulamasi.View
 
 
 
+        }
+
+
+        private void KlasikCevap(string cevaps)
+        {
+            timer1.Stop();
+            int calisan_id = Database.Select.CalisanCekID(Session.KullaniciAdiAl());
+            KlasikCevap cevap = new KlasikCevap();
+            cevap.ID = 0;
+            cevap.CalisanID = calisan_id;
+            cevap.SoruID = soru_id;
+            cevap.Cevap = richTextBox1.Text + " "+cevaps;
+            cevap.Tarih = DateTime.Now;
+            try
+            {
+                Database.Insert.CevapEkle(cevap);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu!" + ex.Message);
+                return;
+            }
+
+            Bildirim b = new Bildirim();
+            b.ID = 0;
+            b.OkunduMu = false;
+            b.GonderenID = calisan_id;
+            b.SoruID = soru_id;
+            b.CevapID = Database.Select.LastInsertedCevap();
+            b.Tarih = DateTime.Now;
+            b.GorulduMu = false;
+            Database.Insert.BildirimOlustur(b);
+
+            SoruSorulma s = new SoruSorulma();
+            s.CalisanID = calisan_id;
+            s.SoruID = soru_id;
+            s.Tarih = DateTime.Now;
+            s.Sure = tmpsure - sure;
+            s.Cevap = "K";
+            if (!Database.Select.SorulmaKontrol(s))
+                Database.Insert.SoruSoruldu(s);
+            else
+                Database.Update.SoruSoruldu(s);
+
+            AnasayfayaDon();
+        }
+        private void btnKlasikCevap_Click(object sender, EventArgs e)
+        {
+            if (!Onayliyormusunuz())
+                return;
+
+            KlasikCevap("");
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            MedyaGor medya = new MedyaGor();
+            medya.setMedya(soru.medya);
+            medya.Show();
         }
     }
 }

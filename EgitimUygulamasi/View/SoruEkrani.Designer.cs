@@ -37,10 +37,13 @@
             this.asecenegi = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblSoruBasligi = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btnKlasikCevap = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblSure = new System.Windows.Forms.Label();
             this.cekil = new MaterialSkin.Controls.MaterialFlatButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -54,6 +57,8 @@
             this.panel1.Controls.Add(this.bsecenegi);
             this.panel1.Controls.Add(this.asecenegi);
             this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.btnKlasikCevap);
             this.panel1.Location = new System.Drawing.Point(182, 115);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(425, 306);
@@ -146,6 +151,33 @@
             this.lblSoruBasligi.Text = "Soru Başlığı";
             this.lblSoruBasligi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 71);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(425, 191);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
+            // 
+            // btnKlasikCevap
+            // 
+            this.btnKlasikCevap.AutoSize = true;
+            this.btnKlasikCevap.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnKlasikCevap.Depth = 0;
+            this.btnKlasikCevap.Location = new System.Drawing.Point(308, 265);
+            this.btnKlasikCevap.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnKlasikCevap.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnKlasikCevap.Name = "btnKlasikCevap";
+            this.btnKlasikCevap.Primary = false;
+            this.btnKlasikCevap.Size = new System.Drawing.Size(117, 36);
+            this.btnKlasikCevap.TabIndex = 7;
+            this.btnKlasikCevap.Text = "Cevabı Gönder";
+            this.btnKlasikCevap.UseVisualStyleBackColor = true;
+            this.btnKlasikCevap.Visible = false;
+            this.btnKlasikCevap.Click += new System.EventHandler(this.btnKlasikCevap_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lblSure);
@@ -188,11 +220,28 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Location = new System.Drawing.Point(312, 427);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(205, 36);
+            this.materialFlatButton1.TabIndex = 7;
+            this.materialFlatButton1.Text = "Soru Medyasını Görüntüle";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            // 
             // SoruEkrani
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.cekil);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -200,6 +249,7 @@
             this.Size = new System.Drawing.Size(780, 491);
             this.Load += new System.EventHandler(this.SoruEkrani_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -221,5 +271,8 @@
         private System.Windows.Forms.Button asecenegi;
         private MaterialSkin.Controls.MaterialFlatButton cekil;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private MaterialSkin.Controls.MaterialFlatButton btnKlasikCevap;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
     }
 }

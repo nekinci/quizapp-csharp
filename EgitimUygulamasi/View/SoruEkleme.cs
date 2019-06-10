@@ -146,7 +146,6 @@ namespace EgitimUygulamasi.View
         {
             if (VerifyTextsA() && VerifyTextsB())
             {
-                //Todo Kayıt Ekleme işlemi yapılacak.
                 Model.Soru _soru = new Model.Soru();
                 Model.Secenekler _secenekler = new Model.Secenekler();
 
@@ -156,7 +155,7 @@ namespace EgitimUygulamasi.View
                 _soru.Sure = Convert.ToInt32(txtSure.Text);
                 _soru.ZorlukSeviyesi = cmbZorluk.SelectedItem.ToString();
                 _soru.MedyaID = ((Medya)imageLists.SelectedItem).ID;
-
+                _soru.KlasikSoru = checkedklasik;
                 _secenekler.ASecenegi = txtA.Text;
                 _secenekler.BSecenegi = txtB.Text;
                 _secenekler.CSecenegi = txtC.Text;
@@ -235,7 +234,11 @@ namespace EgitimUygulamasi.View
 
         private void materialFlatButton2_Click(object sender, EventArgs e)
         {
-            videoMedya.fullScreen = true;
+            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                videoMedya.fullScreen = true;
+            else
+                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
         private bool checkedklasik = false;
         private void checkKlasik_CheckedChanged(object sender, EventArgs e)

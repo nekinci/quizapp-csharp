@@ -18,7 +18,7 @@ namespace EgitimUygulamasi.Database
         public static void SoruSoruldu(SoruSorulma _var)
         {
             //Hiç kayıt yoksa ekleyecek ama kayıt varsa napcak? Cevap basit güncelleyecek ama nasıl? Bende merak ediyorum doğrusu ama dur bakalım hallolur bi şekilde.
-            string sql = "UPDATE sorulmatarihleri set tarih = '"+_var.Tarih.ToString("yyyy-MM-dd")+"' where soru_id = "+_var.SoruID+" and calisan_id = "+_var.CalisanID;
+            string sql = "UPDATE sorulmatarihleri set tarih = '" + _var.Tarih.ToString("yyyy-MM-dd") + "' where soru_id = " + _var.SoruID + " and calisan_id = " + _var.CalisanID;
 
             //Her şartta bu bilgileri veritabanına ekliyoruzki daha sonra istatistiki bir durum olursa diye.
             string sql1 = "insert into calisancevaplari values(0," + _var.SoruID + "," + _var.CalisanID + ",'" + _var.Tarih.ToString("yyyy-MM-dd") + "','" + _var.Sure + "','" + _var.Cevap + "')";
@@ -92,7 +92,7 @@ namespace EgitimUygulamasi.Database
                 " ,zorlukSeviyesi = '" + _soru.ZorlukSeviyesi + "',secenekler.asecenegi = '" + _secenekler.ASecenegi + "' ," +
                 " secenekler.bsecenegi = '" + _secenekler.BSecenegi + "'" +
                 " , secenekler.csecenegi = '" + _secenekler.CSecenegi + "' , secenekler.dsecenegi = '" + _secenekler.DSecenegi + "'," +
-                " secenekler.esecenegi = '" + _secenekler.ESecenegi + "', secenekler.dogru = '" + _secenekler.DogruCevap + "' where sorular.id = " + _soru.ID + " and secenekler.soru_id = " + _soru.ID;
+                " secenekler.esecenegi = '" + _secenekler.ESecenegi + "', secenekler.dogru = '" + _secenekler.DogruCevap + "',sorular.klasiksoru=" + _soru.KlasikSoru + " where sorular.id = " + _soru.ID + " and secenekler.soru_id = " + _soru.ID;
 
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(updateSQL, _connection);
@@ -192,6 +192,42 @@ namespace EgitimUygulamasi.Database
                 MessageBox.Show("Güncellenemedi.");
             _connection.Close();
             return result != -1;
+        }
+
+        public static bool CevapDurumu(int CevapID, int durum)
+        {
+            _connection.Open();
+
+            string sql = "Update cevaplar set durum = " + durum + " where id = " + CevapID;
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+            return res != -1;
+        }
+
+        public static bool BildirimGoruldu(Bildirim bildirim)
+        {
+            _connection.Open();
+
+            string sql = "Update bildirimler set goruldu_mu = " + bildirim.GorulduMu + " where id = " + bildirim.ID;
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+
+            return res != -1;
+        }
+
+        public static bool BildirimOkundu(Bildirim bildirim)
+        {
+            _connection.Open();
+            string sql = "Update bildirimler set okundumu = " + bildirim.OkunduMu + " where id = " + bildirim.ID;
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+            return res != -1;
         }
     }
 }

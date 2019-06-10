@@ -118,25 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAwhJREFUaEPt2UuoDmEcx/Hjfr9fcyeXUkqhWLAQxUqKIqWUxEIpC0kIiZKQ24Ys
-        lIUsUCIkQhIrFkrZKiVyKeT6/c55H43peee872nOeTuZX31qZjo98/7fd57/zDOnqUyZMmU6bDpjUIEG
-        Ip3uiP1da/XFP+mN0/iI3wV7i524gm+VY0V6heVIcgwe/I53BUuf9GvlWFE+IHzumWh6Uzkw1Z2CswaO
-        /Rr9PFBwDsPx97njhtoiM+DY95O94rMJjn/KnbKQGtLwQgZgUo6J6IIQO1/X5s2kLYbtaoUMR2zcYBzS
-        cX51at5MPltIbiEj8RnheDW3YPrDLmKLHYz3uAQTK2Q+fiE7XtYhGDuSnWkv5la2d8DkFuI36ont0XkO
-        wvTAbXiiXriDcKJYIVPwHLExg5dYB+Ov8wSr4ZXwFCthyslebxpeyFDEJmFaT4T47OMlZoYgbFcrZBRi
-        YwYTkG4mNgefBc0IhO3cQjzJF4Tj1dyDsYt8wnVYhI3CiW9ihSxELZP9KMxs/MQBzKts74HJLaQPbsBJ
-        lWc3TDdcxnb4K13FVphYIZPxELExgzC5zWj4pa2AE9/tZTDlZK83DS/En3BWC7wEY3GOeac31QqZhtiY
-        gTdBL9lY0o0gtxCvyVoWQQ+QzTDYKK4le/FCFiM7VswJZLMANor9yV4LhXh3dvLGJmHaNmRj272Izcle
-        vJDxuIvYmMFjOLmzGQMb0dJkr5zs9afhhXh3jU3CNO/mITaH8Hjtg13YbmghfqgfCMereQRjQb5Y8KnX
-        RwkbxU2Yhhbi+6fzcL2RZwuMrfAMNsKWeQ7rYco5UmP+n0L8AIta4HyIZTpc8pqGFjIWPiqH49X4hJqN
-        awUbhXPINLQQJ/tZZCd3ml1pA7Lx7clJrE32yjlSc8pC6k27FhLu4uFNXpFpr0KSR/5nlR0X9774KpJr
-        d8d+kTpWlFXwcd/xk2WDC3lfQ3qgI/JL+vtvuDk4AhdFRXEBlD6h/4aL/V1rXYCLO989t3mW4Dh2wSV0
-        mTJlypQhTU1/AC3pOk9XpYu1AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="pictureBox1.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO

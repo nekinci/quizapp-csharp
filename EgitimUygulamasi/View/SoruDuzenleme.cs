@@ -17,6 +17,7 @@ namespace EgitimUygulamasi.View
 
         private List<Model.Kategori> Kategoriler = null;
         private int selectedId;
+        private bool KlasikMi;
         private DataTable table;
         private List<string> KategoriIsimler;
         private Model.Medya _medya = null;
@@ -48,7 +49,7 @@ namespace EgitimUygulamasi.View
             SorularTablosu.Columns[9].HeaderText = "E Seçeneği";
             SorularTablosu.Columns[10].HeaderText = "Doğru Cevap";
             SorularTablosu.Columns[11].HeaderText = "Medya";
-
+            SorularTablosu.Columns[12].HeaderText = "Klasik Mi?";
             Kategoriler = Database.Select.KategoriCek();
             KategoriIsimler = new List<string>();
 
@@ -99,6 +100,8 @@ namespace EgitimUygulamasi.View
             cmbDogru.SelectedItem = SorularTablosu.Rows[e.RowIndex].Cells[10].Value.ToString();
             txtMedya.Text = SorularTablosu.Rows[e.RowIndex].Cells[11].Value.ToString();
             selectedId = Convert.ToInt32(SorularTablosu.Rows[e.RowIndex].Cells[0].Value.ToString());
+            KlasikMi = (bool)SorularTablosu.Rows[e.RowIndex].Cells[12].Value;
+            chkKlasik.Checked = KlasikMi;
             _tmp_medya = Database.Select.MedyaCekForSoruDuzenleme(selectedId);
         }
 
@@ -109,6 +112,11 @@ namespace EgitimUygulamasi.View
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Silmek istediğinize emin misiniz?","Uyarı",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+
+            if (result == DialogResult.No)
+                return;
+
             if (Database.Delete.SoruSil(selectedId))
             {
                 MessageBox.Show("Soru başarıyla silindi!");
@@ -158,6 +166,8 @@ namespace EgitimUygulamasi.View
         {
             bool kontrol = true;
             string message = "";
+            if (KlasikMi)
+                return true;
             if (txtA.Text == "")
             {
                 message += "A seçeneği girilmedi.\n"; kontrol = false;
@@ -200,17 +210,67 @@ namespace EgitimUygulamasi.View
                 _soru.SoruBasligi = txtSoruBasligi.Text;
                 _soru.Sure = Convert.ToInt32(txtSure.Text);
                 _soru.MedyaID = _medya != null ? _medya.ID : _tmp_medya.ID;
+                _soru.KlasikSoru = KlasikMi;
                 _secenekler.ASecenegi = txtA.Text;
                 _secenekler.BSecenegi = txtB.Text;
                 _secenekler.CSecenegi = txtC.Text;
                 _secenekler.DSecenegi = txtD.Text;
                 _secenekler.ESecenegi = txtE.Text;
-                _secenekler.DogruCevap = cmbDogru.SelectedItem.ToString();
+                if (KlasikMi)
+                    _secenekler.DogruCevap = "";
+                else
+                    _secenekler.DogruCevap = cmbDogru.SelectedItem.ToString();
 
                 temizle();
-                this.main.YenidenCiz();
 
                 Database.Update.SoruGuncelle(_soru, _secenekler);
+                this.main.YenidenCiz();
+            }
+        }
+
+        string tmpA, tmpB, tmpC, tmpD, tmpE;
+        int tmpDogruIndex;
+        private void SeceneklerOnOff()
+        {
+            if (KlasikMi)
+            {
+                txtA.Enabled = false;
+                txtB.Enabled = false;
+                txtC.Enabled = false;
+                txtD.Enabled = false;
+                txtE.Enabled = false;
+                cmbDogru.Enabled = false;
+
+                tmpA = txtA.Text;
+                tmpB = txtB.Text;
+                tmpC = txtC.Text;
+                tmpD = txtD.Text;
+                tmpE = txtE.Text;
+                tmpDogruIndex = cmbDogru.SelectedIndex;
+
+                txtA.Text = "";
+                txtB.Text = "";
+                txtC.Text = "";
+                txtD.Text = "";
+                txtE.Text = "";
+                cmbDogru.SelectedIndex = -1;
+
+            }
+            else
+            {
+                txtA.Enabled = true;
+                txtB.Enabled = true;
+                txtC.Enabled = true;
+                txtD.Enabled = true;
+                txtE.Enabled = true;
+                cmbDogru.Enabled = true;
+
+                txtA.Text = tmpA;
+                txtB.Text = tmpB;
+                txtC.Text = tmpC;
+                txtD.Text = tmpD;
+                txtE.Text = tmpE;
+                cmbDogru.SelectedIndex = tmpDogruIndex;
             }
         }
 
@@ -328,6 +388,14 @@ namespace EgitimUygulamasi.View
             else
                 table.DefaultView.RowFilter = "zorlukSeviyesi = '" + cmbFiltreZorluk.SelectedItem.ToString() + "'";
             SorularTablosu.DataSource = table;
+        }
+
+        private void chkKlasik_CheckedChanged(object sender, EventArgs e)
+        {
+            //TODO
+            KlasikMi = chkKlasik.Checked;
+            SeceneklerOnOff();
+
         }
     }
 }

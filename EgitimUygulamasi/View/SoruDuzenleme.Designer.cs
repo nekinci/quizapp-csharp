@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SorularTablosu = new System.Windows.Forms.DataGridView();
             this.txtAra = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabSorular = new System.Windows.Forms.TabControl();
@@ -55,6 +55,7 @@
             this.cmbFiltreZorluk = new MetroFramework.Controls.MetroComboBox();
             this.cmbFiltreKategori = new MetroFramework.Controls.MetroComboBox();
             this.lblFiltre = new System.Windows.Forms.Label();
+            this.chkKlasik = new MaterialSkin.Controls.MaterialCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.SorularTablosu)).BeginInit();
             this.tabSorular.SuspendLayout();
             this.sorutab.SuspendLayout();
@@ -68,14 +69,14 @@
             this.SorularTablosu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SorularTablosu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.SorularTablosu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SorularTablosu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SorularTablosu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.SorularTablosu.ColumnHeadersHeight = 45;
             this.SorularTablosu.Cursor = System.Windows.Forms.Cursors.Default;
             this.SorularTablosu.GridColor = System.Drawing.SystemColors.ControlLightLight;
@@ -102,7 +103,7 @@
             this.txtAra.SelectedText = "";
             this.txtAra.SelectionLength = 0;
             this.txtAra.SelectionStart = 0;
-            this.txtAra.Size = new System.Drawing.Size(445, 23);
+            this.txtAra.Size = new System.Drawing.Size(440, 23);
             this.txtAra.TabIndex = 17;
             this.txtAra.UseSystemPasswordChar = false;
             this.txtAra.Click += new System.EventHandler(this.txtAra_Click);
@@ -146,7 +147,7 @@
             this.materialFlatButton2.AutoSize = true;
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Depth = 0;
-            this.materialFlatButton2.Location = new System.Drawing.Point(67, 210);
+            this.materialFlatButton2.Location = new System.Drawing.Point(67, 214);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton2.Name = "materialFlatButton2";
@@ -163,7 +164,7 @@
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(164, 210);
+            this.materialFlatButton1.Location = new System.Drawing.Point(164, 214);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -181,7 +182,7 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(259, 153);
+            this.materialLabel1.Location = new System.Drawing.Point(259, 157);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(25, 19);
@@ -193,7 +194,7 @@
             this.btnIlerle.AutoSize = true;
             this.btnIlerle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnIlerle.Depth = 0;
-            this.btnIlerle.Location = new System.Drawing.Point(229, 258);
+            this.btnIlerle.Location = new System.Drawing.Point(229, 262);
             this.btnIlerle.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIlerle.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIlerle.Name = "btnIlerle";
@@ -213,7 +214,7 @@
             "Kolay",
             "Orta",
             "Zor"});
-            this.cmbZorlukSeviyesi.Location = new System.Drawing.Point(34, 114);
+            this.cmbZorlukSeviyesi.Location = new System.Drawing.Point(34, 118);
             this.cmbZorlukSeviyesi.Name = "cmbZorlukSeviyesi";
             this.cmbZorlukSeviyesi.PromptText = "Zorluk seviyesi seçiniz";
             this.cmbZorlukSeviyesi.Size = new System.Drawing.Size(251, 29);
@@ -225,7 +226,7 @@
             // 
             this.cmbKategori.FormattingEnabled = true;
             this.cmbKategori.ItemHeight = 23;
-            this.cmbKategori.Location = new System.Drawing.Point(34, 79);
+            this.cmbKategori.Location = new System.Drawing.Point(34, 83);
             this.cmbKategori.Name = "cmbKategori";
             this.cmbKategori.PromptText = "Kategori seçiniz";
             this.cmbKategori.Size = new System.Drawing.Size(251, 29);
@@ -239,7 +240,7 @@
             // 
             this.txtSure.Depth = 0;
             this.txtSure.Hint = "Süre giriniz(yalnızca sayı)";
-            this.txtSure.Location = new System.Drawing.Point(34, 149);
+            this.txtSure.Location = new System.Drawing.Point(34, 153);
             this.txtSure.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtSure.Name = "txtSure";
             this.txtSure.PasswordChar = '\0';
@@ -257,7 +258,7 @@
             // 
             this.txtMedya.Depth = 0;
             this.txtMedya.Hint = "Medya";
-            this.txtMedya.Location = new System.Drawing.Point(34, 178);
+            this.txtMedya.Location = new System.Drawing.Point(34, 182);
             this.txtMedya.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtMedya.Name = "txtMedya";
             this.txtMedya.PasswordChar = '\0';
@@ -274,7 +275,7 @@
             // 
             this.txtSoruBasligi.Depth = 0;
             this.txtSoruBasligi.Hint = "Soru Başlığı";
-            this.txtSoruBasligi.Location = new System.Drawing.Point(34, 50);
+            this.txtSoruBasligi.Location = new System.Drawing.Point(34, 54);
             this.txtSoruBasligi.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtSoruBasligi.Name = "txtSoruBasligi";
             this.txtSoruBasligi.PasswordChar = '\0';
@@ -483,10 +484,28 @@
             this.lblFiltre.TabIndex = 7;
             this.lblFiltre.Text = "Listeleme Kısıtları:";
             // 
+            // chkKlasik
+            // 
+            this.chkKlasik.AutoSize = true;
+            this.chkKlasik.Depth = 0;
+            this.chkKlasik.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chkKlasik.Location = new System.Drawing.Point(648, 81);
+            this.chkKlasik.Margin = new System.Windows.Forms.Padding(0);
+            this.chkKlasik.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chkKlasik.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chkKlasik.Name = "chkKlasik";
+            this.chkKlasik.Ripple = true;
+            this.chkKlasik.Size = new System.Drawing.Size(99, 30);
+            this.chkKlasik.TabIndex = 19;
+            this.chkKlasik.Text = "Klasik Soru";
+            this.chkKlasik.UseVisualStyleBackColor = true;
+            this.chkKlasik.CheckedChanged += new System.EventHandler(this.chkKlasik_CheckedChanged);
+            // 
             // SoruDuzenleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkKlasik);
             this.Controls.Add(this.lblFiltre);
             this.Controls.Add(this.cmbFiltreKategori);
             this.Controls.Add(this.cmbFiltreZorluk);
@@ -537,5 +556,6 @@
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMedya;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
+        private MaterialSkin.Controls.MaterialCheckBox chkKlasik;
     }
 }

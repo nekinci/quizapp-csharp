@@ -20,7 +20,6 @@ namespace EgitimUygulamasi.View
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            this.Dispose();
         }
 
 
@@ -55,7 +54,19 @@ namespace EgitimUygulamasi.View
 
         private void btnTamEkran_Click(object sender, EventArgs e)
         {
-            videoMedya.fullScreen = true;
+        }
+
+        private void btnTamEkran_Click_1(object sender, EventArgs e)
+        {
+            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                videoMedya.fullScreen = true;
+            else
+                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void materialFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
