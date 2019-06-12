@@ -25,7 +25,6 @@ namespace EgitimUygulamasi.View
             this.bildirim = bildirim;
             Model.Calisan calisan = Database.Select.Calisanlar().Find(x => x.ID == bildirim.GonderenID);
             lblCalisan.Text = calisan.Ad + " " + calisan.Soyad;
-            lblSoruID.Text = bildirim.SoruID.ToString();
 
             cevap = Database.Select.Cevaplar().Find(x => x.SoruID == bildirim.SoruID && x.CalisanID == bildirim.GonderenID);
             lblCevap.Text = cevap.Cevap.Substring(0, Math.Min(61,cevap.Cevap.Length));
@@ -44,6 +43,18 @@ namespace EgitimUygulamasi.View
             bildirim.OkunduMu = true;
             Database.Update.BildirimOkundu(bildirim);
             Main.CevapGoster(cevap);
+        }
+
+        private void lblCevap_MouseEnter(object sender, EventArgs e)
+        {
+            lblCevap.BackColor = Color.FromArgb(205, 220, 57);
+            lblCalisan.BackColor = Color.FromArgb(48, 63, 159);
+        }
+
+        private void lblCevap_MouseLeave(object sender, EventArgs e)
+        {
+            lblCevap.BackColor = Color.FromArgb(224, 224, 224);
+            lblCalisan.BackColor = Color.FromArgb(3, 155, 229);
         }
     }
 }

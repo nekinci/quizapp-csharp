@@ -26,6 +26,7 @@ namespace EgitimUygulamasi.View
 
         private void btnSoruyaGec_Click(object sender, EventArgs e)
         {
+            
             videoMedya.Ctlcontrols.stop();
             this.Visible = false;
             main.SoruGoster();
@@ -61,7 +62,10 @@ namespace EgitimUygulamasi.View
 
         private void btnTamEkran_Click(object sender, EventArgs e)
         {
-            videoMedya.fullScreen = true;
+            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                videoMedya.fullScreen = true;
+            else
+                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

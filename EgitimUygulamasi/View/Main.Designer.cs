@@ -46,6 +46,10 @@
             this.temaayarlari = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.ayarlar = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnProfil = new System.Windows.Forms.Button();
+            this.profil1 = new EgitimUygulamasi.View.UIProfil();
+            this.klasikCevaplar1 = new EgitimUygulamasi.View.KlasikCevaplar();
             this.ayarlar1 = new EgitimUygulamasi.View.Ayarlar();
             this.calisanDuzenle1 = new EgitimUygulamasi.View.CalisanDuzenle();
             this.calisan1 = new EgitimUygulamasi.View.Calisan();
@@ -53,8 +57,6 @@
             this.soruDuzenleme1 = new EgitimUygulamasi.View.SoruDuzenleme();
             this.kategoriEkleme1 = new EgitimUygulamasi.KategoriEkleme();
             this.soruEkleme1 = new EgitimUygulamasi.View.SoruEkleme();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.klasikCevaplar1 = new EgitimUygulamasi.View.KlasikCevaplar();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -96,6 +98,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btnProfil);
             this.panel2.Controls.Add(this.btnBildirim);
             this.panel2.Controls.Add(this.btnOturumuKapat);
             this.panel2.Controls.Add(this.label2);
@@ -367,6 +370,54 @@
             this.ayarlar.UseVisualStyleBackColor = false;
             this.ayarlar.Click += new System.EventHandler(this.ayarlar_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(572, 61);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(261, 247);
+            this.flowLayoutPanel1.TabIndex = 6;
+            this.flowLayoutPanel1.Visible = false;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // btnProfil
+            // 
+            this.btnProfil.BackColor = System.Drawing.Color.White;
+            this.btnProfil.FlatAppearance.BorderSize = 0;
+            this.btnProfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfil.Image = global::EgitimUygulamasi.Properties.Resources.icons8_user_male_circle_30px;
+            this.btnProfil.Location = new System.Drawing.Point(354, 0);
+            this.btnProfil.Name = "btnProfil";
+            this.btnProfil.Size = new System.Drawing.Size(70, 61);
+            this.btnProfil.TabIndex = 6;
+            this.btnProfil.UseVisualStyleBackColor = false;
+            this.btnProfil.Click += new System.EventHandler(this.btnProfil_Click);
+            // 
+            // profil1
+            // 
+            this.profil1.BackColor = System.Drawing.Color.White;
+            this.profil1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profil1.Location = new System.Drawing.Point(218, 61);
+            this.profil1.Name = "profil1";
+            this.profil1.Size = new System.Drawing.Size(768, 522);
+            this.profil1.TabIndex = 9;
+            this.profil1.Visible = false;
+            this.profil1.Load += new System.EventHandler(this.uıProfil1_Load);
+            // 
+            // klasikCevaplar1
+            // 
+            this.klasikCevaplar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klasikCevaplar1.Location = new System.Drawing.Point(218, 61);
+            this.klasikCevaplar1.Name = "klasikCevaplar1";
+            this.klasikCevaplar1.Size = new System.Drawing.Size(768, 522);
+            this.klasikCevaplar1.TabIndex = 6;
+            this.klasikCevaplar1.Visible = false;
+            this.klasikCevaplar1.Load += new System.EventHandler(this.klasikCevaplar1_Load);
+            // 
             // ayarlar1
             // 
             this.ayarlar1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -431,38 +482,15 @@
             this.soruEkleme1.TabIndex = 2;
             this.soruEkleme1.Visible = false;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(572, 61);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(261, 247);
-            this.flowLayoutPanel1.TabIndex = 6;
-            this.flowLayoutPanel1.Visible = false;
-            this.flowLayoutPanel1.WrapContents = false;
-            // 
-            // klasikCevaplar1
-            // 
-            this.klasikCevaplar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klasikCevaplar1.Location = new System.Drawing.Point(218, 61);
-            this.klasikCevaplar1.Name = "klasikCevaplar1";
-            this.klasikCevaplar1.Size = new System.Drawing.Size(768, 522);
-            this.klasikCevaplar1.TabIndex = 6;
-            this.klasikCevaplar1.Visible = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(986, 583);
-            this.Controls.Add(this.klasikCevaplar1);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.profil1);
+            this.Controls.Add(this.klasikCevaplar1);
             this.Controls.Add(this.ayarlar1);
             this.Controls.Add(this.calisanDuzenle1);
             this.Controls.Add(this.calisan1);
@@ -515,6 +543,8 @@
         private System.Windows.Forms.Button btnBildirim;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private View.KlasikCevaplar klasikCevaplar1;
+        private System.Windows.Forms.Button btnProfil;
+        private View.UIProfil profil1;
     }
 }
 

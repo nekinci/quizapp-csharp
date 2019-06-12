@@ -628,5 +628,80 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
             return sorular;
         }
+
+        public static List<Medya> Medyalar()
+        {
+            string sql = "select *from medya";
+
+            List<Medya> medyalar = new List<Medya>();
+
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Medya medya = new Medya();
+                medya.ID = reader.GetInt32(0);
+                medya.KategoriID = reader.GetInt32(1);
+                medya.Path = reader.GetString(2);
+                medya.Ad = reader.GetString(3);
+                medyalar.Add(medya);
+            }
+
+            _connection.Close();
+            return medyalar;
+        }
+
+        public static List<Kategori> Kategoriler()
+        {
+            string sql = "select *from kategoriler";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            List<Kategori> kategoriler = new List<Kategori>();
+
+            while (reader.Read())
+            {
+                Kategori kategori = new Kategori();
+                kategori.ID = reader.GetInt32(0);
+                kategori.Ad = reader.GetString(1);
+                kategori.Aciklama = reader.GetString(2);
+
+                kategoriler.Add(kategori);
+            }
+
+            _connection.Close();
+
+            return kategoriler;
+        }
+
+
+        public static Admin Admin()
+        {
+            string sql = "select *from admin";
+
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            Admin admin = new Admin();
+            if (reader.Read())
+            {
+                admin.ID = reader.GetInt32(0);
+                admin.Ad = reader.GetString(1);
+                admin.Soyad = reader.GetString(2);
+                admin.Email = reader.GetString(3);
+                admin.Kadi = reader.GetString(4);
+                admin.Sifre = reader.GetString(5);
+            }
+            _connection.Close();
+
+            return admin;
+        }
     }
 }

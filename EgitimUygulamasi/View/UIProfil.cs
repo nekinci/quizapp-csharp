@@ -13,6 +13,7 @@ namespace EgitimUygulamasi.View
     public partial class UIProfil : UserControl
     {
         private QuestionScreen main;
+        private Main _main;
         public UIProfil()
         {
             InitializeComponent();
@@ -26,6 +27,18 @@ namespace EgitimUygulamasi.View
             txtSoyad.Text = calisan.Soyad;
             txtKadi.Text = calisan.Kadi;
             txtMail.Text = calisan.Mail;
+        }
+
+        public void set_Main(Main _main)
+        {
+            this._main = _main;
+            Model.Admin admin = Database.Select.Admin();
+
+            txtAd.Text = admin.Ad;
+            txtSoyad.Text = admin.Soyad;
+            txtKadi.Text = admin.Kadi;
+            txtMail.Text = admin.Email;
+             
         }
         private void UIProfil_Load(object sender, EventArgs e)
         {
@@ -79,18 +92,34 @@ namespace EgitimUygulamasi.View
 
             if (!VerifyTexts())
                 return;
+            if (_main == null && main != null)
+            {
+                Model.Calisan calisan = new Model.Calisan();
 
-            Model.Calisan calisan = new Model.Calisan();
+                calisan.ID = Database.Select.CalisanCekID(Session.KullaniciAdiAl());
 
-            calisan.ID = Database.Select.CalisanCekID(Session.KullaniciAdiAl());
+                calisan.Ad = txtAd.Text;
+                calisan.Soyad = txtSoyad.Text;
+                calisan.Mail = txtMail.Text;
+                calisan.Kadi = txtKadi.Text;
+                calisan.Sifre = MD5Sifreleme.MD5Sifrele(txtSifre.Text);
 
-            calisan.Ad = txtAd.Text;
-            calisan.Soyad = txtSoyad.Text;
-            calisan.Mail = txtMail.Text;
-            calisan.Kadi = txtKadi.Text;
-            calisan.Sifre = MD5Sifreleme.MD5Sifrele(txtSifre.Text);
+                Database.Update.CalisanGuncelle(calisan);
+            }
 
-            Database.Update.CalisanGuncelle(calisan);
+            if(_main != null && main == null)
+            {
+                Model.Admin admin = new Model.Admin();
+
+                admin.ID = 1;
+                admin.Ad = txtAd.Text;
+                admin.Soyad = txtSoyad.Text;
+                admin.Kadi = txtKadi.Text;
+                admin.Sifre = txtSifre.Text;
+                admin.Email = txtMail.Text;
+
+                Database.Update.AdminGuncelle(admin);
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace EgitimUygulamasi.Database
         private string sorular = "CREATE TABLE if not exists sorular(id int primary key auto_increment, kategori_id int,medya_id int,sure int,soruBasligi text,zorlukSeviyesi varchar(45),FOREIGN KEY (kategori_id) REFERENCES kategoriler(id) ON DELETE CASCADE,FOREIGN KEY (medya_id) REFERENCES medya(id)) ENGINE = INNODB;";
         private string secenekler = "CREATE TABLE if not exists secenekler(soru_id int not null,asecenegi text,bsecenegi text,csecenegi text,dsecenegi text, esecenegi text,dogru text,CONSTRAINT fk_soru FOREIGN KEY(soru_id) REFERENCES sorular(id) ON DELETE CASCADE) engine = innodb; ";
         private string veritabani = "CREATE DATABASE IF NOT EXISTS egitim DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_turkish_ci";
-        private string admin = "CREATE TABLE if not exists admin (id int primary key auto_increment, ad varchar(50),soyad varchar(50),kadi varchar(50) unique not null,sifre text)   ENGINE = INNODB;";
+        private string admin = "CREATE TABLE if not exists admin (id int primary key auto_increment, ad varchar(50),soyad varchar(50),email text,kadi varchar(50) unique not null,sifre text)   ENGINE = INNODB;";
         private string calisan = "CREATE TABLE if not exists calisan(id int primary key auto_increment,ad varchar(50),soyad varchar(50),mail varchar(100),kadi varchar(50),sifre text)   ENGINE = INNODB;";
         private string puanlar = "CREATE TABLE if not exists puanlar(calisan_id int unique,puan int, CONSTRAINT fk_calisan FOREIGN KEY(calisan_id) REFERENCES calisan(id) ON DELETE CASCADE) ENGINE = INNODB;";
         private string medya = "CREATE TABLE if not exists medya (id int primary key auto_increment, kategori_id int,medya_path text,medya_ismi varchar(70),CONSTRAINT FK_Kategori FOREIGN KEY(kategori_id) REFERENCES kategoriler(id)) ENGINE = INNODB;";
@@ -95,7 +95,7 @@ namespace EgitimUygulamasi.Database
             try
             {
                 _connection1.Close();
-                string ilkadmin = "insert into admin values(0,'niyazi','ekinci','nekinci','0000')";
+                string ilkadmin = "insert into admin values(0,'niyazi','ekinci','niyaziekinci5050@gmail.com','nekinci','0000')";
                 _connection1.Open();
                 MySqlCommand cmdAdmin = new MySqlCommand(ilkadmin, _connection1);
                 cmdAdmin.ExecuteNonQuery();

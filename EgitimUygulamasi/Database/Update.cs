@@ -229,5 +229,21 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
             return res != -1;
         }
+
+        public static bool AdminGuncelle(Admin admin)
+        {
+            string sql = "Update admin set ad = '" + admin.Ad + "', soyad = '" + admin.Soyad + "',email = '" + admin.Email + "',kadi = '" + admin.Kadi + "',sifre= '" + admin.Sifre + "' where id = " + admin.ID + "";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+            if (res != -1)
+                MessageBox.Show("Başarıyla güncellendi.");
+            else
+                MessageBox.Show("Güncellenemedi.");
+            return res != -1;
+        }
     }
 }

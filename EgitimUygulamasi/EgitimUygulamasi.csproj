@@ -22,7 +22,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ProductName>Egitim Uygulamasi</ProductName>
+    <PublisherName>Niyazi Ekinci</PublisherName>
+    <SuiteName>Egitim Uygulamasi</SuiteName>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -118,6 +121,7 @@
     <Compile Include="MaterialColors.cs" />
     <Compile Include="MD5Sifreleme.cs" />
     <Compile Include="MedyaKontrol.cs" />
+    <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Ayarlar.cs" />
     <Compile Include="Model\Bildirim.cs" />
     <Compile Include="Model\BirlesikSoru.cs" />
@@ -202,6 +206,12 @@
     </Compile>
     <Compile Include="View\MedyaGor.Designer.cs">
       <DependentUpon>MedyaGor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedyaGuncelleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MedyaGuncelleme.Designer.cs">
+      <DependentUpon>MedyaGuncelleme.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MedyaYukle.cs">
       <SubType>Form</SubType>
@@ -317,6 +327,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\IcerikEkleme.resx">
       <DependentUpon>IcerikEkleme.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\KategoriCekilisi.resx">
       <DependentUpon>KategoriCekilisi.cs</DependentUpon>
@@ -332,9 +343,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MedyaDegistir.resx">
       <DependentUpon>MedyaDegistir.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MedyaEkraniSoru.resx">
       <DependentUpon>MedyaEkraniSoru.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MedyaGor.resx">
       <DependentUpon>MedyaGor.cs</DependentUpon>

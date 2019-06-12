@@ -40,10 +40,12 @@ namespace EgitimUygulamasi.View
         {
             Calisanlar = Database.Select.Calisanlar();
             flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Padding = new Padding(0, 0, SystemInformation.VerticalScrollBarWidth, 0);
             foreach (var i in cevaplar)
             {
                 UICevapItem item = new UICevapItem();
                 item.SetKlasikCevap(i);
+                item.Width = flowLayoutPanel1.Width;
                 item.SetUIComponent(this);
                 flowLayoutPanel1.Controls.Add(item);
             }
@@ -85,8 +87,16 @@ namespace EgitimUygulamasi.View
 
         public void yenidenCiz()
         {
-            cevaplar = Database.Select.Cevaplar();
-            Doldur();
+            if (cmbFiltre.SelectedIndex <= 0)
+            {
+                cevaplar = Database.Select.Cevaplar();
+                Doldur();
+            }
+            if (cmbFiltre.SelectedIndex == 1)
+            {
+                cevaplar = Database.Select.Cevaplar().FindAll(x => x.Durum == 0);
+                Doldur();
+            }
             SelectedCevap = null;
             lblAdSoyad.Text = "";
             lblKadi.Text = "";
@@ -137,6 +147,11 @@ namespace EgitimUygulamasi.View
                 cevaplar = Database.Select.Cevaplar().FindAll(x => x.Durum == 0);
                 Doldur();
             }
+        }
+
+        private void lblAdSoyad_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

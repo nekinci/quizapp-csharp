@@ -151,7 +151,10 @@ namespace EgitimUygulamasi.View
 
         private void materialFlatButton3_Click(object sender, EventArgs e)
         {
-            videoMedya.fullScreen = true;
+            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                videoMedya.fullScreen = true;
+            else
+                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void videoMedya_Enter(object sender, EventArgs e)

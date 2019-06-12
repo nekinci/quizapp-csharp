@@ -34,19 +34,33 @@ namespace EgitimUygulamasi
             kategoriEkleme1.setMain(this);
             soruDuzenleme1.setMain(this);
             klasikCevaplar1.SetMain(this);
+            profil1.set_Main(this);
+
             if (bildirimler.FindAll(x => x.GorulduMu == false).Count > 0)
                 btnBildirim.Image = Properties.Resources.bildirimvar;
             else
                 btnBildirim.Image = Properties.Resources.bildirimyok;
 
-            bildirimler.Sort((a, b) => b.Tarih.CompareTo(a.Tarih));
+            bildirimler.Sort((a, b) => a.Tarih.CompareTo(b.Tarih));
             foreach (var i in bildirimler.FindAll(x=>x.OkunduMu==false).Take(Sinir))
             {
                 UCBildirim bildirim = new UCBildirim();
                 bildirim.Main = this;
+                bildirim.Size = new Size(flowLayoutPanel1.Width, bildirim.Height);
                 bildirim.SetBildirim(i);
                 flowLayoutPanel1.Controls.Add(bildirim);
             }
+
+            if (bildirimler.FindAll(x => x.OkunduMu == false).Count <= 0)
+            {
+                Label label = new Label();
+                label.Text = "Okunmamış bildiriminiz yok.";
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                label.AutoSize = false;
+                label.Size = new Size(flowLayoutPanel1.Size.Width, 30);
+                flowLayoutPanel1.Controls.Add(label);
+            }
+
             MaterialFlatButton tumunugor = new MaterialFlatButton();
             tumunugor.Text = "Tümünü gör";
             tumunugor.Dock = DockStyle.Bottom;
@@ -89,7 +103,6 @@ namespace EgitimUygulamasi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitialCreate create = new InitialCreate();
         }
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
@@ -118,6 +131,7 @@ namespace EgitimUygulamasi
 
         public void HepsiniGizle()
         {
+            profil1.Visible = false;
             kategoriEkleme1.Visible = false;
             soruEkleme1.Visible = false;
             soruDuzenleme1.Visible = false;
@@ -222,6 +236,22 @@ namespace EgitimUygulamasi
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void klasikCevaplar1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uıProfil1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProfil_Click(object sender, EventArgs e)
+        {
+            HepsiniGizle();
+            profil1.Visible = !profil1.Visible;
         }
     }
 }

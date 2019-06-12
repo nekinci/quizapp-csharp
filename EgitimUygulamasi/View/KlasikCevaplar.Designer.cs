@@ -46,7 +46,6 @@
             this.btnReddet = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnOnayla = new MaterialSkin.Controls.MaterialFlatButton();
             this.txtCevap = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.cmbFiltre = new MetroFramework.Controls.MetroComboBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -63,6 +62,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(15, 61);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 0, 25, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(235, 397);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
@@ -234,6 +234,7 @@
             this.lblAdSoyad.Size = new System.Drawing.Size(324, 32);
             this.lblAdSoyad.TabIndex = 1;
             this.lblAdSoyad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblAdSoyad.Click += new System.EventHandler(this.lblAdSoyad_Click);
             // 
             // lblSoru
             // 
@@ -288,16 +289,6 @@
             this.txtCevap.TabIndex = 0;
             this.txtCevap.Text = "";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(11, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Cevapları kontrol ederek onaylayın:";
-            // 
             // cmbFiltre
             // 
             this.cmbFiltre.FormattingEnabled = true;
@@ -318,7 +309,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.cmbFiltre);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "KlasikCevaplar";
@@ -331,7 +321,6 @@
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -355,7 +344,6 @@
         private System.Windows.Forms.Panel panel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel lblKadi;
-        private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroComboBox cmbFiltre;
     }
 }

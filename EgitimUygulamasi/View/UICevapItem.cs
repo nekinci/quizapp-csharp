@@ -28,10 +28,6 @@ namespace EgitimUygulamasi.View
             lblTarih.Text = Cevap.Tarih.ToString("dd.MM.yyyy");
 
         }
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void lblCevap_MouseHover(object sender, EventArgs e)
         {
@@ -39,16 +35,16 @@ namespace EgitimUygulamasi.View
 
         private void lblCevap_MouseLeave(object sender, EventArgs e)
         {
-            lblCevap.BackColor = SystemColors.ControlLight;
-            lblTarih.BackColor = SystemColors.ControlLight;
-            lblAd.BackColor = Color.White;
+            lblCevap.BackColor = Color.FromArgb(224, 224, 224);
+            lblTarih.BackColor = Color.FromArgb(224, 224, 224);
+            lblAd.BackColor = Color.FromArgb(3, 155, 229);
         }
 
         private void lblCevap_MouseEnter(object sender, EventArgs e)
         {
-            lblCevap.BackColor = SystemColors.ControlLightLight;
-            lblTarih.BackColor = SystemColors.ControlLightLight;
-            lblAd.BackColor = Color.WhiteSmoke;
+            lblCevap.BackColor = Color.FromArgb(205, 220, 57);
+            lblTarih.BackColor = Color.FromArgb(205, 220, 57);
+            lblAd.BackColor = Color.FromArgb(48, 63, 159);
 
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EgitimUygulamasi.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,7 @@ namespace EgitimUygulamasi.View
         public Login()
         {
             InitializeComponent();
+            InitialCreate create = new InitialCreate();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -172,6 +174,11 @@ namespace EgitimUygulamasi.View
         private void txtSifre_KeyPress(object sender, KeyPressEventArgs e)
         {
             
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

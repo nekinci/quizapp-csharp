@@ -32,6 +32,8 @@
             this.imageLists = new System.Windows.Forms.ListBox();
             this.cmbKategori = new MetroFramework.Controls.MetroComboBox();
             this.groupSeciliResim = new System.Windows.Forms.GroupBox();
+            this.btnTamEkran = new MaterialSkin.Controls.MaterialFlatButton();
+            this.videoMedya = new AxWMPLib.AxWindowsMediaPlayer();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.lblPath = new System.Windows.Forms.Label();
             this.txtIsim = new System.Windows.Forms.TextBox();
@@ -39,11 +41,9 @@
             this.secilenResim = new System.Windows.Forms.PictureBox();
             this.btnYeniMedya = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.videoMedya = new AxWMPLib.AxWindowsMediaPlayer();
-            this.btnTamEkran = new MaterialSkin.Controls.MaterialFlatButton();
             this.groupSeciliResim.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.secilenResim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secilenResim)).BeginInit();
             this.SuspendLayout();
             // 
             // imageLists
@@ -82,13 +82,42 @@
             this.groupSeciliResim.TabStop = false;
             this.groupSeciliResim.Text = "Seçilen Medya:";
             // 
+            // btnTamEkran
+            // 
+            this.btnTamEkran.AutoSize = true;
+            this.btnTamEkran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTamEkran.Depth = 0;
+            this.btnTamEkran.Location = new System.Drawing.Point(170, 195);
+            this.btnTamEkran.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnTamEkran.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnTamEkran.Name = "btnTamEkran";
+            this.btnTamEkran.Primary = false;
+            this.btnTamEkran.Size = new System.Drawing.Size(89, 36);
+            this.btnTamEkran.TabIndex = 6;
+            this.btnTamEkran.Text = "Tam Ekran";
+            this.btnTamEkran.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTamEkran.UseVisualStyleBackColor = true;
+            this.btnTamEkran.Visible = false;
+            this.btnTamEkran.Click += new System.EventHandler(this.btnTamEkran_Click);
+            // 
+            // videoMedya
+            // 
+            this.videoMedya.Dock = System.Windows.Forms.DockStyle.Top;
+            this.videoMedya.Enabled = true;
+            this.videoMedya.Location = new System.Drawing.Point(3, 16);
+            this.videoMedya.Name = "videoMedya";
+            this.videoMedya.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoMedya.OcxState")));
+            this.videoMedya.Size = new System.Drawing.Size(286, 171);
+            this.videoMedya.TabIndex = 5;
+            this.videoMedya.Visible = false;
+            // 
             // txtPath
             // 
             this.txtPath.Enabled = false;
             this.txtPath.Location = new System.Drawing.Point(76, 256);
             this.txtPath.MinimumSize = new System.Drawing.Size(200, 27);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(200, 27);
+            this.txtPath.Size = new System.Drawing.Size(200, 20);
             this.txtPath.TabIndex = 4;
             // 
             // lblPath
@@ -106,7 +135,7 @@
             this.txtIsim.Location = new System.Drawing.Point(76, 223);
             this.txtIsim.MinimumSize = new System.Drawing.Size(200, 27);
             this.txtIsim.Name = "txtIsim";
-            this.txtIsim.Size = new System.Drawing.Size(200, 27);
+            this.txtIsim.Size = new System.Drawing.Size(200, 20);
             this.txtIsim.TabIndex = 2;
             // 
             // lblMedyaismi
@@ -159,33 +188,6 @@
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
-            // videoMedya
-            // 
-            this.videoMedya.Dock = System.Windows.Forms.DockStyle.Top;
-            this.videoMedya.Enabled = true;
-            this.videoMedya.Location = new System.Drawing.Point(3, 16);
-            this.videoMedya.Name = "videoMedya";
-            this.videoMedya.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoMedya.OcxState")));
-            this.videoMedya.Size = new System.Drawing.Size(286, 171);
-            this.videoMedya.TabIndex = 5;
-            this.videoMedya.Visible = false;
-            // 
-            // btnTamEkran
-            // 
-            this.btnTamEkran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTamEkran.Depth = 0;
-            this.btnTamEkran.Location = new System.Drawing.Point(170, 195);
-            this.btnTamEkran.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnTamEkran.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnTamEkran.Name = "btnTamEkran";
-            this.btnTamEkran.Primary = false;
-            this.btnTamEkran.Size = new System.Drawing.Size(114, 22);
-            this.btnTamEkran.TabIndex = 6;
-            this.btnTamEkran.Text = "Tam Ekran";
-            this.btnTamEkran.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTamEkran.UseVisualStyleBackColor = true;
-            this.btnTamEkran.Click += new System.EventHandler(this.btnTamEkran_Click);
-            // 
             // MedyaDegistir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,8 +215,8 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MedyaDegistir_KeyPress);
             this.groupSeciliResim.ResumeLayout(false);
             this.groupSeciliResim.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.secilenResim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secilenResim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

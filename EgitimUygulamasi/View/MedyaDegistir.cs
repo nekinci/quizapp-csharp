@@ -75,6 +75,7 @@ namespace EgitimUygulamasi.View
                     secilenResim.Visible = false;
                     secilenResim.ImageLocation = "";
                     videoMedya.Ctlcontrols.stop();
+                    btnTamEkran.Visible = true;
                 }
                 txtIsim.Text = _medya.Ad;
                 txtPath.Text = _medya.Path;
@@ -138,7 +139,10 @@ namespace EgitimUygulamasi.View
 
         private void btnTamEkran_Click(object sender, EventArgs e)
         {
-            videoMedya.fullScreen = true;
+            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
+                videoMedya.fullScreen = true;
+            else
+                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }
