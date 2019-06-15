@@ -41,6 +41,8 @@ namespace EgitimUygulamasi.View
             Calisanlar = Database.Select.Calisanlar();
             flowLayoutPanel1.Controls.Clear();
             flowLayoutPanel1.Padding = new Padding(0, 0, SystemInformation.VerticalScrollBarWidth, 0);
+            cevaplar = cevaplar.OrderByDescending(x => x.Tarih).ToList();
+            cevaplar = cevaplar.OrderBy(x => x.Durum).ToList();
             foreach (var i in cevaplar)
             {
                 UICevapItem item = new UICevapItem();

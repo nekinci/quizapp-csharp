@@ -15,8 +15,46 @@ namespace EgitimUygulamasi.Database
     {
         //Bu class'ın görevi veritabanından veri çekmektir.
 
-        private static MySqlConnection _connection = new MySqlConnection("server=localhost;userid=root;database=egitim");
+        private static MySqlConnection _connection = new MySqlConnection(DatabaseInf.Veritabani);
         private Select() { }
+
+
+        public static OdulCeza OdulCezaCek()
+        {
+            string sql = "select *from odulceza";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            OdulCeza odulceza = new OdulCeza();
+            if (reader.Read())
+            {
+                odulceza.ID = reader.GetInt32(0);
+                odulceza.Ceza1 = reader.GetInt32(1);
+                odulceza.Ceza2 = reader.GetInt32(2);
+                odulceza.Odul1 = reader.GetInt32(3);
+                odulceza.Odul2 = reader.GetInt32(4);
+
+            }
+            _connection.Close();
+            return odulceza;
+        }
+
+        public static bool AdminVarmi()
+        {
+            string sql = "select *from admin";
+            bool check = false;
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+                check = true;
+            _connection.Close();
+
+            return check;
+
+        }
 
         public static int LastInsertedCevap()
         {
@@ -133,7 +171,7 @@ namespace EgitimUygulamasi.Database
         {
             DataTable dt;
             dt = new DataTable();
-            MySqlConnection _conn = new MySqlConnection("server=localhost;database=egitim;userid=root");
+            MySqlConnection _conn = new MySqlConnection(DatabaseInf.Veritabani);
             _conn.Open();
             string sqlCommand = "select sorular.id,sorular.soruBasligi,sorular.zorlukSeviyesi,sorular.sure, kategoriler.ad, " +
                 "secenekler.asecenegi,secenekler.bsecenegi, secenekler.csecenegi," +
@@ -702,6 +740,64 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
 
             return admin;
+        }
+
+
+        public static MainTema MainTema(int id)
+        {
+            MainTema tema = null;
+
+            string sql = "select *from temamain where id = "+id;
+
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                tema = new MainTema();
+                tema.ID = reader.GetInt32(0);
+                tema.SolMenuArka = reader.GetString(1);
+                tema.SolMenuButon = reader.GetString(2);
+                tema.SolMenuButonYazi = reader.GetString(3);
+                tema.SolUstArka = reader.GetString(4);
+                tema.SolUstOn = reader.GetString(5);
+                tema.SagUstYazi = reader.GetString(6);
+                tema.OturumuKapatArka = reader.GetString(7);
+                tema.OturumuKapatOn = reader.GetString(8);
+                tema.SagUstArka = reader.GetString(9);
+                tema.ButonHover = reader.GetString(10);
+            }
+            _connection.Close();
+            return tema;
+        }
+
+        public static LoginTema LoginTema(int id)
+        {
+            LoginTema tema = null;
+            string sql = "select *from logintema where id = "+id;
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                tema = new LoginTema();
+
+                tema.ID = reader.GetInt32(0);
+                tema.LoginSabit = reader.GetBoolean(1);
+                tema.SolArka = reader.GetString(2);
+                tema.SolYazi = reader.GetString(3);
+                tema.Sag = reader.GetString(4);
+                tema.Yazi1 = reader.GetString(5);
+                tema.Yazi2 = reader.GetString(6);
+            }
+
+            _connection.Close();
+
+            return tema;
         }
     }
 }

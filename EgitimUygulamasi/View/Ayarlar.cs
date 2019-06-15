@@ -40,6 +40,13 @@ namespace EgitimUygulamasi.View
             else
                 yanliscevap.Checked = false;
 
+            Model.OdulCeza cezaodul = Database.Select.OdulCezaCek();
+
+            ceza1.Text = cezaodul.Ceza1.ToString();
+            ceza2.Text = cezaodul.Ceza2.ToString();
+            odul1.Text = cezaodul.Odul1.ToString();
+            odul2.Text = cezaodul.Odul2.ToString();
+
         }
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
@@ -81,6 +88,88 @@ namespace EgitimUygulamasi.View
                 Database.Update.AyarGuncelle(0, 3);
             else
                 Database.Update.AyarGuncelle(1, 3);
+        }
+
+        private void materialSingleLineTextField2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialSingleLineTextField1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialFlatButton5_Click(object sender, EventArgs e)
+        {
+            if (KontrolEt())
+            {
+                Model.OdulCeza odulceza = new Model.OdulCeza();
+
+                odulceza.ID = 1;
+                odulceza.Ceza1 = Convert.ToInt32(ceza1.Text);
+                odulceza.Ceza2 = Convert.ToInt32(ceza2.Text);
+                odulceza.Odul1 = Convert.ToInt32(odul1.Text);
+                odulceza.Odul2 = Convert.ToInt32(odul2.Text);
+
+                Database.Update.OdulCezaGuncelle(odulceza);
+            }
+        }
+
+        private bool KontrolEt()
+        {
+            string message = "";
+            bool check = true;
+
+            if(ceza1.Text == "")
+            {
+                check = false;
+                message += "Ceza Başlangıç puanı girilmedi.\n";
+            }
+
+            if(ceza2.Text == "")
+            {
+                check = false;
+                message += "Ceza Başlangıç puanı girilmedi.\n";
+
+            }
+
+            if(odul1.Text == "")
+            {
+                check = false;
+                message += "Ödül Başlangıç Puanı girilmedi.\n";
+            }
+
+            if(odul2.Text == "")
+            {
+                message += "Ödül Başlangıç Puanı girilmedi.\n";
+                check = false;
+            }
+            if (Convert.ToInt32(ceza2.Text) <= Convert.ToInt32(ceza1.Text))
+            {
+                message += "Ceza Puan aralığını kontrol edin. Bitiş aralığı başlangıçtan büyük olamaz. \n";
+                check = false;
+            }
+            if (Convert.ToInt32(odul1.Text) <= Convert.ToInt32(ceza2.Text))
+            {
+                message += "Ödül cezadan küçük veya eşit olamaz.\n";
+                check = false;
+            }
+
+            if (Convert.ToInt32(odul2.Text) <= Convert.ToInt32(odul1.Text))
+            {
+                message += "Ödül Puan aralığını kontrol edin. Bitiş aralığı başlangıçtan büyük olamaz. \n";
+                check = false;
+            }
+
+            if (!check)
+                MessageBox.Show(message);
+            return check;
         }
     }
 }

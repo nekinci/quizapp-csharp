@@ -41,6 +41,7 @@
             this.secilenResim = new System.Windows.Forms.PictureBox();
             this.btnYeniMedya = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnDuzenle = new MaterialSkin.Controls.MaterialFlatButton();
             this.groupSeciliResim.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secilenResim)).BeginInit();
@@ -87,7 +88,7 @@
             this.btnTamEkran.AutoSize = true;
             this.btnTamEkran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnTamEkran.Depth = 0;
-            this.btnTamEkran.Location = new System.Drawing.Point(170, 195);
+            this.btnTamEkran.Location = new System.Drawing.Point(188, 196);
             this.btnTamEkran.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnTamEkran.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnTamEkran.Name = "btnTamEkran";
@@ -114,16 +115,16 @@
             // txtPath
             // 
             this.txtPath.Enabled = false;
-            this.txtPath.Location = new System.Drawing.Point(76, 256);
+            this.txtPath.Location = new System.Drawing.Point(77, 274);
             this.txtPath.MinimumSize = new System.Drawing.Size(200, 27);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(200, 20);
+            this.txtPath.Size = new System.Drawing.Size(200, 27);
             this.txtPath.TabIndex = 4;
             // 
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(7, 263);
+            this.lblPath.Location = new System.Drawing.Point(8, 281);
             this.lblPath.Name = "lblPath";
             this.lblPath.Size = new System.Drawing.Size(67, 13);
             this.lblPath.TabIndex = 3;
@@ -132,16 +133,16 @@
             // txtIsim
             // 
             this.txtIsim.Enabled = false;
-            this.txtIsim.Location = new System.Drawing.Point(76, 223);
+            this.txtIsim.Location = new System.Drawing.Point(77, 241);
             this.txtIsim.MinimumSize = new System.Drawing.Size(200, 27);
             this.txtIsim.Name = "txtIsim";
-            this.txtIsim.Size = new System.Drawing.Size(200, 20);
+            this.txtIsim.Size = new System.Drawing.Size(200, 27);
             this.txtIsim.TabIndex = 2;
             // 
             // lblMedyaismi
             // 
             this.lblMedyaismi.AutoSize = true;
-            this.lblMedyaismi.Location = new System.Drawing.Point(6, 230);
+            this.lblMedyaismi.Location = new System.Drawing.Point(7, 248);
             this.lblMedyaismi.Name = "lblMedyaismi";
             this.lblMedyaismi.Size = new System.Drawing.Size(63, 13);
             this.lblMedyaismi.TabIndex = 1;
@@ -164,7 +165,7 @@
             this.btnYeniMedya.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnYeniMedya.Name = "btnYeniMedya";
             this.btnYeniMedya.Primary = true;
-            this.btnYeniMedya.Size = new System.Drawing.Size(239, 40);
+            this.btnYeniMedya.Size = new System.Drawing.Size(160, 40);
             this.btnYeniMedya.TabIndex = 4;
             this.btnYeniMedya.Text = "Yeni Medya";
             this.btnYeniMedya.UseVisualStyleBackColor = true;
@@ -188,6 +189,24 @@
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
+            // btnDuzenle
+            // 
+            this.btnDuzenle.AutoSize = true;
+            this.btnDuzenle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDuzenle.Depth = 0;
+            this.btnDuzenle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnDuzenle.Enabled = false;
+            this.btnDuzenle.Location = new System.Drawing.Point(481, 333);
+            this.btnDuzenle.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDuzenle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Primary = false;
+            this.btnDuzenle.Size = new System.Drawing.Size(71, 36);
+            this.btnDuzenle.TabIndex = 6;
+            this.btnDuzenle.Text = "Duzenle";
+            this.btnDuzenle.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
+            // 
             // MedyaDegistir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,6 +214,7 @@
             this.CancelButton = this.materialFlatButton1;
             this.ClientSize = new System.Drawing.Size(614, 386);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDuzenle);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.btnYeniMedya);
             this.Controls.Add(this.groupSeciliResim);
@@ -236,5 +256,6 @@
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private AxWMPLib.AxWindowsMediaPlayer videoMedya;
         private MaterialSkin.Controls.MaterialFlatButton btnTamEkran;
+        private MaterialSkin.Controls.MaterialFlatButton btnDuzenle;
     }
 }

@@ -13,7 +13,7 @@ namespace EgitimUygulamasi.Database
     {
 
         private static MySqlConnection _connection =
-            new MySqlConnection("Server=localhost; database=egitim; userid=root");
+            new MySqlConnection(DatabaseInf.Veritabani);
 
         public static bool KategoriSil(int id)
         {
@@ -49,6 +49,7 @@ namespace EgitimUygulamasi.Database
             MySqlCommand cmd = new MySqlCommand(query, _connection);
             int res = cmd.ExecuteNonQuery();
 
+            _connection.Close();
             if (res != -1)
                 return true;
             return false;

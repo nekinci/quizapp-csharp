@@ -13,7 +13,28 @@ namespace EgitimUygulamasi.Database
 {
     class Update
     {
-        private static MySqlConnection _connection = new MySqlConnection("server=localhost;userid=root;database=egitim;");
+        private static MySqlConnection _connection = new MySqlConnection(DatabaseInf.Veritabani);
+
+
+        public static bool OdulCezaGuncelle(OdulCeza odulceza)
+        {
+            string sql = "UPDATE odulceza set ceza1 = " + odulceza.Ceza1 + ", ceza2=" + odulceza.Ceza2 + ", odul1 = " + odulceza.Odul1 + ", odul2 = " + odulceza.Odul2 + " where id = 1";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+
+            if (res != -1)
+            {
+                MessageBox.Show("Başarıyla güncellendi");
+                return true;
+            }
+            MessageBox.Show("Bir sorun oluştu!");
+            return false;
+        }
 
         public static void SoruSoruldu(SoruSorulma _var)
         {
@@ -243,6 +264,62 @@ namespace EgitimUygulamasi.Database
                 MessageBox.Show("Başarıyla güncellendi.");
             else
                 MessageBox.Show("Güncellenemedi.");
+            return res != -1;
+        }
+
+
+        public static bool MedyaGuncelleme(Medya medya)
+        {
+            MessageBox.Show(medya.Path);
+
+            string sql = "Update medya set medya_path = @path , medya_ismi = @isim where medya.id = @id";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            cmd.Parameters.AddWithValue("@path", @medya.Path);
+            cmd.Parameters.AddWithValue("@isim", medya.Ad);
+            cmd.Parameters.AddWithValue("@id", medya.ID);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+            if (res != -1)
+            {
+                MessageBox.Show("Başarıyla güncellendi.");
+                return true;
+            }
+            MessageBox.Show("Güncellenemedi.");
+            return false;
+        }
+
+        public static bool MainTemaGuncelle(MainTema tema)
+        {
+            var sql = "Update temamain set smarka = '" + tema.SolMenuArka + "', smbuton = '" + tema.SolMenuButon + "', smbutonyazi = '" + tema.SolMenuButonYazi + "', smustarka = '" + tema.SolUstArka + "',smuston = '" + tema.SolUstOn + "', sagustyazi = '" + tema.SagUstYazi + "', oturumarka = '" + tema.OturumuKapatArka + "', oturumon = '" + tema.OturumuKapatOn + "', sagustarka = '" + tema.SagUstArka + "', btnhover = '" + tema.ButonHover + "' where id = 1";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+
+            return res != -1;
+
+        }
+
+
+        public static bool LoginTemaGuncelle(LoginTema tema)
+        {
+            var sql = "Update logintema set login_sabit = " + tema.LoginSabit + ", solarka = '" + tema.SolArka + "',solyazi = '" + tema.SolYazi + "',loginsag = '" + tema.Sag + "',loginyazi1 = '" + tema.Yazi1 + "', loginyazi2 = '" + tema.Yazi2 + "' where id = 1 ";
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+
             return res != -1;
         }
     }

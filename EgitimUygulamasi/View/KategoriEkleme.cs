@@ -76,6 +76,7 @@ namespace EgitimUygulamasi
                 _kategori.Aciklama = aciklama;
                 Insert.KategoriEkleme(_kategori);
                 this.temizle();
+                main.YenidenCiz();
             }
         }
 

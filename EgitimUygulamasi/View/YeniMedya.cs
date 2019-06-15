@@ -28,7 +28,7 @@ namespace EgitimUygulamasi.View
         {
             this.medyaDegistir1 = medyaDegistir1;
             this.selectedId = selectedId;
-            cmbKategori.Items.Add(Database.Select.KategoriCekMedya(selectedId));
+            cmbKategori.Items.Add(Database.Select.KategoriCekMedya(selectedId).Ad);
         }
 
         private void YeniMedya_Load(object sender, EventArgs e)

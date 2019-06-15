@@ -70,6 +70,7 @@ namespace EgitimUygulamasi.View
             this.stepOneApp1.setMain(this);
             this.soruEkrani1.setMain(this);
             this.medyaEkraniSoru1.setMain(this);
+            btnProfile.Enabled = true;
         }
 
 
@@ -107,7 +108,9 @@ namespace EgitimUygulamasi.View
 
                 BirlesikSoru soru = sorular.ElementAt(soruid);
 
+                this.UserProfileKapat();
                 medyaEkraniSoru1.Goster(soru);
+
             }
             else
             {
@@ -116,6 +119,10 @@ namespace EgitimUygulamasi.View
             }
         }
 
+        public void UserProfileKapat()
+        {
+            btnProfile.Enabled = false;
+        }
         public void SoruGoster()
         {
             BirlesikSoru soru = sorular.ElementAt(soruid);
@@ -143,7 +150,7 @@ namespace EgitimUygulamasi.View
             this.Controls.Add(this.medyaEkraniSoru1);
             this.Controls.Add(this.soruEkrani1);
             this.Controls.Add(this.stepOneApp1);
-            
+
             stepOneApp1.Visible = true;
         }
 
@@ -195,11 +202,13 @@ namespace EgitimUygulamasi.View
             {
                 btnProfile.BackColor = Color.White;
                 uiProfil1.Visible = false;
+                stepOneApp1.Visible = true;
             }
 
             else
             {
                 btnProfile.BackColor = Color.DarkCyan;
+                stepOneApp1.Visible = false;
                 uiProfil1.Visible = true;
             }
         }

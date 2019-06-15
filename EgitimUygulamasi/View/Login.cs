@@ -19,8 +19,36 @@ namespace EgitimUygulamasi.View
         private Point lastLocation;
         public Login()
         {
+            InitialCreate creater = new InitialCreate();
+            if (!Database.Select.AdminVarmi())
+            {
+                AdminKaydi kayit = new AdminKaydi();
+                kayit.Show();
+            }
             InitializeComponent();
-            InitialCreate create = new InitialCreate();
+
+            Model.LoginTema tema = Database.Select.LoginTema(1);
+
+            if(tema != null)
+            {
+                if (tema.LoginSabit)
+                {
+                    timer1.Stop();
+                    pnlSol.BackColor = ColorTranslator.FromHtml(tema.SolArka);
+                    label1.ForeColor = ColorTranslator.FromHtml(tema.SolYazi);
+                    label2.ForeColor = ColorTranslator.FromHtml(tema.SolYazi);
+                }
+                else
+                {
+                    timer1.Interval = 30;
+                    timer1.Start();
+                }
+
+                panel2.BackColor = ColorTranslator.FromHtml(tema.Sag);
+                label1.Text = tema.Yazi2;
+                label2.Text = tema.Yazi1;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -81,8 +109,7 @@ namespace EgitimUygulamasi.View
 
         private void Login_Load(object sender, EventArgs e)
         {
-            timer1.Interval = 30;
-            timer1.Start();
+            
         }
         int i = 0;
         int j = 0;

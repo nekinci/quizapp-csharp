@@ -83,6 +83,16 @@ namespace EgitimUygulamasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_ask_question_64px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_ask_question_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_bell_48px {
             get {
                 object obj = ResourceManager.GetObject("icons8_bell_48px", resourceCulture);
@@ -96,6 +106,16 @@ namespace EgitimUygulamasi.Properties {
         internal static System.Drawing.Bitmap icons8_bell_96px_4 {
             get {
                 object obj = ResourceManager.GetObject("icons8_bell_96px_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_category_64px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_category_64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,6 +143,66 @@ namespace EgitimUygulamasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_edit_36px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_edit_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_home_24px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_home_24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_home_36px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_home_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_home_48px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_home_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_opened_folder_36px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_opened_folder_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_short_hair_lady_question_mark_64px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_short_hair_lady_question_mark_64px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_training_64px {
             get {
                 object obj = ResourceManager.GetObject("icons8_training_64px", resourceCulture);
@@ -143,9 +223,29 @@ namespace EgitimUygulamasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_training_64px_2 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_training_64px_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_user_60px {
             get {
                 object obj = ResourceManager.GetObject("icons8_user_60px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_user_filled_64px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_user_filled_64px_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

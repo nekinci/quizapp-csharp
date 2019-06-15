@@ -14,14 +14,19 @@ namespace EgitimUygulamasi.View
 {
     public partial class SoruEkleme : UserControl
     {
+        private Main main;
         public SoruEkleme()
         {
             InitializeComponent();
         }
 
-
+        public void setMain(Main main)
+        {
+            this.main = main;
+        }
         public void MedyaYukle()
         {
+
             _medyalar = Database.Select.MedyaCek(_kategoriler.ElementAt(cmbKategori.SelectedIndex).ID);
             imageLists.Items.Clear();
             foreach (var i in _medyalar)
@@ -172,9 +177,23 @@ namespace EgitimUygulamasi.View
                 soru.secenekler = _secenekler;
 
                 Database.Insert.SoruEkleme(soru);
+                this.temizle();
+                this.main.YenidenCiz();
             }
         }
+        private void temizle()
+        {
+            txtA.Text = "";
+            txtB.Text = "";
+            txtC.Text = "";
+            txtD.Text = "";
+            txtE.Text = "";
+            cmbDogru.SelectedIndex = -1;
 
+            txtSoruBasligi.Text = "";
+            txtSure.Text = "";
+            cmbZorluk.SelectedIndex = -1;
+        }
         private void btnYukle_Click(object sender, EventArgs e)
         {
             MedyaYukle mediaYukle = new MedyaYukle();
@@ -186,16 +205,22 @@ namespace EgitimUygulamasi.View
         private List<Kategori> _kategoriler;
         private void SoruEkleme_Load(object sender, EventArgs e)
         {
-            _kategoriler = Database.Select.KategoriCek();
-
+            yenidenCiz();
+        }
+        public void yenidenCiz()
+        {
+            _kategoriler = Database.Select.Kategoriler();
+            kategoriler = new List<string>();
             foreach (var i in _kategoriler)
             {
                 kategoriler.Add(i.Ad);
             }
 
             cmbKategori.DataSource = kategoriler;
-        }
+            if (kategoriler.Count <= 0)
+                imageLists.Items.Clear();
 
+        }
         private void imageLists_SelectedIndexChanged(object sender, EventArgs e)
         {
             Model.Medya _medya = (Model.Medya)imageLists.SelectedItem;

@@ -15,7 +15,7 @@ namespace EgitimUygulamasi.Database
     {
         //Bu class veritabanına veri eklemek ile sorumludur.
 
-        private static MySqlConnection _connection = new MySqlConnection("Server=localhost;uid=root;database=egitim");
+        private static MySqlConnection _connection = new MySqlConnection(DatabaseInf.Veritabani);
 
 
         private Insert()
@@ -23,9 +23,20 @@ namespace EgitimUygulamasi.Database
 
         }
 
+
+
+        public static void AdminEkleme(Admin admin)
+        {
+            string sql = "insert into admin values(0,'" + admin.Ad + "','" + admin.Soyad + "','" + admin.Email + "','" + admin.Kadi + "','" + admin.Sifre + "')";
+            
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            cmd.ExecuteNonQuery();
+            _connection.Close();
+        }
         public static void BildirimOlustur(Bildirim bildirim)
         {
-            string query = "insert into bildirimler values(0," + bildirim.GonderenID + "," + bildirim.SoruID + "," + bildirim.CevapID + ",'" + bildirim.Tarih.ToString("yyyy-MM-dd") + "'," + bildirim.OkunduMu + ","+bildirim.GorulduMu+")";
+            string query = "insert into bildirimler values(0," + bildirim.GonderenID + "," + bildirim.SoruID + "," + bildirim.CevapID + ",'" + bildirim.Tarih.ToString("yyyy-MM-dd") + "'," + bildirim.OkunduMu + "," + bildirim.GorulduMu + ")";
             _connection.Open();
 
             MySqlCommand cmd = new MySqlCommand(query, _connection);
@@ -35,7 +46,7 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
         }
 
-     
+
         public static void SoruSoruldu(SoruSorulma _var)
         {
             //Hiç kayıt yoksa ekleyecek ama kayıt varsa napcak? Cevap basit güncelleyecek ama nasıl? Bende merak ediyorum doğrusu ama dur bakalım hallolur bi şekilde.
@@ -148,7 +159,7 @@ namespace EgitimUygulamasi.Database
 
         public static void CevapEkle(KlasikCevap cevap)
         {
-            string sql = "insert into cevaplar values(0,"+cevap.CalisanID+","+cevap.SoruID+",'"+cevap.Cevap+"','"+cevap.Tarih.ToString("yyyy-MM-dd")+"',0)";
+            string sql = "insert into cevaplar values(0," + cevap.CalisanID + "," + cevap.SoruID + ",'" + cevap.Cevap + "','" + cevap.Tarih.ToString("yyyy-MM-dd") + "',0)";
 
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(sql, _connection);

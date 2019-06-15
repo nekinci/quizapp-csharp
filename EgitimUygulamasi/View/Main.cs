@@ -20,6 +20,7 @@ namespace EgitimUygulamasi
         private bool mouseDown;
         private Point lastLocation;
         List<Bildirim> bildirimler = Database.Select.BildirimleriCek();
+        List<Button> butonlar = new List<Button>();
 
         /* Bildirim gösterme Sınırı */
         private readonly int Sinir = 5;
@@ -34,6 +35,7 @@ namespace EgitimUygulamasi
             kategoriEkleme1.setMain(this);
             soruDuzenleme1.setMain(this);
             klasikCevaplar1.SetMain(this);
+            soruEkleme1.setMain(this);
             profil1.set_Main(this);
 
             if (bildirimler.FindAll(x => x.GorulduMu == false).Count > 0)
@@ -41,12 +43,11 @@ namespace EgitimUygulamasi
             else
                 btnBildirim.Image = Properties.Resources.bildirimyok;
 
-            bildirimler.Sort((a, b) => a.Tarih.CompareTo(b.Tarih));
-            foreach (var i in bildirimler.FindAll(x=>x.OkunduMu==false).Take(Sinir))
+            bildirimler = bildirimler.OrderByDescending(x => x.Tarih).ToList();
+            foreach (var i in bildirimler.FindAll(x => x.OkunduMu == false).Take(Sinir))
             {
                 UCBildirim bildirim = new UCBildirim();
                 bildirim.Main = this;
-                bildirim.Size = new Size(flowLayoutPanel1.Width, bildirim.Height);
                 bildirim.SetBildirim(i);
                 flowLayoutPanel1.Controls.Add(bildirim);
             }
@@ -67,6 +68,37 @@ namespace EgitimUygulamasi
 
             tumunugor.Click += Tumunugor_Click;
             flowLayoutPanel1.Controls.Add(tumunugor);
+            butonlar.Add(board);
+            butonlar.Add(kategoriduzenle);
+            butonlar.Add(kategoriekle);
+            butonlar.Add(soruekle);
+            butonlar.Add(soruduzenle);
+            butonlar.Add(calisanduzenle);
+            butonlar.Add(calisanislemleri);
+            butonlar.Add(ayarlar);
+            butonlar.Add(temaayarlari);
+            MainTema tema = Database.Select.MainTema(1);
+
+            if (tema != null)
+            {
+                foreach(var i in butonlar)
+                {
+                    i.BackColor = ColorTranslator.FromHtml(tema.SolMenuButon);
+                    i.ForeColor = ColorTranslator.FromHtml(tema.SolMenuButonYazi);
+                    i.FlatAppearance.MouseOverBackColor = ColorTranslator.FromHtml(tema.ButonHover);
+                    i.FlatAppearance.MouseDownBackColor = ColorTranslator.FromHtml(tema.ButonHover);
+                }
+
+                btnOturumuKapat.BackColor = ColorTranslator.FromHtml(tema.OturumuKapatArka);
+                btnOturumuKapat.ForeColor = ColorTranslator.FromHtml(tema.OturumuKapatOn);
+                pnlMenu.BackColor = ColorTranslator.FromHtml(tema.SolMenuArka);
+                panel3.BackColor = ColorTranslator.FromHtml(tema.SolUstArka);
+                label1.ForeColor = ColorTranslator.FromHtml(tema.SolUstOn);
+                label2.ForeColor = ColorTranslator.FromHtml(tema.SagUstYazi);
+                panel2.BackColor = ColorTranslator.FromHtml(tema.SagUstArka);
+            }
+
+
         }
 
         private void Tumunugor_Click(object sender, EventArgs e)
@@ -86,9 +118,11 @@ namespace EgitimUygulamasi
         public void YenidenCiz()
         {
             soruDuzenleme1.yenidenCiz();
+            soruEkleme1.yenidenCiz();
             kategoriDuzenleme1.yenidenCiz();
             calisanDuzenle1.yenidenCiz();
             klasikCevaplar1.yenidenCiz();
+            board1.yenidenCiz();
         }
 
         private void btnCikis_Click(object sender, EventArgs e)
@@ -131,6 +165,7 @@ namespace EgitimUygulamasi
 
         public void HepsiniGizle()
         {
+            board1.Visible = false;
             profil1.Visible = false;
             kategoriEkleme1.Visible = false;
             soruEkleme1.Visible = false;
@@ -140,6 +175,8 @@ namespace EgitimUygulamasi
             calisanDuzenle1.Visible = false;
             ayarlar1.Visible = false;
             klasikCevaplar1.Visible = false;
+            odulCeza1.Visible = false;
+            flowLayoutPanel1.BringToFront();
 
         }
 
@@ -209,7 +246,7 @@ namespace EgitimUygulamasi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach(var i in bildirimler.FindAll(x=>x.OkunduMu).Take(Sinir))
+            foreach (var i in bildirimler.FindAll(x => !x.OkunduMu).Take(Sinir))
             {
                 i.GorulduMu = true;
                 Database.Update.BildirimGoruldu(i);
@@ -252,6 +289,24 @@ namespace EgitimUygulamasi
         {
             HepsiniGizle();
             profil1.Visible = !profil1.Visible;
+        }
+
+        private void temaayarlari_Click(object sender, EventArgs e)
+        {
+            TemaAyarlari tema = new TemaAyarlari();
+            tema.Show();
+        }
+
+        private void board_Click(object sender, EventArgs e)
+        {
+            HepsiniGizle();
+            board1.Visible = true;
+        }
+
+        private void odulceza_Click(object sender, EventArgs e)
+        {
+            HepsiniGizle();
+            odulCeza1.Visible = true;
         }
     }
 }

@@ -146,18 +146,18 @@
             // 
             // label1
             // 
-            resources.ApplyResources(this.label1, "label1");
             this.label1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            resources.ApplyResources(this.label1, "label1");
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Name = "label1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
             this.label2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            resources.ApplyResources(this.label2, "label2");
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Name = "label2";
             // 
@@ -197,7 +197,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.pnlSol.ResumeLayout(false);
-            this.pnlSol.PerformLayout();
             this.ResumeLayout(false);
 
         }

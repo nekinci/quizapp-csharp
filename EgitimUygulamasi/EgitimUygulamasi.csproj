@@ -68,6 +68,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons8_training_64px_1.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\Downloads\Bunifu Ui Winform 1.10.0.0\Bunifu_UI_v1.5.3.dll</HintPath>
@@ -112,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseInf.cs" />
     <Compile Include="Database\Delete.cs" />
     <Compile Include="Database\InitialCreate.cs" />
     <Compile Include="Database\Insert.cs" />
@@ -128,7 +132,10 @@
     <Compile Include="Model\Calisan.cs" />
     <Compile Include="Model\CalisanCevaplari.cs" />
     <Compile Include="Model\KlasikCevap.cs" />
+    <Compile Include="Model\LoginTema.cs" />
+    <Compile Include="Model\MainTema.cs" />
     <Compile Include="Model\Medya.cs" />
+    <Compile Include="Model\OdulCeza.cs" />
     <Compile Include="Model\Puan.cs" />
     <Compile Include="Model\Secenekler.cs" />
     <Compile Include="Model\Soru.cs" />
@@ -141,11 +148,23 @@
     </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="SoruBilgileri.cs" />
+    <Compile Include="View\AdminKaydi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AdminKaydi.Designer.cs">
+      <DependentUpon>AdminKaydi.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Ayarlar.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Ayarlar.Designer.cs">
       <DependentUpon>Ayarlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Board.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Board.Designer.cs">
+      <DependentUpon>Board.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Calisan.cs">
       <SubType>UserControl</SubType>
@@ -165,6 +184,7 @@
     <Compile Include="View\IcerikEkleme.Designer.cs">
       <DependentUpon>IcerikEkleme.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\IMedya.cs" />
     <Compile Include="View\KategoriCekilisi.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,6 +208,12 @@
     </Compile>
     <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Main1.Designer.cs">
+      <DependentUpon>Main1.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MedyaDegistir.cs">
       <SubType>Form</SubType>
@@ -218,6 +244,18 @@
     </Compile>
     <Compile Include="View\MedyaYukle.Designer.cs">
       <DependentUpon>MedyaYukle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\OdulCeza.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\OdulCeza.Designer.cs">
+      <DependentUpon>OdulCeza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PuanProfil.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\PuanProfil.Designer.cs">
+      <DependentUpon>PuanProfil.cs</DependentUpon>
     </Compile>
     <Compile Include="View\QuestionScreen.cs">
       <SubType>Form</SubType>
@@ -282,6 +320,12 @@
     <Compile Include="View\StepOneApp.Designer.cs">
       <DependentUpon>StepOneApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TemaAyarlari.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TemaAyarlari.Designer.cs">
+      <DependentUpon>TemaAyarlari.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UCBildirim.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -316,8 +360,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AdminKaydi.resx">
+      <DependentUpon>AdminKaydi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Ayarlar.resx">
       <DependentUpon>Ayarlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Board.resx">
+      <DependentUpon>Board.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Calisan.resx">
       <DependentUpon>Calisan.cs</DependentUpon>
@@ -341,6 +391,9 @@
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Main1.resx">
+      <DependentUpon>Main1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MedyaDegistir.resx">
       <DependentUpon>MedyaDegistir.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -352,8 +405,17 @@
     <EmbeddedResource Include="View\MedyaGor.resx">
       <DependentUpon>MedyaGor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MedyaGuncelleme.resx">
+      <DependentUpon>MedyaGuncelleme.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MedyaYukle.resx">
       <DependentUpon>MedyaYukle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\OdulCeza.resx">
+      <DependentUpon>OdulCeza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PuanProfil.resx">
+      <DependentUpon>PuanProfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\QuestionScreen.resx">
       <DependentUpon>QuestionScreen.cs</DependentUpon>
@@ -394,6 +456,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\StepOneApp.resx">
       <DependentUpon>StepOneApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TemaAyarlari.resx">
+      <DependentUpon>TemaAyarlari.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UCBildirim.resx">
       <DependentUpon>UCBildirim.cs</DependentUpon>
@@ -488,6 +553,40 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8_user_male_circle_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_home_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_home_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_home_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_opened_folder_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_edit_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_user_filled_64px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_short_hair_lady_question_mark_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_ask_question_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_category_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_training_64px_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons8_training_64px_1.ico" />
+    <Content Include="icons8_training_64px_1_JZI_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

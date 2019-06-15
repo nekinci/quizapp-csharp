@@ -14,21 +14,24 @@ namespace EgitimUygulamasi.Database
     {
 
         private string kategori = "CREATE TABLE if not exists kategoriler(id int primary key auto_increment, ad varchar(45),aciklama text)   ENGINE = INNODB;";
-        private string sorular = "CREATE TABLE if not exists sorular(id int primary key auto_increment, kategori_id int,medya_id int,sure int,soruBasligi text,zorlukSeviyesi varchar(45),FOREIGN KEY (kategori_id) REFERENCES kategoriler(id) ON DELETE CASCADE,FOREIGN KEY (medya_id) REFERENCES medya(id)) ENGINE = INNODB;";
+        private string sorular = "CREATE TABLE if not exists sorular(id int primary key auto_increment, kategori_id int,medya_id int,sure int,soruBasligi text,zorlukSeviyesi varchar(45),klasiksoru boolean,FOREIGN KEY (kategori_id) REFERENCES kategoriler(id) ON DELETE CASCADE,FOREIGN KEY (medya_id) REFERENCES medya(id) ON DELETE CASCADE) ENGINE = INNODB;";
         private string secenekler = "CREATE TABLE if not exists secenekler(soru_id int not null,asecenegi text,bsecenegi text,csecenegi text,dsecenegi text, esecenegi text,dogru text,CONSTRAINT fk_soru FOREIGN KEY(soru_id) REFERENCES sorular(id) ON DELETE CASCADE) engine = innodb; ";
         private string veritabani = "CREATE DATABASE IF NOT EXISTS egitim DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_turkish_ci";
         private string admin = "CREATE TABLE if not exists admin (id int primary key auto_increment, ad varchar(50),soyad varchar(50),email text,kadi varchar(50) unique not null,sifre text)   ENGINE = INNODB;";
         private string calisan = "CREATE TABLE if not exists calisan(id int primary key auto_increment,ad varchar(50),soyad varchar(50),mail varchar(100),kadi varchar(50),sifre text)   ENGINE = INNODB;";
         private string puanlar = "CREATE TABLE if not exists puanlar(calisan_id int unique,puan int, CONSTRAINT fk_calisan FOREIGN KEY(calisan_id) REFERENCES calisan(id) ON DELETE CASCADE) ENGINE = INNODB;";
-        private string medya = "CREATE TABLE if not exists medya (id int primary key auto_increment, kategori_id int,medya_path text,medya_ismi varchar(70),CONSTRAINT FK_Kategori FOREIGN KEY(kategori_id) REFERENCES kategoriler(id)) ENGINE = INNODB;";
+        private string medya = "CREATE TABLE if not exists medya (id int primary key auto_increment, kategori_id int not null,medya_path text,medya_ismi varchar(70),CONSTRAINT FOREIGN KEY(kategori_id) REFERENCES kategoriler(id) ON DELETE CASCADE) ENGINE = INNODB;";
         private string puanturleri = "CREATE TABLE if not exists puanturleri (id int primary key auto_increment, kategori_tur varchar(50),puan int) engine = innodb;";
         private string ayarlar = "Create table if not exists ayarlar(id int primary key auto_increment, ad varchar(50), deger int) engine=innodb; ";
         private string sorulmatarihleri = "create table if not exists sorulmatarihleri(id int primary key auto_increment,soru_id int,calisan_id int, tarih date,foreign key (soru_id) references sorular(id),foreign key (calisan_id) references calisan(id)) engine = innodb;";
         private string calisancevaplari = "create table if not exists calisancevaplari(id int primary key auto_increment,soru_id int,calisan_id int ,tarih date,sure int,cevap varchar(10),foreign key(soru_id) references sorular(id),foreign key (calisan_id) references calisan(id)) engine = innodb; ";
         private string cevaplar = "create table if not exists cevaplar (id int primary key auto_increment,calisan_id int,soru_id int,cevap text,tarih date,durum int,foreign key(calisan_id) references calisan(id),foreign key(soru_id) references sorular(id)) engine = innodb;";
         private string bildirimler = "create table if not exists bildirimler(id int primary key auto_increment,gonderen_id int,soru_id int,cevap_id int,tarih date,okundumu bool,foreign key(gonderen_id) references calisan(id),foreign key(soru_id) references sorular(id),foreign key(cevap_id) references cevaplar(id)) engine =innodb;";
+        private string temamain = "create table if not exists temamain(id int primary key,smarka text,smbuton text,smbutonyazi text,smustarka text,smuston text,sagustyazi text,oturumarka text,oturumon text,sagustarka text,btnhover text) engine = innodb;";
+        private string loginmain = "create table if not exists logintema(id int primary key, login_sabit bool , solarka text,solyazi text,loginsag text,loginyazi1 text,loginyazi2 text) engine = innodb;";
+        private string odulceza = "create table if not exists odulceza(id int primary key auto_increment,ceza1 int,ceza2 int, odul1 int, odul2 int) engine = innodb;";
 
-        MySqlConnection _connection = new MySqlConnection("server=localhost;uid=root;");
+        MySqlConnection _connection = new MySqlConnection(DatabaseInf.Veritabani0);
         MySqlConnection _connection1 = null;
         public void veritabaniOlustur()
         {
@@ -38,7 +41,7 @@ namespace EgitimUygulamasi.Database
                 MySqlCommand cmdVeritabani = new MySqlCommand(veritabani, _connection);
                 cmdVeritabani.ExecuteNonQuery();
                 _connection.Close();
-                _connection1 = new MySqlConnection("server=localhost;userid=root;Database=egitim;");
+                _connection1 = new MySqlConnection(DatabaseInf.Veritabani);
 
             }
             catch (Exception ex)
@@ -80,6 +83,12 @@ namespace EgitimUygulamasi.Database
                 cmdTablolar.ExecuteNonQuery();
                 cmdTablolar.CommandText = bildirimler;
                 cmdTablolar.ExecuteNonQuery();
+                cmdTablolar.CommandText = temamain;
+                cmdTablolar.ExecuteNonQuery();
+                cmdTablolar.CommandText = loginmain;
+                cmdTablolar.ExecuteNonQuery();
+                cmdTablolar.CommandText = odulceza;
+                cmdTablolar.ExecuteNonQuery();
                 _connection1.Close();
 
             }
@@ -109,7 +118,7 @@ namespace EgitimUygulamasi.Database
 
         public void PuanlariAta()
         {
-            _connection1 = new MySqlConnection("server=localhost;userid=root;Database=egitim;");
+            _connection1 = new MySqlConnection(DatabaseInf.Veritabani);
             var kolay = "insert into puanturleri values(0,'Kolay',3)";
             var orta = "insert into puanturleri values(0,'Orta',5)";
             var zor = "insert into puanturleri values(0,'Zor',8)";
@@ -129,11 +138,11 @@ namespace EgitimUygulamasi.Database
 
         public void AyarlariAta()
         {
-            _connection1 = new MySqlConnection("server=localhost;userid=root;Database=egitim;");
+            _connection1 = new MySqlConnection(DatabaseInf.Veritabani);
             string sql = "insert into ayarlar values(0,'gericekil',1)";
             string sql1 = "insert into ayarlar values(0,'gunsayisi',24)";
             string sql2 = "insert into ayarlar values(0,'yanliscevap',1)";
-
+            string sql3 = "insert into odulceza values(0,0,30,31,100)";
             _connection1.Open();
 
             MySqlCommand cmd = new MySqlCommand(sql, _connection1);
@@ -141,6 +150,8 @@ namespace EgitimUygulamasi.Database
             cmd.CommandText = sql1;
             cmd.ExecuteNonQuery();
             cmd.CommandText = sql2;
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = sql3;
             cmd.ExecuteNonQuery();
             _connection1.Close();
         }

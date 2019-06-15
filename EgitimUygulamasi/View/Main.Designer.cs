@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.btnCikis = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnProfil = new System.Windows.Forms.Button();
             this.btnBildirim = new System.Windows.Forms.Button();
             this.btnOturumuKapat = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
@@ -45,18 +47,20 @@
             this.calisanduzenle = new System.Windows.Forms.Button();
             this.temaayarlari = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.odulceza = new System.Windows.Forms.Button();
             this.ayarlar = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnProfil = new System.Windows.Forms.Button();
-            this.profil1 = new EgitimUygulamasi.View.UIProfil();
             this.klasikCevaplar1 = new EgitimUygulamasi.View.KlasikCevaplar();
+            this.soruEkleme1 = new EgitimUygulamasi.View.SoruEkleme();
+            this.board1 = new EgitimUygulamasi.View.Board();
+            this.odulCeza1 = new EgitimUygulamasi.View.OdulCeza();
+            this.profil1 = new EgitimUygulamasi.View.UIProfil();
             this.ayarlar1 = new EgitimUygulamasi.View.Ayarlar();
             this.calisanDuzenle1 = new EgitimUygulamasi.View.CalisanDuzenle();
             this.calisan1 = new EgitimUygulamasi.View.Calisan();
             this.kategoriDuzenleme1 = new EgitimUygulamasi.View.KategoriDuzenleme();
             this.soruDuzenleme1 = new EgitimUygulamasi.View.SoruDuzenleme();
             this.kategoriEkleme1 = new EgitimUygulamasi.KategoriEkleme();
-            this.soruEkleme1 = new EgitimUygulamasi.View.SoruEkleme();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -114,9 +118,22 @@
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
             // 
+            // btnProfil
+            // 
+            this.btnProfil.BackColor = System.Drawing.Color.Transparent;
+            this.btnProfil.FlatAppearance.BorderSize = 0;
+            this.btnProfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfil.Image = global::EgitimUygulamasi.Properties.Resources.icons8_user_male_circle_30px;
+            this.btnProfil.Location = new System.Drawing.Point(354, 0);
+            this.btnProfil.Name = "btnProfil";
+            this.btnProfil.Size = new System.Drawing.Size(70, 61);
+            this.btnProfil.TabIndex = 6;
+            this.btnProfil.UseVisualStyleBackColor = false;
+            this.btnProfil.Click += new System.EventHandler(this.btnProfil_Click);
+            // 
             // btnBildirim
             // 
-            this.btnBildirim.BackColor = System.Drawing.Color.White;
+            this.btnBildirim.BackColor = System.Drawing.Color.Transparent;
             this.btnBildirim.FlatAppearance.BorderSize = 0;
             this.btnBildirim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBildirim.Image = global::EgitimUygulamasi.Properties.Resources.bildirimyok;
@@ -181,15 +198,15 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(61, 19);
+            this.label1.Location = new System.Drawing.Point(0, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 23);
+            this.label1.Size = new System.Drawing.Size(218, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Admin Panel";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
@@ -209,6 +226,7 @@
             this.board.TabIndex = 1;
             this.board.Text = "Board";
             this.board.UseVisualStyleBackColor = false;
+            this.board.Click += new System.EventHandler(this.board_Click);
             // 
             // kategoriekle
             // 
@@ -332,10 +350,12 @@
             this.temaayarlari.TabIndex = 8;
             this.temaayarlari.Text = "Tema Ayarları";
             this.temaayarlari.UseVisualStyleBackColor = false;
+            this.temaayarlari.Click += new System.EventHandler(this.temaayarlari_Click);
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.pnlMenu.Controls.Add(this.odulceza);
             this.pnlMenu.Controls.Add(this.ayarlar);
             this.pnlMenu.Controls.Add(this.temaayarlari);
             this.pnlMenu.Controls.Add(this.calisanduzenle);
@@ -352,6 +372,23 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(218, 583);
             this.pnlMenu.TabIndex = 0;
+            // 
+            // odulceza
+            // 
+            this.odulceza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.odulceza.Dock = System.Windows.Forms.DockStyle.Top;
+            this.odulceza.FlatAppearance.BorderSize = 0;
+            this.odulceza.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.odulceza.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.odulceza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.odulceza.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.odulceza.Location = new System.Drawing.Point(0, 437);
+            this.odulceza.Name = "odulceza";
+            this.odulceza.Size = new System.Drawing.Size(218, 47);
+            this.odulceza.TabIndex = 10;
+            this.odulceza.Text = "Ödül&Ceza";
+            this.odulceza.UseVisualStyleBackColor = false;
+            this.odulceza.Click += new System.EventHandler(this.odulceza_Click);
             // 
             // ayarlar
             // 
@@ -384,18 +421,40 @@
             this.flowLayoutPanel1.Visible = false;
             this.flowLayoutPanel1.WrapContents = false;
             // 
-            // btnProfil
+            // klasikCevaplar1
             // 
-            this.btnProfil.BackColor = System.Drawing.Color.White;
-            this.btnProfil.FlatAppearance.BorderSize = 0;
-            this.btnProfil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProfil.Image = global::EgitimUygulamasi.Properties.Resources.icons8_user_male_circle_30px;
-            this.btnProfil.Location = new System.Drawing.Point(354, 0);
-            this.btnProfil.Name = "btnProfil";
-            this.btnProfil.Size = new System.Drawing.Size(70, 61);
-            this.btnProfil.TabIndex = 6;
-            this.btnProfil.UseVisualStyleBackColor = false;
-            this.btnProfil.Click += new System.EventHandler(this.btnProfil_Click);
+            this.klasikCevaplar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.klasikCevaplar1.Location = new System.Drawing.Point(218, 61);
+            this.klasikCevaplar1.Name = "klasikCevaplar1";
+            this.klasikCevaplar1.Size = new System.Drawing.Size(768, 522);
+            this.klasikCevaplar1.TabIndex = 13;
+            this.klasikCevaplar1.Visible = false;
+            // 
+            // soruEkleme1
+            // 
+            this.soruEkleme1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.soruEkleme1.Location = new System.Drawing.Point(218, 61);
+            this.soruEkleme1.Name = "soruEkleme1";
+            this.soruEkleme1.Size = new System.Drawing.Size(768, 522);
+            this.soruEkleme1.TabIndex = 12;
+            this.soruEkleme1.Visible = false;
+            // 
+            // board1
+            // 
+            this.board1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.board1.Location = new System.Drawing.Point(218, 61);
+            this.board1.Name = "board1";
+            this.board1.Size = new System.Drawing.Size(768, 522);
+            this.board1.TabIndex = 11;
+            // 
+            // odulCeza1
+            // 
+            this.odulCeza1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.odulCeza1.Location = new System.Drawing.Point(218, 61);
+            this.odulCeza1.Name = "odulCeza1";
+            this.odulCeza1.Size = new System.Drawing.Size(768, 522);
+            this.odulCeza1.TabIndex = 10;
+            this.odulCeza1.Visible = false;
             // 
             // profil1
             // 
@@ -407,16 +466,6 @@
             this.profil1.TabIndex = 9;
             this.profil1.Visible = false;
             this.profil1.Load += new System.EventHandler(this.uıProfil1_Load);
-            // 
-            // klasikCevaplar1
-            // 
-            this.klasikCevaplar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.klasikCevaplar1.Location = new System.Drawing.Point(218, 61);
-            this.klasikCevaplar1.Name = "klasikCevaplar1";
-            this.klasikCevaplar1.Size = new System.Drawing.Size(768, 522);
-            this.klasikCevaplar1.TabIndex = 6;
-            this.klasikCevaplar1.Visible = false;
-            this.klasikCevaplar1.Load += new System.EventHandler(this.klasikCevaplar1_Load);
             // 
             // ayarlar1
             // 
@@ -473,15 +522,6 @@
             this.kategoriEkleme1.TabIndex = 3;
             this.kategoriEkleme1.Visible = false;
             // 
-            // soruEkleme1
-            // 
-            this.soruEkleme1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.soruEkleme1.Location = new System.Drawing.Point(218, 61);
-            this.soruEkleme1.Name = "soruEkleme1";
-            this.soruEkleme1.Size = new System.Drawing.Size(768, 522);
-            this.soruEkleme1.TabIndex = 2;
-            this.soruEkleme1.Visible = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,26 +529,28 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(986, 583);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.profil1);
             this.Controls.Add(this.klasikCevaplar1);
+            this.Controls.Add(this.soruEkleme1);
+            this.Controls.Add(this.board1);
+            this.Controls.Add(this.odulCeza1);
+            this.Controls.Add(this.profil1);
             this.Controls.Add(this.ayarlar1);
             this.Controls.Add(this.calisanDuzenle1);
             this.Controls.Add(this.calisan1);
             this.Controls.Add(this.kategoriDuzenleme1);
             this.Controls.Add(this.soruDuzenleme1);
             this.Controls.Add(this.kategoriEkleme1);
-            this.Controls.Add(this.soruEkleme1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Eğitim Uygulaması";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.pnlMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -530,7 +572,6 @@
         private System.Windows.Forms.Button calisanduzenle;
         private System.Windows.Forms.Button temaayarlari;
         private System.Windows.Forms.Panel pnlMenu;
-        private View.SoruEkleme soruEkleme1;
         private KategoriEkleme kategoriEkleme1;
         private View.SoruDuzenleme soruDuzenleme1;
         private View.KategoriDuzenleme kategoriDuzenleme1;
@@ -542,9 +583,13 @@
         private View.Ayarlar ayarlar1;
         private System.Windows.Forms.Button btnBildirim;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private View.KlasikCevaplar klasikCevaplar1;
         private System.Windows.Forms.Button btnProfil;
         private View.UIProfil profil1;
+        private System.Windows.Forms.Button odulceza;
+        private View.OdulCeza odulCeza1;
+        private View.Board board1;
+        private View.SoruEkleme soruEkleme1;
+        private View.KlasikCevaplar klasikCevaplar1;
     }
 }
 

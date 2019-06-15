@@ -103,6 +103,8 @@ namespace EgitimUygulamasi.View
             KlasikMi = (bool)SorularTablosu.Rows[e.RowIndex].Cells[12].Value;
             chkKlasik.Checked = KlasikMi;
             _tmp_medya = Database.Select.MedyaCekForSoruDuzenleme(selectedId);
+            materialFlatButton1.Enabled = true;
+            materialFlatButton2.Enabled = true;
         }
 
         private void btnKayitSil_Click(object sender, EventArgs e)
@@ -283,6 +285,19 @@ namespace EgitimUygulamasi.View
         {
             SorularTablosu.DataSource = Database.Select.sorulariCek();
             SorularTablosu.Update();
+
+            Kategoriler = Database.Select.KategoriCek();
+            KategoriIsimler = new List<string>();
+
+            for (var i = 0; i < Kategoriler.Count; i++)
+            {
+                KategoriIsimler.Add(Kategoriler.ElementAt(i).Ad);
+            }
+            cmbKategori.DataSource = KategoriIsimler;
+            KategoriIsimler.Add("Tümü");
+            cmbFiltreKategori.DataSource = KategoriIsimler;
+
+            cmbFiltreKategori.SelectedIndex = -1;
         }
 
         private void txtSure_TextChanged(object sender, EventArgs e)

@@ -11,10 +11,11 @@ using System.Windows.Forms;
 
 namespace EgitimUygulamasi.View
 {
-    public partial class MedyaDegistir : Form
+    public partial class MedyaDegistir : Form,IMedya
     {
         private SoruDuzenleme soruDuzenleme1;
         private int selectedId;
+        private MedyaGuncelleme guncelleme = new MedyaGuncelleme();
         public void setSoruDuzenleme(SoruDuzenleme soruDuzenleme1, int selectedId)
         {
             this.soruDuzenleme1 = soruDuzenleme1;
@@ -77,9 +78,12 @@ namespace EgitimUygulamasi.View
                     videoMedya.Ctlcontrols.stop();
                     btnTamEkran.Visible = true;
                 }
+                guncelleme = new MedyaGuncelleme();
+                guncelleme.SetMedya(_medya,this);
                 txtIsim.Text = _medya.Ad;
                 txtPath.Text = _medya.Path;
                 materialFlatButton1.Enabled = true;
+                btnDuzenle.Enabled = true;
             }
 
         }
@@ -143,6 +147,16 @@ namespace EgitimUygulamasi.View
                 videoMedya.fullScreen = true;
             else
                 MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnDuzenle_Click(object sender, EventArgs e)
+        {
+            guncelleme.Show();
+        }
+
+        public void Guncelle()
+        {
+            setSoruDuzenleme(this.soruDuzenleme1, this.selectedId);
         }
     }
 }
