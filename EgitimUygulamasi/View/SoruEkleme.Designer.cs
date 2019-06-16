@@ -366,15 +366,15 @@
             this.checkKlasik.AutoSize = true;
             this.checkKlasik.Depth = 0;
             this.checkKlasik.Font = new System.Drawing.Font("Roboto", 10F);
-            this.checkKlasik.Location = new System.Drawing.Point(646, 57);
+            this.checkKlasik.Location = new System.Drawing.Point(604, 57);
             this.checkKlasik.Margin = new System.Windows.Forms.Padding(0);
             this.checkKlasik.MouseLocation = new System.Drawing.Point(-1, -1);
             this.checkKlasik.MouseState = MaterialSkin.MouseState.HOVER;
             this.checkKlasik.Name = "checkKlasik";
             this.checkKlasik.Ripple = true;
-            this.checkKlasik.Size = new System.Drawing.Size(99, 30);
+            this.checkKlasik.Size = new System.Drawing.Size(141, 30);
             this.checkKlasik.TabIndex = 16;
-            this.checkKlasik.Text = "Klasik Soru";
+            this.checkKlasik.Text = "Klasik Soru/Görev";
             this.checkKlasik.UseVisualStyleBackColor = true;
             this.checkKlasik.CheckedChanged += new System.EventHandler(this.checkKlasik_CheckedChanged);
             // 

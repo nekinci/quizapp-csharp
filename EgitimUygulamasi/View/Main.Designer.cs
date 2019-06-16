@@ -382,27 +382,27 @@
             this.odulceza.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.odulceza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.odulceza.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.odulceza.Location = new System.Drawing.Point(0, 437);
+            this.odulceza.Location = new System.Drawing.Point(0, 390);
             this.odulceza.Name = "odulceza";
             this.odulceza.Size = new System.Drawing.Size(218, 47);
-            this.odulceza.TabIndex = 10;
-            this.odulceza.Text = "Ödül&Ceza";
+            this.odulceza.TabIndex = 9;
+            this.odulceza.Text = "Ödül ve Ceza";
             this.odulceza.UseVisualStyleBackColor = false;
             this.odulceza.Click += new System.EventHandler(this.odulceza_Click);
             // 
             // ayarlar
             // 
             this.ayarlar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.ayarlar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ayarlar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ayarlar.FlatAppearance.BorderSize = 0;
             this.ayarlar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.ayarlar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.ayarlar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ayarlar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.ayarlar.Location = new System.Drawing.Point(0, 390);
+            this.ayarlar.Location = new System.Drawing.Point(0, 489);
             this.ayarlar.Name = "ayarlar";
             this.ayarlar.Size = new System.Drawing.Size(218, 47);
-            this.ayarlar.TabIndex = 9;
+            this.ayarlar.TabIndex = 10;
             this.ayarlar.Text = "Ayarlar";
             this.ayarlar.UseVisualStyleBackColor = false;
             this.ayarlar.Click += new System.EventHandler(this.ayarlar_Click);

@@ -19,7 +19,6 @@ namespace EgitimUygulamasi.View
         private Point lastLocation;
         public Login()
         {
-            InitialCreate creater = new InitialCreate();
             if (!Database.Select.AdminVarmi())
             {
                 AdminKaydi kayit = new AdminKaydi();

@@ -37,6 +37,8 @@ namespace EgitimUygulamasi
             klasikCevaplar1.SetMain(this);
             soruEkleme1.setMain(this);
             profil1.set_Main(this);
+            odulCeza1.setMain(this);
+            ayarlar1.setMain(this);
 
             if (bildirimler.FindAll(x => x.GorulduMu == false).Count > 0)
                 btnBildirim.Image = Properties.Resources.bildirimvar;
@@ -123,6 +125,7 @@ namespace EgitimUygulamasi
             calisanDuzenle1.yenidenCiz();
             klasikCevaplar1.yenidenCiz();
             board1.yenidenCiz();
+            odulCeza1.yenidenCiz();
         }
 
         private void btnCikis_Click(object sender, EventArgs e)

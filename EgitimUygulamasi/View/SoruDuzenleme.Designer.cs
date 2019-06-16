@@ -491,15 +491,15 @@
             this.chkKlasik.AutoSize = true;
             this.chkKlasik.Depth = 0;
             this.chkKlasik.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chkKlasik.Location = new System.Drawing.Point(648, 81);
+            this.chkKlasik.Location = new System.Drawing.Point(640, 81);
             this.chkKlasik.Margin = new System.Windows.Forms.Padding(0);
             this.chkKlasik.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chkKlasik.MouseState = MaterialSkin.MouseState.HOVER;
             this.chkKlasik.Name = "chkKlasik";
             this.chkKlasik.Ripple = true;
-            this.chkKlasik.Size = new System.Drawing.Size(99, 30);
+            this.chkKlasik.Size = new System.Drawing.Size(109, 30);
             this.chkKlasik.TabIndex = 19;
-            this.chkKlasik.Text = "Klasik Soru";
+            this.chkKlasik.Text = "Klasik/Görev";
             this.chkKlasik.UseVisualStyleBackColor = true;
             this.chkKlasik.CheckedChanged += new System.EventHandler(this.chkKlasik_CheckedChanged);
             // 

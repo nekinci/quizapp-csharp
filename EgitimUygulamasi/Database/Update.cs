@@ -36,6 +36,25 @@ namespace EgitimUygulamasi.Database
             return false;
         }
 
+
+        public static bool PuanlariSifirla()
+        {
+            string sql = "update puanlar set puan = 0";
+
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+
+            if(res != -1)
+            {
+                MessageBox.Show("Başarıyla sıfırlandı.");
+                return true;
+            }
+            MessageBox.Show("Sıfırlanamadı bir problem oluştu.");
+            return false;
+        }
         public static void SoruSoruldu(SoruSorulma _var)
         {
             //Hiç kayıt yoksa ekleyecek ama kayıt varsa napcak? Cevap basit güncelleyecek ama nasıl? Bende merak ediyorum doğrusu ama dur bakalım hallolur bi şekilde.

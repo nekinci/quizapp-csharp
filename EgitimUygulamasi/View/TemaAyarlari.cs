@@ -44,7 +44,12 @@ namespace EgitimUygulamasi.View
         {
             tema1 = Database.Select.MainTema(1);
             tema2 = Database.Select.LoginTema(1);
-
+            if (tema1 == null || tema2 == null)
+            {
+                MessageBox.Show("Bir sorun oluştu tema ayarları yüklenemedi.");
+                this.Dispose();
+                return;
+            }
             solmenuarka.BackColor = ColorTranslator.FromHtml(tema1.SolMenuArka);
             solmenubuton.BackColor = ColorTranslator.FromHtml(tema1.SolMenuButon);
             solmenubutonyazi.BackColor = ColorTranslator.FromHtml(tema1.SolMenuButonYazi);

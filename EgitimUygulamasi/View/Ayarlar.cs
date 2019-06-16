@@ -16,7 +16,13 @@ namespace EgitimUygulamasi.View
         {
             InitializeComponent();
         }
+        private Main main;
 
+
+        public void setMain(Main main)
+        {
+            this.main = main;
+        }
         private void Ayarlar_Load(object sender, EventArgs e)
         {
             Model.ZorlukPuanlari z = new Model.ZorlukPuanlari();
@@ -67,6 +73,8 @@ namespace EgitimUygulamasi.View
             z.Zor = zor;
 
             Database.Update.ZorlukPuaniGuncelle(z);
+
+            main.YenidenCiz();
         }
 
         private void materialFlatButton2_Click(object sender, EventArgs e)
@@ -75,11 +83,15 @@ namespace EgitimUygulamasi.View
                 Database.Update.AyarGuncelle(0, 1);
             else
                 Database.Update.AyarGuncelle(1, 1);
+            main.YenidenCiz();
+
         }
 
         private void materialFlatButton3_Click(object sender, EventArgs e)
         {
             Database.Update.AyarGuncelle(Convert.ToInt32(txtGunSayisi.Text), 2);
+            main.YenidenCiz();
+
         }
 
         private void materialFlatButton4_Click(object sender, EventArgs e)
@@ -88,6 +100,9 @@ namespace EgitimUygulamasi.View
                 Database.Update.AyarGuncelle(0, 3);
             else
                 Database.Update.AyarGuncelle(1, 3);
+            main.YenidenCiz();
+
+
         }
 
         private void materialSingleLineTextField2_Click(object sender, EventArgs e)
@@ -118,6 +133,8 @@ namespace EgitimUygulamasi.View
                 odulceza.Odul2 = Convert.ToInt32(odul2.Text);
 
                 Database.Update.OdulCezaGuncelle(odulceza);
+                main.YenidenCiz();
+
             }
         }
 
