@@ -43,6 +43,7 @@
             this.pnlSol = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlSol.SuspendLayout();
@@ -51,6 +52,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.materialFlatButton1);
             this.panel2.Controls.Add(this.cmbGirisTuru);
             this.panel2.Controls.Add(this.btnGirisYap);
             this.panel2.Controls.Add(this.txtSifre);
@@ -71,6 +73,8 @@
             this.cmbGirisTuru.PromptText = "Giriş Türü";
             this.cmbGirisTuru.Style = MetroFramework.MetroColorStyle.Brown;
             this.cmbGirisTuru.UseSelectable = true;
+            this.cmbGirisTuru.SelectedIndexChanged += new System.EventHandler(this.cmbGirisTuru_SelectedIndexChanged);
+            this.cmbGirisTuru.SelectionChangeCommitted += new System.EventHandler(this.cmbGirisTuru_SelectionChangeCommitted);
             this.cmbGirisTuru.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKullaniciAdi_KeyDown);
             // 
             // btnGirisYap
@@ -184,6 +188,16 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // materialFlatButton1
+            // 
+            resources.ApplyResources(this.materialFlatButton1, "materialFlatButton1");
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            // 
             // Login
             // 
             resources.ApplyResources(this, "$this");
@@ -215,5 +229,6 @@
         private System.Windows.Forms.Panel pnlSol;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
     }
 }

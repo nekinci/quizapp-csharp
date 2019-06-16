@@ -68,7 +68,7 @@
             // 
             // btnCikis
             // 
-            this.btnCikis.BackColor = System.Drawing.Color.White;
+            this.btnCikis.BackColor = System.Drawing.Color.Transparent;
             this.btnCikis.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCikis.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnCikis.FlatAppearance.BorderSize = 0;

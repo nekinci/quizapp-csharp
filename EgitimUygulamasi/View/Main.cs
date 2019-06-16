@@ -79,6 +79,7 @@ namespace EgitimUygulamasi
             butonlar.Add(calisanislemleri);
             butonlar.Add(ayarlar);
             butonlar.Add(temaayarlari);
+            butonlar.Add(odulceza);
             MainTema tema = Database.Select.MainTema(1);
 
             if (tema != null)

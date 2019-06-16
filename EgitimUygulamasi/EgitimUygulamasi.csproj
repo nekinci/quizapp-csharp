@@ -290,6 +290,12 @@
     <Compile Include="View\Secenekler.Designer.cs">
       <DependentUpon>Secenekler.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SifremiUnuttum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SifremiUnuttum.Designer.cs">
+      <DependentUpon>SifremiUnuttum.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SoruDuzenleme.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -441,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Secenekler.resx">
       <DependentUpon>Secenekler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SifremiUnuttum.resx">
+      <DependentUpon>SifremiUnuttum.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SoruDuzenleme.resx">
       <DependentUpon>SoruDuzenleme.cs</DependentUpon>

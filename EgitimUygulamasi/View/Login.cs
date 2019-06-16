@@ -206,5 +206,24 @@ namespace EgitimUygulamasi.View
         {
 
         }
+
+        private void cmbGirisTuru_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbGirisTuru_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmbGirisTuru.SelectedIndex == 1)
+            {
+                materialFlatButton1.Visible = true;
+            }
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            SifremiUnuttum s = new SifremiUnuttum();
+            s.Show();
+        }
     }
 }

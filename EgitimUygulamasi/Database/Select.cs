@@ -18,7 +18,21 @@ namespace EgitimUygulamasi.Database
         private static MySqlConnection _connection = new MySqlConnection(DatabaseInf.Veritabani);
         private Select() { }
 
+        public static string SifremiUnuttum(string kadi, string mail)
+        {
+            string sql = "select *from admin where kadi = '" + kadi + "' and email = '" + mail + "'";
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
 
+            MySqlDataReader reader = cmd.ExecuteReader();
+            string sifre = "Girilen bilgiler yanlis";
+            if (reader.Read())
+            {
+                sifre = reader.GetInt32("sifre").ToString();
+            }
+            _connection.Close();
+            return sifre;
+        }
         public static OdulCeza OdulCezaCek()
         {
             string sql = "select *from odulceza";
@@ -747,7 +761,7 @@ namespace EgitimUygulamasi.Database
         {
             MainTema tema = null;
 
-            string sql = "select *from temamain where id = "+id;
+            string sql = "select *from temamain where id = " + id;
 
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(sql, _connection);
@@ -775,7 +789,7 @@ namespace EgitimUygulamasi.Database
         public static LoginTema LoginTema(int id)
         {
             LoginTema tema = null;
-            string sql = "select *from logintema where id = "+id;
+            string sql = "select *from logintema where id = " + id;
 
             _connection.Open();
 
