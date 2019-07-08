@@ -31,11 +31,11 @@
             this.icerikEkleme1 = new EgitimUygulamasi.View.IcerikEkleme();
             this.SuspendLayout();
             // 
-            // ıcerikEkleme1
+            // icerikEkleme1
             // 
             this.icerikEkleme1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.icerikEkleme1.Location = new System.Drawing.Point(0, 0);
-            this.icerikEkleme1.Name = "ıcerikEkleme1";
+            this.icerikEkleme1.Name = "icerikEkleme1";
             this.icerikEkleme1.Size = new System.Drawing.Size(775, 517);
             this.icerikEkleme1.TabIndex = 0;
             this.icerikEkleme1.Load += new System.EventHandler(this.ıcerikEkleme1_Load);
@@ -45,7 +45,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 517);
-            this.ControlBox = false;
             this.Controls.Add(this.icerikEkleme1);
             this.Name = "MedyaYukle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

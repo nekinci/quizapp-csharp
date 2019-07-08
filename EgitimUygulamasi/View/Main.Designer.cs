@@ -47,7 +47,7 @@
             this.calisanduzenle = new System.Windows.Forms.Button();
             this.temaayarlari = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.odulceza = new System.Windows.Forms.Button();
+            this.odulcezabelirle = new System.Windows.Forms.Button();
             this.ayarlar = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.klasikCevaplar1 = new EgitimUygulamasi.View.KlasikCevaplar();
@@ -61,6 +61,8 @@
             this.kategoriDuzenleme1 = new EgitimUygulamasi.View.KategoriDuzenleme();
             this.soruDuzenleme1 = new EgitimUygulamasi.View.SoruDuzenleme();
             this.kategoriEkleme1 = new EgitimUygulamasi.KategoriEkleme();
+            this.cezaOdulBelirleme1 = new EgitimUygulamasi.View.CezaOdulBelirleme();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlMenu.SuspendLayout();
@@ -83,6 +85,7 @@
             this.btnCikis.Text = "X";
             this.btnCikis.UseVisualStyleBackColor = false;
             this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
+            this.btnCikis.Paint += new System.Windows.Forms.PaintEventHandler(this.btnCikis_Paint);
             // 
             // label2
             // 
@@ -222,7 +225,7 @@
             this.board.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.board.Location = new System.Drawing.Point(0, 61);
             this.board.Name = "board";
-            this.board.Size = new System.Drawing.Size(218, 47);
+            this.board.Size = new System.Drawing.Size(218, 40);
             this.board.TabIndex = 1;
             this.board.Text = "Board";
             this.board.UseVisualStyleBackColor = false;
@@ -239,11 +242,11 @@
             this.kategoriekle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.kategoriekle.ForeColor = System.Drawing.Color.White;
             this.kategoriekle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.kategoriekle.Location = new System.Drawing.Point(0, 108);
+            this.kategoriekle.Location = new System.Drawing.Point(0, 101);
             this.kategoriekle.Name = "kategoriekle";
             this.kategoriekle.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.kategoriekle.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.kategoriekle.Size = new System.Drawing.Size(218, 47);
+            this.kategoriekle.Size = new System.Drawing.Size(218, 40);
             this.kategoriekle.TabIndex = 2;
             this.kategoriekle.Text = "Kategori Ekleme";
             this.kategoriekle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -259,9 +262,9 @@
             this.soruekle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.soruekle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.soruekle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.soruekle.Location = new System.Drawing.Point(0, 155);
+            this.soruekle.Location = new System.Drawing.Point(0, 141);
             this.soruekle.Name = "soruekle";
-            this.soruekle.Size = new System.Drawing.Size(218, 47);
+            this.soruekle.Size = new System.Drawing.Size(218, 40);
             this.soruekle.TabIndex = 3;
             this.soruekle.Text = "Soru Ekleme";
             this.soruekle.UseVisualStyleBackColor = false;
@@ -276,9 +279,9 @@
             this.kategoriduzenle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.kategoriduzenle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kategoriduzenle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.kategoriduzenle.Location = new System.Drawing.Point(0, 202);
+            this.kategoriduzenle.Location = new System.Drawing.Point(0, 181);
             this.kategoriduzenle.Name = "kategoriduzenle";
-            this.kategoriduzenle.Size = new System.Drawing.Size(218, 47);
+            this.kategoriduzenle.Size = new System.Drawing.Size(218, 40);
             this.kategoriduzenle.TabIndex = 4;
             this.kategoriduzenle.Text = "Kategori Düzenleme";
             this.kategoriduzenle.UseVisualStyleBackColor = false;
@@ -293,9 +296,9 @@
             this.soruduzenle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.soruduzenle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.soruduzenle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.soruduzenle.Location = new System.Drawing.Point(0, 249);
+            this.soruduzenle.Location = new System.Drawing.Point(0, 221);
             this.soruduzenle.Name = "soruduzenle";
-            this.soruduzenle.Size = new System.Drawing.Size(218, 47);
+            this.soruduzenle.Size = new System.Drawing.Size(218, 40);
             this.soruduzenle.TabIndex = 5;
             this.soruduzenle.Text = "Soru Düzenleme";
             this.soruduzenle.UseVisualStyleBackColor = false;
@@ -310,9 +313,9 @@
             this.calisanislemleri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.calisanislemleri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.calisanislemleri.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.calisanislemleri.Location = new System.Drawing.Point(0, 296);
+            this.calisanislemleri.Location = new System.Drawing.Point(0, 261);
             this.calisanislemleri.Name = "calisanislemleri";
-            this.calisanislemleri.Size = new System.Drawing.Size(218, 47);
+            this.calisanislemleri.Size = new System.Drawing.Size(218, 40);
             this.calisanislemleri.TabIndex = 6;
             this.calisanislemleri.Text = "Çalışan Ekle";
             this.calisanislemleri.UseVisualStyleBackColor = false;
@@ -327,9 +330,9 @@
             this.calisanduzenle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
             this.calisanduzenle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.calisanduzenle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.calisanduzenle.Location = new System.Drawing.Point(0, 343);
+            this.calisanduzenle.Location = new System.Drawing.Point(0, 301);
             this.calisanduzenle.Name = "calisanduzenle";
-            this.calisanduzenle.Size = new System.Drawing.Size(218, 47);
+            this.calisanduzenle.Size = new System.Drawing.Size(218, 40);
             this.calisanduzenle.TabIndex = 7;
             this.calisanduzenle.Text = "Çalışanları Düzenle";
             this.calisanduzenle.UseVisualStyleBackColor = false;
@@ -355,7 +358,8 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.pnlMenu.Controls.Add(this.odulceza);
+            this.pnlMenu.Controls.Add(this.button1);
+            this.pnlMenu.Controls.Add(this.odulcezabelirle);
             this.pnlMenu.Controls.Add(this.ayarlar);
             this.pnlMenu.Controls.Add(this.temaayarlari);
             this.pnlMenu.Controls.Add(this.calisanduzenle);
@@ -373,22 +377,22 @@
             this.pnlMenu.Size = new System.Drawing.Size(218, 583);
             this.pnlMenu.TabIndex = 0;
             // 
-            // odulceza
+            // odulcezabelirle
             // 
-            this.odulceza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
-            this.odulceza.Dock = System.Windows.Forms.DockStyle.Top;
-            this.odulceza.FlatAppearance.BorderSize = 0;
-            this.odulceza.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
-            this.odulceza.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
-            this.odulceza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.odulceza.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.odulceza.Location = new System.Drawing.Point(0, 390);
-            this.odulceza.Name = "odulceza";
-            this.odulceza.Size = new System.Drawing.Size(218, 47);
-            this.odulceza.TabIndex = 9;
-            this.odulceza.Text = "Ödül ve Ceza";
-            this.odulceza.UseVisualStyleBackColor = false;
-            this.odulceza.Click += new System.EventHandler(this.odulceza_Click);
+            this.odulcezabelirle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.odulcezabelirle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.odulcezabelirle.FlatAppearance.BorderSize = 0;
+            this.odulcezabelirle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.odulcezabelirle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.odulcezabelirle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.odulcezabelirle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.odulcezabelirle.Location = new System.Drawing.Point(0, 341);
+            this.odulcezabelirle.Name = "odulcezabelirle";
+            this.odulcezabelirle.Size = new System.Drawing.Size(218, 40);
+            this.odulcezabelirle.TabIndex = 9;
+            this.odulcezabelirle.Text = "Ödül ve Ceza Belirleme";
+            this.odulcezabelirle.UseVisualStyleBackColor = false;
+            this.odulcezabelirle.Click += new System.EventHandler(this.odulceza_Click);
             // 
             // ayarlar
             // 
@@ -522,6 +526,33 @@
             this.kategoriEkleme1.TabIndex = 3;
             this.kategoriEkleme1.Visible = false;
             // 
+            // cezaOdulBelirleme1
+            // 
+            this.cezaOdulBelirleme1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cezaOdulBelirleme1.Location = new System.Drawing.Point(218, 61);
+            this.cezaOdulBelirleme1.Name = "cezaOdulBelirleme1";
+            this.cezaOdulBelirleme1.Size = new System.Drawing.Size(768, 522);
+            this.cezaOdulBelirleme1.TabIndex = 14;
+            this.cezaOdulBelirleme1.Visible = false;
+            this.cezaOdulBelirleme1.Load += new System.EventHandler(this.cezaOdulBelirleme1_Load);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(42)))), ((int)(((byte)(54)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(32)))), ((int)(((byte)(44)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(0, 381);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(218, 40);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Ödül ve Ceza Görüntüle";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,6 +560,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(986, 583);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.cezaOdulBelirleme1);
             this.Controls.Add(this.klasikCevaplar1);
             this.Controls.Add(this.soruEkleme1);
             this.Controls.Add(this.board1);
@@ -549,6 +581,7 @@
             this.Text = "Eğitim Uygulaması";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Main_Paint);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
@@ -585,11 +618,13 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnProfil;
         private View.UIProfil profil1;
-        private System.Windows.Forms.Button odulceza;
+        private System.Windows.Forms.Button odulcezabelirle;
         private View.OdulCeza odulCeza1;
         private View.Board board1;
         private View.SoruEkleme soruEkleme1;
         private View.KlasikCevaplar klasikCevaplar1;
+        private View.CezaOdulBelirleme cezaOdulBelirleme1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

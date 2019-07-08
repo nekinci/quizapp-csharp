@@ -114,7 +114,7 @@ namespace EgitimUygulamasi.View
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Silmek istediğinize emin misiniz?","Uyarı",MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+            DialogResult result = MessageBox.Show("Silmek istediğinize emin misiniz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
 
             if (result == DialogResult.No)
                 return;

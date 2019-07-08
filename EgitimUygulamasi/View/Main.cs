@@ -39,6 +39,7 @@ namespace EgitimUygulamasi
             profil1.set_Main(this);
             odulCeza1.setMain(this);
             ayarlar1.setMain(this);
+            cezaOdulBelirleme1.setMain(this);
 
             if (bildirimler.FindAll(x => x.GorulduMu == false).Count > 0)
                 btnBildirim.Image = Properties.Resources.bildirimvar;
@@ -79,7 +80,7 @@ namespace EgitimUygulamasi
             butonlar.Add(calisanislemleri);
             butonlar.Add(ayarlar);
             butonlar.Add(temaayarlari);
-            butonlar.Add(odulceza);
+            butonlar.Add(odulcezabelirle);
             MainTema tema = Database.Select.MainTema(1);
 
             if (tema != null)
@@ -126,6 +127,7 @@ namespace EgitimUygulamasi
             calisanDuzenle1.yenidenCiz();
             klasikCevaplar1.yenidenCiz();
             board1.yenidenCiz();
+            cezaOdulBelirleme1.yenidenCiz();
             odulCeza1.yenidenCiz();
         }
 
@@ -180,6 +182,7 @@ namespace EgitimUygulamasi
             ayarlar1.Visible = false;
             klasikCevaplar1.Visible = false;
             odulCeza1.Visible = false;
+            cezaOdulBelirleme1.Visible = false;
             flowLayoutPanel1.BringToFront();
 
         }
@@ -308,6 +311,26 @@ namespace EgitimUygulamasi
         }
 
         private void odulceza_Click(object sender, EventArgs e)
+        {
+            HepsiniGizle();
+            cezaOdulBelirleme1.Visible = true;
+        }
+
+        private void btnCikis_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Main_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void cezaOdulBelirleme1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             HepsiniGizle();
             odulCeza1.Visible = true;

@@ -95,12 +95,6 @@ namespace EgitimUygulamasi.View
                 message += "Zorluk seviyesi seçilmedi.\n"; kontrol = false;
             }
 
-            if (imageLists.SelectedIndex < 0)
-            {
-                message += "Medya seçilmedi.(Medya yoksa sorunun eklenmek istediği kategoriye önce medya eklemelisiniz. Bkz.Yeni İçerik Yükle)"; kontrol = false;
-            }
-
-
             if (!kontrol)
                 MessageBox.Show(message);
             return kontrol;
@@ -159,7 +153,11 @@ namespace EgitimUygulamasi.View
                 _soru.SoruBasligi = txtSoruBasligi.Text;
                 _soru.Sure = Convert.ToInt32(txtSure.Text);
                 _soru.ZorlukSeviyesi = cmbZorluk.SelectedItem.ToString();
-                _soru.MedyaID = ((Medya)imageLists.SelectedItem).ID;
+                if (imageLists.SelectedIndex > -1)
+                    _soru.MedyaID = ((Medya)imageLists.SelectedItem).ID;
+                else
+                    _soru.MedyaID = -1;
+
                 _soru.KlasikSoru = checkedklasik;
                 _secenekler.ASecenegi = txtA.Text;
                 _secenekler.BSecenegi = txtB.Text;
@@ -224,7 +222,6 @@ namespace EgitimUygulamasi.View
         private void imageLists_SelectedIndexChanged(object sender, EventArgs e)
         {
             Model.Medya _medya = (Model.Medya)imageLists.SelectedItem;
-
 
             if (_medya == null)
                 return;

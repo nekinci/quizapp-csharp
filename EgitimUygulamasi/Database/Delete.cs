@@ -24,6 +24,22 @@ namespace EgitimUygulamasi.Database
             return result != -1;
         }
 
+        public static bool OdulveCezaSil(int id)
+        {
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand("delete from odulveceza where odulveceza.id = " + id, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+            _connection.Close();
+
+            if (res != -1)
+                MessageBox.Show("Başarıyla silindi.");
+            else
+                MessageBox.Show("Silinemedi.");
+
+            return res != -1;
+        }
+
         public static bool CalisanSil(int id)
         {
             _connection.Open();

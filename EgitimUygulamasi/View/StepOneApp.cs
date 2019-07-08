@@ -48,6 +48,7 @@ namespace EgitimUygulamasi.View
                     pnlKategori.Dock = DockStyle.Fill;
                     lblHosgeldiniz.Visible = false;
                     lblBilgilendirme.Visible = false;
+                    materialFlatButton1.Visible = false;
                     timer1.Start();
                 }
                 else
@@ -82,6 +83,7 @@ namespace EgitimUygulamasi.View
                 btnSoruSor.Visible = true;
                 btnKategori.Visible = true;
                 btnSoruSor.Enabled = true;
+                materialFlatButton1.Visible = true;
                 pnlKategori.Dock = DockStyle.None;
                 pnlKategori.Size = new Size(299, 170);
                 lblHosgeldiniz.Text = "Kategori belirlendi!";
@@ -130,6 +132,11 @@ namespace EgitimUygulamasi.View
             btnSoruSor.Enabled = false;
             lblKategori.Text = "<Kategori Adi>";
             cmbZorluk.SelectedIndex = -1;
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            this.main.OturumuKapat();
         }
     }
 }

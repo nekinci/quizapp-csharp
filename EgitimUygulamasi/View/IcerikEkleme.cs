@@ -161,5 +161,10 @@ namespace EgitimUygulamasi.View
         {
 
         }
+
+        private void materialFlatButton3_Click_1(object sender, EventArgs e)
+        {
+            this.main1.CloseWindow();
+        }
     }
 }

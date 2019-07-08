@@ -13,6 +13,7 @@ namespace EgitimUygulamasi.View
 {
     public partial class QuestionScreen : Form
     {
+        private Model.Calisan calisan = Database.Select.Calisanlar().Find(x => x.ID == Database.Select.CalisanCekID(Session.KullaniciAdiAl()));
         private bool mouseDown;
         private Point lastLocation;
         public QuestionScreen()
@@ -22,6 +23,8 @@ namespace EgitimUygulamasi.View
             soruEkrani1.setMain(this);
             medyaEkraniSoru1.setMain(this);
             uiProfil1.setMain(this);
+
+            label2.Text = calisan.Ad + " " + calisan.Soyad;
         }
 
         private void init()
@@ -57,7 +60,6 @@ namespace EgitimUygulamasi.View
             this.stepOneApp1.Name = "stepOneApp1";
             this.stepOneApp1.Size = new System.Drawing.Size(780, 491);
             this.stepOneApp1.TabIndex = 5;
-            this.stepOneApp1.Load += new System.EventHandler(this.stepOneApp1_Load);
 
             this.uiProfil1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uiProfil1.Location = new System.Drawing.Point(0, 46);
@@ -86,6 +88,11 @@ namespace EgitimUygulamasi.View
 
         private void btnOturumuKapat_Click(object sender, EventArgs e)
         {
+            OturumuKapat();
+        }
+
+        public void OturumuKapat()
+        {
             DialogResult result = new DialogResult();
             result = MessageBox.Show("Gerçekten oturumu kapatmak istiyor musunuz?", "Uyarı", MessageBoxButtons.YesNo, MessageBoxIcon.Hand, MessageBoxDefaultButton.Button3);
 
@@ -109,13 +116,25 @@ namespace EgitimUygulamasi.View
                 BirlesikSoru soru = sorular.ElementAt(soruid);
 
                 this.UserProfileKapat();
-                medyaEkraniSoru1.Goster(soru);
+                if (soru.soru.MedyaID != -1)
+                    medyaEkraniSoru1.Goster(soru);
+                else
+                    SoruGoster();
 
             }
             else
             {
                 MessageBox.Show("Yeterli sayıda soru yüklenemedi.!");
                 AnasayfayaDon();
+            }
+        }
+
+        private void keydown(object sender,KeyEventArgs e)
+        {
+            if(e.Alt && e.KeyCode == Keys.F4)
+            {
+                MessageBox.Show("Güvenli çıkış yapabilmek için oyunu bitir butonuna basın.");
+                e.Handled = true;
             }
         }
 
@@ -127,11 +146,6 @@ namespace EgitimUygulamasi.View
         {
             BirlesikSoru soru = sorular.ElementAt(soruid);
             soruEkrani1.SoruCek(soru);
-        }
-
-        private void stepOneApp1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

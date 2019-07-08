@@ -46,20 +46,21 @@
             this.materialFlatButton4 = new MaterialSkin.Controls.MaterialFlatButton();
             this.yanliscevap = new MetroFramework.Controls.MetroToggle();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.ceza1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.ceza2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.odul2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.odul1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.btnKaydet = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnGozat = new MaterialSkin.Controls.MaterialFlatButton();
+            this.txtPath = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.btnYedekle = new MaterialSkin.Controls.MaterialFlatButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnGozatYukle = new MaterialSkin.Controls.MaterialFlatButton();
+            this.txtYuklePath = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.btnYukle = new MaterialSkin.Controls.MaterialFlatButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -309,158 +310,136 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.GhostWhite;
-            this.groupBox5.Controls.Add(this.btnKaydet);
-            this.groupBox5.Controls.Add(this.odul2);
-            this.groupBox5.Controls.Add(this.materialLabel6);
-            this.groupBox5.Controls.Add(this.materialLabel7);
-            this.groupBox5.Controls.Add(this.odul1);
-            this.groupBox5.Controls.Add(this.ceza2);
-            this.groupBox5.Controls.Add(this.materialLabel5);
-            this.groupBox5.Controls.Add(this.materialLabel4);
-            this.groupBox5.Controls.Add(this.ceza1);
+            this.groupBox5.Controls.Add(this.btnGozat);
+            this.groupBox5.Controls.Add(this.txtPath);
+            this.groupBox5.Controls.Add(this.btnYedekle);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox5.Location = new System.Drawing.Point(342, 24);
+            this.groupBox5.Location = new System.Drawing.Point(326, 24);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(298, 191);
-            this.groupBox5.TabIndex = 14;
+            this.groupBox5.Size = new System.Drawing.Size(298, 127);
+            this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Ceza-Ödül Tanımlamaları";
+            this.groupBox5.Text = "Veritabanını yedekle";
             // 
-            // ceza1
+            // btnGozat
             // 
-            this.ceza1.Depth = 0;
-            this.ceza1.Hint = "";
-            this.ceza1.Location = new System.Drawing.Point(161, 32);
-            this.ceza1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ceza1.Name = "ceza1";
-            this.ceza1.PasswordChar = '\0';
-            this.ceza1.SelectedText = "";
-            this.ceza1.SelectionLength = 0;
-            this.ceza1.SelectionStart = 0;
-            this.ceza1.Size = new System.Drawing.Size(44, 23);
-            this.ceza1.TabIndex = 14;
-            this.ceza1.UseSystemPasswordChar = false;
-            this.ceza1.Click += new System.EventHandler(this.materialSingleLineTextField1_Click);
+            this.btnGozat.AutoSize = true;
+            this.btnGozat.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnGozat.Depth = 0;
+            this.btnGozat.Location = new System.Drawing.Point(144, 68);
+            this.btnGozat.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnGozat.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGozat.Name = "btnGozat";
+            this.btnGozat.Primary = false;
+            this.btnGozat.Size = new System.Drawing.Size(57, 36);
+            this.btnGozat.TabIndex = 5;
+            this.btnGozat.Text = "Gözat";
+            this.btnGozat.UseVisualStyleBackColor = true;
+            this.btnGozat.Click += new System.EventHandler(this.materialFlatButton6_Click);
             // 
-            // materialLabel4
+            // txtPath
             // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(18, 36);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(130, 19);
-            this.materialLabel4.TabIndex = 14;
-            this.materialLabel4.Text = "Ceza Puan Aralığı:";
+            this.txtPath.Depth = 0;
+            this.txtPath.Hint = "Yedeklenecek dosya yolu";
+            this.txtPath.Location = new System.Drawing.Point(20, 36);
+            this.txtPath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtPath.Name = "txtPath";
+            this.txtPath.PasswordChar = '\0';
+            this.txtPath.SelectedText = "";
+            this.txtPath.SelectionLength = 0;
+            this.txtPath.SelectionStart = 0;
+            this.txtPath.Size = new System.Drawing.Size(258, 23);
+            this.txtPath.TabIndex = 4;
+            this.txtPath.UseSystemPasswordChar = false;
             // 
-            // materialLabel5
+            // btnYedekle
             // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(211, 40);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(13, 19);
-            this.materialLabel5.TabIndex = 15;
-            this.materialLabel5.Text = "-";
-            this.materialLabel5.Click += new System.EventHandler(this.materialLabel5_Click);
+            this.btnYedekle.AutoSize = true;
+            this.btnYedekle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnYedekle.Depth = 0;
+            this.btnYedekle.Enabled = false;
+            this.btnYedekle.Location = new System.Drawing.Point(209, 69);
+            this.btnYedekle.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnYedekle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnYedekle.Name = "btnYedekle";
+            this.btnYedekle.Primary = false;
+            this.btnYedekle.Size = new System.Drawing.Size(69, 36);
+            this.btnYedekle.TabIndex = 1;
+            this.btnYedekle.Text = "Yedekle";
+            this.btnYedekle.UseVisualStyleBackColor = true;
+            this.btnYedekle.Click += new System.EventHandler(this.btnYedekle_Click);
             // 
-            // ceza2
+            // openFileDialog1
             // 
-            this.ceza2.Depth = 0;
-            this.ceza2.Hint = "";
-            this.ceza2.Location = new System.Drawing.Point(230, 32);
-            this.ceza2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.ceza2.Name = "ceza2";
-            this.ceza2.PasswordChar = '\0';
-            this.ceza2.SelectedText = "";
-            this.ceza2.SelectionLength = 0;
-            this.ceza2.SelectionStart = 0;
-            this.ceza2.Size = new System.Drawing.Size(44, 23);
-            this.ceza2.TabIndex = 16;
-            this.ceza2.UseSystemPasswordChar = false;
-            this.ceza2.Click += new System.EventHandler(this.materialSingleLineTextField2_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // odul2
+            // groupBox6
             // 
-            this.odul2.Depth = 0;
-            this.odul2.Hint = "";
-            this.odul2.Location = new System.Drawing.Point(230, 79);
-            this.odul2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.odul2.Name = "odul2";
-            this.odul2.PasswordChar = '\0';
-            this.odul2.SelectedText = "";
-            this.odul2.SelectionLength = 0;
-            this.odul2.SelectionStart = 0;
-            this.odul2.Size = new System.Drawing.Size(44, 23);
-            this.odul2.TabIndex = 20;
-            this.odul2.UseSystemPasswordChar = false;
+            this.groupBox6.BackColor = System.Drawing.Color.GhostWhite;
+            this.groupBox6.Controls.Add(this.btnGozatYukle);
+            this.groupBox6.Controls.Add(this.txtYuklePath);
+            this.groupBox6.Controls.Add(this.btnYukle);
+            this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox6.Location = new System.Drawing.Point(326, 157);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(298, 127);
+            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Veritabanını geri yükle";
             // 
-            // materialLabel6
+            // btnGozatYukle
             // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(211, 87);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(13, 19);
-            this.materialLabel6.TabIndex = 19;
-            this.materialLabel6.Text = "-";
+            this.btnGozatYukle.AutoSize = true;
+            this.btnGozatYukle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnGozatYukle.Depth = 0;
+            this.btnGozatYukle.Location = new System.Drawing.Point(144, 68);
+            this.btnGozatYukle.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnGozatYukle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnGozatYukle.Name = "btnGozatYukle";
+            this.btnGozatYukle.Primary = false;
+            this.btnGozatYukle.Size = new System.Drawing.Size(57, 36);
+            this.btnGozatYukle.TabIndex = 5;
+            this.btnGozatYukle.Text = "Gözat";
+            this.btnGozatYukle.UseVisualStyleBackColor = true;
+            this.btnGozatYukle.Click += new System.EventHandler(this.btnGozatYukle_Click);
             // 
-            // materialLabel7
+            // txtYuklePath
             // 
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(18, 83);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(127, 19);
-            this.materialLabel7.TabIndex = 17;
-            this.materialLabel7.Text = "Ödül Puan Aralığı:";
+            this.txtYuklePath.Depth = 0;
+            this.txtYuklePath.Hint = "Yüklenecek dosya yolu";
+            this.txtYuklePath.Location = new System.Drawing.Point(20, 36);
+            this.txtYuklePath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtYuklePath.Name = "txtYuklePath";
+            this.txtYuklePath.PasswordChar = '\0';
+            this.txtYuklePath.SelectedText = "";
+            this.txtYuklePath.SelectionLength = 0;
+            this.txtYuklePath.SelectionStart = 0;
+            this.txtYuklePath.Size = new System.Drawing.Size(258, 23);
+            this.txtYuklePath.TabIndex = 4;
+            this.txtYuklePath.UseSystemPasswordChar = false;
             // 
-            // odul1
+            // btnYukle
             // 
-            this.odul1.Depth = 0;
-            this.odul1.Hint = "";
-            this.odul1.Location = new System.Drawing.Point(161, 79);
-            this.odul1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.odul1.Name = "odul1";
-            this.odul1.PasswordChar = '\0';
-            this.odul1.SelectedText = "";
-            this.odul1.SelectionLength = 0;
-            this.odul1.SelectionStart = 0;
-            this.odul1.Size = new System.Drawing.Size(44, 23);
-            this.odul1.TabIndex = 18;
-            this.odul1.UseSystemPasswordChar = false;
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.AutoSize = true;
-            this.btnKaydet.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnKaydet.Depth = 0;
-            this.btnKaydet.Location = new System.Drawing.Point(211, 126);
-            this.btnKaydet.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnKaydet.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Primary = false;
-            this.btnKaydet.Size = new System.Drawing.Size(63, 36);
-            this.btnKaydet.TabIndex = 14;
-            this.btnKaydet.Text = "Kaydet";
-            this.btnKaydet.UseVisualStyleBackColor = true;
-            this.btnKaydet.Click += new System.EventHandler(this.materialFlatButton5_Click);
+            this.btnYukle.AutoSize = true;
+            this.btnYukle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnYukle.Depth = 0;
+            this.btnYukle.Enabled = false;
+            this.btnYukle.Location = new System.Drawing.Point(225, 68);
+            this.btnYukle.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnYukle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnYukle.Name = "btnYukle";
+            this.btnYukle.Primary = false;
+            this.btnYukle.Size = new System.Drawing.Size(53, 36);
+            this.btnYukle.TabIndex = 1;
+            this.btnYukle.Text = "Yükle";
+            this.btnYukle.UseVisualStyleBackColor = true;
+            this.btnYukle.Click += new System.EventHandler(this.btnYukle_Click);
             // 
             // Ayarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -479,6 +458,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -503,14 +484,14 @@
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton4;
         private MetroFramework.Controls.MetroToggle yanliscevap;
         private System.Windows.Forms.GroupBox groupBox5;
-        private MaterialSkin.Controls.MaterialSingleLineTextField ceza2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialSingleLineTextField ceza1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField odul2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialSingleLineTextField odul1;
-        private MaterialSkin.Controls.MaterialFlatButton btnKaydet;
+        private MaterialSkin.Controls.MaterialFlatButton btnYedekle;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtPath;
+        private MaterialSkin.Controls.MaterialFlatButton btnGozat;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private MaterialSkin.Controls.MaterialFlatButton btnGozatYukle;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtYuklePath;
+        private MaterialSkin.Controls.MaterialFlatButton btnYukle;
     }
 }

@@ -46,12 +46,7 @@ namespace EgitimUygulamasi.View
             else
                 yanliscevap.Checked = false;
 
-            Model.OdulCeza cezaodul = Database.Select.OdulCezaCek();
 
-            ceza1.Text = cezaodul.Ceza1.ToString();
-            ceza2.Text = cezaodul.Ceza2.ToString();
-            odul1.Text = cezaodul.Odul1.ToString();
-            odul2.Text = cezaodul.Odul2.ToString();
 
         }
 
@@ -122,71 +117,68 @@ namespace EgitimUygulamasi.View
 
         private void materialFlatButton5_Click(object sender, EventArgs e)
         {
-            if (KontrolEt())
-            {
-                Model.OdulCeza odulceza = new Model.OdulCeza();
 
-                odulceza.ID = 1;
-                odulceza.Ceza1 = Convert.ToInt32(ceza1.Text);
-                odulceza.Ceza2 = Convert.ToInt32(ceza2.Text);
-                odulceza.Odul1 = Convert.ToInt32(odul1.Text);
-                odulceza.Odul2 = Convert.ToInt32(odul2.Text);
-
-                Database.Update.OdulCezaGuncelle(odulceza);
-                main.YenidenCiz();
-
-            }
         }
 
-        private bool KontrolEt()
+        string dosyayolu = "";
+        private void materialFlatButton6_Click(object sender, EventArgs e)
         {
-            string message = "";
-            bool check = true;
+            saveFileDialog1.Title = "Veritabanını yedeklemek istediğiniz yeri seçiniz";
+            saveFileDialog1.Filter = "MySqlBackup File |*.sql";
+            saveFileDialog1.DefaultExt = "sql";
 
-            if(ceza1.Text == "")
+            DialogResult result = saveFileDialog1.ShowDialog();
+            dosyayolu = saveFileDialog1.FileName;
+
+
+            if(result == DialogResult.OK)
             {
-                check = false;
-                message += "Ceza Başlangıç puanı girilmedi.\n";
+                txtPath.Text = dosyayolu;
+                btnYedekle.Enabled = true;
             }
 
-            if(ceza2.Text == "")
-            {
-                check = false;
-                message += "Ceza Başlangıç puanı girilmedi.\n";
+            
+        }
 
-            }
+        private void btnYedekle_Click(object sender, EventArgs e)
+        {
+            txtPath.Clear();
+            Database.Backup.Yedekle(dosyayolu);
+            btnYedekle.Enabled = false;
+        }
 
-            if(odul1.Text == "")
-            {
-                check = false;
-                message += "Ödül Başlangıç Puanı girilmedi.\n";
-            }
+        string yuklenendosya = "";
+        private void btnGozatYukle_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Yüklenecek veritabanını seçin";
+            openFileDialog1.Filter = "MySqlBackup File|*.sql";
 
-            if(odul2.Text == "")
+
+            DialogResult result = openFileDialog1.ShowDialog();
+            yuklenendosya = openFileDialog1.FileName;
+            if(result == DialogResult.OK)
             {
-                message += "Ödül Başlangıç Puanı girilmedi.\n";
-                check = false;
-            }
-            if (Convert.ToInt32(ceza2.Text) <= Convert.ToInt32(ceza1.Text))
-            {
-                message += "Ceza Puan aralığını kontrol edin. Bitiş aralığı başlangıçtan büyük olamaz. \n";
-                check = false;
-            }
-            if (Convert.ToInt32(odul1.Text) <= Convert.ToInt32(ceza2.Text))
-            {
-                message += "Ödül cezadan küçük veya eşit olamaz.\n";
-                check = false;
+                txtYuklePath.Text = yuklenendosya;
+                btnYukle.Enabled = true;
             }
 
-            if (Convert.ToInt32(odul2.Text) <= Convert.ToInt32(odul1.Text))
-            {
-                message += "Ödül Puan aralığını kontrol edin. Bitiş aralığı başlangıçtan büyük olamaz. \n";
-                check = false;
-            }
+        }
 
-            if (!check)
-                MessageBox.Show(message);
-            return check;
+        private void btnYukle_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result = MessageBox.Show("Şu anki programda olan bütün veriler silinecek ve eskiden eklediğiniz sorular ve çalışanlar geri yüklenecek, devam etmek istediğinize emin misiniz", "UYARI", MessageBoxButtons.YesNo,MessageBoxIcon.Stop);
+
+            if (result == DialogResult.No)
+                return;
+
+
+            Database.Backup.GeriYukle(yuklenendosya);
+            txtYuklePath.Clear();
+            btnYukle.Enabled = false;
         }
     }
-}
+
+       
+    }
+

@@ -24,11 +24,27 @@ namespace EgitimUygulamasi.Database
         }
 
 
+        public static void OdulCezaEkleme(OdulCezaModel model)
+        {
+            string sql = "insert into odulveceza values(0,'" + model.Ad + "','" + model.Tur + "','" + model.Aralik1 + "','" + model.Aralik2 + "')";
 
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+
+            int res = cmd.ExecuteNonQuery();
+
+
+            if (res != -1)
+                MessageBox.Show("Başarıyla kaydedildi.");
+            else
+                MessageBox.Show("Kaydedilirken bir sorunla karşılaşıldı.");
+            _connection.Close();
+        }
         public static void AdminEkleme(Admin admin)
         {
             string sql = "insert into admin values(0,'" + admin.Ad + "','" + admin.Soyad + "','" + admin.Email + "','" + admin.Kadi + "','" + admin.Sifre + "')";
-            
+
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(sql, _connection);
             cmd.ExecuteNonQuery();
@@ -89,12 +105,13 @@ namespace EgitimUygulamasi.Database
 
         public static void SoruEkleme(BirlesikSoru _soru)
         {
-            string sql = "insert into sorular values(0," + _soru.soru.KategoriID + "," + _soru.soru.MedyaID + "," + _soru.soru.Sure + ",'" + _soru.soru.SoruBasligi + "','" + _soru.soru.ZorlukSeviyesi + "'," + _soru.soru.KlasikSoru + ")";
+            string sql = "insert into sorular values(0," + _soru.soru.KategoriID + "," + _soru.soru.Sure + ",'" + _soru.soru.SoruBasligi + "','" + _soru.soru.ZorlukSeviyesi + "'," + _soru.soru.KlasikSoru + ")";
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(sql, _connection);
             int res = cmd.ExecuteNonQuery();
             _connection.Close();
             _connection.Open();
+            string sql1 = "insert into sorumedyalari values (0,@soruid,@medyaid)";
             string query = "insert into secenekler values(@soruid,@asecenegi,@bsecenegi,@csecenegi,@dsecenegi,@esecenegi,@dogru)";
             MySqlCommand command = new MySqlCommand(query, _connection);
             command.Parameters.Clear();
@@ -105,9 +122,20 @@ namespace EgitimUygulamasi.Database
             command.Parameters.AddWithValue("@dsecenegi", _soru.secenekler.DSecenegi);
             command.Parameters.AddWithValue("@esecenegi", _soru.secenekler.ESecenegi);
             command.Parameters.AddWithValue("@dogru", _soru.secenekler.DogruCevap);
+
+            MySqlCommand cmd1 = new MySqlCommand(sql1, _connection);
+            cmd1.Parameters.Clear();
+            cmd1.Parameters.AddWithValue("@soruid", cmd.LastInsertedId);
+            cmd1.Parameters.AddWithValue("@medyaid", _soru.soru.MedyaID);
             int res1 = command.ExecuteNonQuery();
+            int res2 = 0;
+                MessageBox.Show(""+_soru.soru.MedyaID);
+            if (_soru.soru.MedyaID != -1)
+            {
+                res2 = cmd1.ExecuteNonQuery();
+            }
             _connection.Close();
-            if (res != -1 && res1 != -1)
+            if (res != -1 && res1 != -1 && res2 != -1)
             {
                 MessageBox.Show("Başarıyla kayıt edildi.");
             }
@@ -115,8 +143,6 @@ namespace EgitimUygulamasi.Database
             {
                 MessageBox.Show("Kayıt edilemedi.");
             }
-
-            //
         }
         public static void KategoriEkleme(Model.Kategori _kategori)
         {

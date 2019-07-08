@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuestionScreen));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnOturumuKapat = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnMin = new System.Windows.Forms.Button();
-            this.btnCikis = new System.Windows.Forms.Button();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.uiProfil1 = new EgitimUygulamasi.View.UIProfil();
+            this.stepOneApp1 = new EgitimUygulamasi.View.StepOneApp();
             this.medyaEkraniSoru1 = new EgitimUygulamasi.View.MedyaEkraniSoru();
             this.soruEkrani1 = new EgitimUygulamasi.View.SoruEkrani();
-            this.stepOneApp1 = new EgitimUygulamasi.View.StepOneApp();
-            this.uiProfil1 = new EgitimUygulamasi.View.UIProfil();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,12 +48,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnProfile);
             this.panel1.Controls.Add(this.btnOturumuKapat);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnMin);
-            this.panel1.Controls.Add(this.btnCikis);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -64,12 +64,26 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(313, 1);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(159, 47);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Ad Soyad";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.label2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            // 
             // btnProfile
             // 
             this.btnProfile.FlatAppearance.BorderSize = 0;
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Image = global::EgitimUygulamasi.Properties.Resources.icons8_user_male_circle_30px;
-            this.btnProfile.Location = new System.Drawing.Point(434, 0);
+            this.btnProfile.Location = new System.Drawing.Point(490, 0);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(75, 47);
             this.btnProfile.TabIndex = 6;
@@ -87,7 +101,7 @@
             this.btnOturumuKapat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOturumuKapat.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOturumuKapat.ForeColor = System.Drawing.Color.White;
-            this.btnOturumuKapat.Location = new System.Drawing.Point(524, 0);
+            this.btnOturumuKapat.Location = new System.Drawing.Point(580, 0);
             this.btnOturumuKapat.Name = "btnOturumuKapat";
             this.btnOturumuKapat.Size = new System.Drawing.Size(138, 46);
             this.btnOturumuKapat.TabIndex = 5;
@@ -133,29 +147,13 @@
             this.btnMin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(63)))), ((int)(((byte)(75)))));
             this.btnMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMin.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMin.Location = new System.Drawing.Point(662, 0);
+            this.btnMin.Location = new System.Drawing.Point(718, 0);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(62, 46);
             this.btnMin.TabIndex = 1;
             this.btnMin.Text = "_";
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
-            // 
-            // btnCikis
-            // 
-            this.btnCikis.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCikis.FlatAppearance.BorderSize = 0;
-            this.btnCikis.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(63)))), ((int)(((byte)(75)))));
-            this.btnCikis.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(63)))), ((int)(((byte)(75)))));
-            this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCikis.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCikis.Location = new System.Drawing.Point(724, 0);
-            this.btnCikis.Name = "btnCikis";
-            this.btnCikis.Size = new System.Drawing.Size(56, 46);
-            this.btnCikis.TabIndex = 0;
-            this.btnCikis.Text = "X";
-            this.btnCikis.UseVisualStyleBackColor = true;
-            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
             // 
             // metroLink1
             // 
@@ -165,6 +163,25 @@
             this.metroLink1.TabIndex = 4;
             this.metroLink1.Text = "metroLink1";
             this.metroLink1.UseSelectable = true;
+            // 
+            // uiProfil1
+            // 
+            this.uiProfil1.BackColor = System.Drawing.Color.White;
+            this.uiProfil1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiProfil1.Location = new System.Drawing.Point(0, 46);
+            this.uiProfil1.Name = "uiProfil1";
+            this.uiProfil1.Size = new System.Drawing.Size(780, 1);
+            this.uiProfil1.TabIndex = 9;
+            this.uiProfil1.Visible = false;
+            // 
+            // stepOneApp1
+            // 
+            this.stepOneApp1.BackColor = System.Drawing.Color.White;
+            this.stepOneApp1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stepOneApp1.Location = new System.Drawing.Point(0, 46);
+            this.stepOneApp1.Name = "stepOneApp1";
+            this.stepOneApp1.Size = new System.Drawing.Size(780, 1);
+            this.stepOneApp1.TabIndex = 8;
             // 
             // medyaEkraniSoru1
             // 
@@ -176,6 +193,7 @@
             this.medyaEkraniSoru1.TabIndex = 7;
             this.medyaEkraniSoru1.Visible = false;
             this.medyaEkraniSoru1.Load += new System.EventHandler(this.medyaEkraniSoru1_Load);
+            this.medyaEkraniSoru1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             // 
             // soruEkrani1
             // 
@@ -187,25 +205,7 @@
             this.soruEkrani1.TabIndex = 6;
             this.soruEkrani1.Visible = false;
             this.soruEkrani1.Load += new System.EventHandler(this.soruEkrani1_Load);
-            // 
-            // stepOneApp1
-            // 
-            this.stepOneApp1.BackColor = System.Drawing.Color.White;
-            this.stepOneApp1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stepOneApp1.Location = new System.Drawing.Point(0, 46);
-            this.stepOneApp1.Name = "stepOneApp1";
-            this.stepOneApp1.Size = new System.Drawing.Size(780, 1);
-            this.stepOneApp1.TabIndex = 8;
-            // 
-            // uiProfil1
-            // 
-            this.uiProfil1.BackColor = System.Drawing.Color.White;
-            this.uiProfil1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiProfil1.Location = new System.Drawing.Point(0, 46);
-            this.uiProfil1.Name = "uiProfil1";
-            this.uiProfil1.Size = new System.Drawing.Size(780, 1);
-            this.uiProfil1.TabIndex = 9;
-            this.uiProfil1.Visible = false;
+            this.soruEkrani1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             // 
             // QuestionScreen
             // 
@@ -225,6 +225,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Egitim Uygulamasi";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuestionScreen_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keydown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -235,7 +236,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnCikis;
         private System.Windows.Forms.Button btnMin;
         private MetroFramework.Controls.MetroLink metroLink1;
         private System.Windows.Forms.Label label1;
@@ -246,5 +246,6 @@
         private System.Windows.Forms.Button btnProfile;
         private StepOneApp stepOneApp1;
         private UIProfil uiProfil1;
+        private System.Windows.Forms.Label label2;
     }
 }

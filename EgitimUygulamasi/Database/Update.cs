@@ -47,7 +47,7 @@ namespace EgitimUygulamasi.Database
             int res = cmd.ExecuteNonQuery();
             _connection.Close();
 
-            if(res != -1)
+            if (res != -1)
             {
                 MessageBox.Show("Başarıyla sıfırlandı.");
                 return true;
@@ -72,6 +72,25 @@ namespace EgitimUygulamasi.Database
 
 
             _connection.Close();
+        }
+
+        public static bool OdulveCezaGuncelle(OdulCezaModel model)
+        {
+            string sql = "UPDATE odulveceza set ad = '" + model.Ad + "',tur = '" + model.Tur + "', aralik1 = '" + model.Aralik1 + "',aralik2 = '" + model.Aralik2 + "' where id = "+model.ID;
+
+            _connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, _connection);
+            int res = cmd.ExecuteNonQuery();
+
+            if (res != -1)
+                MessageBox.Show("Başarıyla güncellendi.!");
+            else
+                MessageBox.Show("Güncellenemedi.");
+            _connection.Close();
+
+
+            return res != -1; 
         }
         public static void ZorlukPuaniGuncelle(Model.ZorlukPuanlari z)
         {
@@ -128,20 +147,26 @@ namespace EgitimUygulamasi.Database
         public static int SoruGuncelle(Model.Soru _soru, Model.Secenekler _secenekler)
         {
             string updateSQL = "Update sorular inner join secenekler on secenekler.soru_id = sorular.id set " +
-                "sorular.medya_id = " + _soru.MedyaID + ",sorular.kategori_id =" + _soru.KategoriID + ",  sorular.sure = " + _soru.Sure + ", soruBasligi = '" + _soru.SoruBasligi + "'" +
+                "sorular.kategori_id =" + _soru.KategoriID + ",  sorular.sure = " + _soru.Sure + ", soruBasligi = '" + _soru.SoruBasligi + "'" +
                 " ,zorlukSeviyesi = '" + _soru.ZorlukSeviyesi + "',secenekler.asecenegi = '" + _secenekler.ASecenegi + "' ," +
                 " secenekler.bsecenegi = '" + _secenekler.BSecenegi + "'" +
                 " , secenekler.csecenegi = '" + _secenekler.CSecenegi + "' , secenekler.dsecenegi = '" + _secenekler.DSecenegi + "'," +
                 " secenekler.esecenegi = '" + _secenekler.ESecenegi + "', secenekler.dogru = '" + _secenekler.DogruCevap + "',sorular.klasiksoru=" + _soru.KlasikSoru + " where sorular.id = " + _soru.ID + " and secenekler.soru_id = " + _soru.ID;
-
+            string updateSQL1 = "UPDATE sorumedyalari set medya_id = " + _soru.MedyaID + " where sorumedyalari.soru_id = " + _soru.ID;
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(updateSQL, _connection);
-            int result = cmd.ExecuteNonQuery();
-
+            int result = cmd.ExecuteNonQuery(); int result1 = 0;
+            MySqlCommand cmd1 = new MySqlCommand(updateSQL1, _connection);
+            if (_soru.MedyaID != -1)
+            {
+                result1 = cmd1.ExecuteNonQuery();
+            }
             if (result != -1)
                 MessageBox.Show("Başarıyla Güncellendi");
             else
                 MessageBox.Show("Güncellenemedi");
+            if(result1 == -1)
+                MessageBox.Show("Medya güncellemesinde sorun var.");
             _connection.Close();
             return result;
         }

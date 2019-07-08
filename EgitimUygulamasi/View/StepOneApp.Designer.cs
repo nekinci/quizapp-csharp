@@ -39,6 +39,7 @@ namespace EgitimUygulamasi.View
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblHosgeldiniz = new System.Windows.Forms.Label();
             this.lblBilgilendirme = new System.Windows.Forms.Label();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.pnlKategori.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,8 +120,8 @@ namespace EgitimUygulamasi.View
             // 
             // lblHosgeldiniz
             // 
-            this.lblHosgeldiniz.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblHosgeldiniz.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblHosgeldiniz.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblHosgeldiniz.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lblHosgeldiniz.Location = new System.Drawing.Point(0, 29);
             this.lblHosgeldiniz.Name = "lblHosgeldiniz";
             this.lblHosgeldiniz.Size = new System.Drawing.Size(780, 49);
@@ -140,11 +141,28 @@ namespace EgitimUygulamasi.View
             this.lblBilgilendirme.Text = "Önce Kategori seçin";
             this.lblBilgilendirme.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Location = new System.Drawing.Point(450, 406);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(94, 36);
+            this.materialFlatButton1.TabIndex = 15;
+            this.materialFlatButton1.Text = "Oyunu Bitir";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            // 
             // StepOneApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.lblBilgilendirme);
             this.Controls.Add(this.lblHosgeldiniz);
             this.Controls.Add(this.btnKategori);
@@ -170,5 +188,6 @@ namespace EgitimUygulamasi.View
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblHosgeldiniz;
         private System.Windows.Forms.Label lblBilgilendirme;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
     }
 }

@@ -28,7 +28,7 @@ namespace EgitimUygulamasi.Database
             string sifre = "Girilen bilgiler yanlis";
             if (reader.Read())
             {
-                sifre = reader.GetInt32("sifre").ToString();
+                sifre = reader.GetString("sifre").ToString();
             }
             _connection.Close();
             return sifre;
@@ -187,13 +187,10 @@ namespace EgitimUygulamasi.Database
             dt = new DataTable();
             MySqlConnection _conn = new MySqlConnection(DatabaseInf.Veritabani);
             _conn.Open();
-            string sqlCommand = "select sorular.id,sorular.soruBasligi,sorular.zorlukSeviyesi,sorular.sure, kategoriler.ad, " +
-                "secenekler.asecenegi,secenekler.bsecenegi, secenekler.csecenegi," +
-                "secenekler.dsecenegi,secenekler.esecenegi,secenekler.dogru,medya.medya_path,sorular.klasiksoru from " +
-                "sorular inner join secenekler on sorular.id = secenekler.soru_id " +
-                "inner join kategoriler on kategoriler.id = sorular.kategori_id inner join medya on medya.id = sorular.medya_id";
+            string sqlCommand = "select sorular.id,sorular.soruBasligi,sorular.zorlukSeviyesi,sorular.sure, kategoriler.ad,secenekler.asecenegi,secenekler.bsecenegi, secenekler.csecenegi,secenekler.dsecenegi,secenekler.esecenegi,secenekler.dogru,medya.medya_path,sorular.klasiksoru from sorular inner join secenekler on sorular.id = secenekler.soru_id inner join kategoriler on kategoriler.id = sorular.kategori_id left join medya on medya.id = (select sorumedyalari.medya_id from sorumedyalari where sorular.id = sorumedyalari.soru_id)";
             MySqlDataAdapter da = new MySqlDataAdapter(sqlCommand, _conn);
             da.Fill(dt);
+
             _conn.Close();
             return dt;
         }
@@ -203,6 +200,17 @@ namespace EgitimUygulamasi.Database
             DataTable dt = new DataTable();
             _connection.Open();
             string sql = "select calisan.id,calisan.ad,calisan.soyad,calisan.kadi,calisan.mail,puanlar.puan from calisan inner join puanlar on puanlar.calisan_id = calisan.id";
+            MySqlDataAdapter da = new MySqlDataAdapter(sql, _connection);
+            da.Fill(dt);
+            _connection.Close();
+            return dt;
+        }
+
+        public static DataTable odulveCezaCek()
+        {
+            DataTable dt = new DataTable();
+            _connection.Open();
+            string sql = "select odulveceza.id,odulveceza.ad,odulveceza.tur,odulveceza.aralik1,odulveceza.aralik2 from odulveceza";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, _connection);
             da.Fill(dt);
             _connection.Close();
@@ -256,9 +264,10 @@ namespace EgitimUygulamasi.Database
         {
             List<BirlesikSoru> sorular = new List<BirlesikSoru>();
             string sql = "select sorular.soruBasligi,sorular.sure,secenekler.*,medya.medya_path,sorular.id from sorular inner join secenekler on secenekler.soru_id = sorular.id inner join medya on medya.id = sorular.medya_id where sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' and sorular.kategori_id = (select id from kategoriler where ad = '" + kategori_ad + "')";
-            string query = "SELECT sorular.soruBasligi,sorular.sure,secenekler.*,medya.medya_path,sorular.id,sorular.klasiksoru FROM sorular,secenekler,medya WHERE sorular.id = secenekler.soru_id AND sorular.medya_id = medya.id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =(SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id IN(SELECT sorulmatarihleri.soru_id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " AND DATEDIFF( CURRENT_DATE,sorulmatarihleri.tarih) >(SELECT ayarlar.deger FROM ayarlar WHERE ayarlar.id = 2))";
 
-            string query1 = "SELECT sorular.soruBasligi, sorular.sure, secenekler.*, medya.medya_path, sorular.id,sorular.klasiksoru FROM sorular, secenekler, medya WHERE sorular.id = secenekler.soru_id AND sorular.medya_id = medya.id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =( SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id NOT IN( SELECT sorular.id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " )";
+            string query = "SELECT sorular.soruBasligi,sorular.sure,secenekler.*,sorular.id,sorular.klasiksoru FROM sorular,secenekler WHERE sorular.id = secenekler.soru_id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =(SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id IN(SELECT sorulmatarihleri.soru_id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " AND DATEDIFF( CURRENT_DATE,sorulmatarihleri.tarih) >(SELECT ayarlar.deger FROM ayarlar WHERE ayarlar.id = 2))";
+
+            string query1 = "SELECT sorular.soruBasligi, sorular.sure, secenekler.*,  sorular.id,sorular.klasiksoru FROM sorular, secenekler WHERE sorular.id = secenekler.soru_id AND sorular.zorlukSeviyesi = '" + zorluk_seviyesi + "' AND sorular.kategori_id =( SELECT kategoriler.id FROM kategoriler WHERE kategoriler.ad = '" + kategori_ad + "' ) AND sorular.id NOT IN( SELECT sorular.id FROM sorulmatarihleri WHERE sorulmatarihleri.soru_id = sorular.id AND sorulmatarihleri.calisan_id = " + Database.Select.CalisanCekID(Session.KullaniciAdiAl()) + " )";
 
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(query, _connection);
@@ -278,14 +287,13 @@ namespace EgitimUygulamasi.Database
                 _secenekler.DSecenegi = reader.GetValue(6).ToString();
                 _secenekler.ESecenegi = reader.GetValue(7).ToString();
                 _secenekler.DogruCevap = reader.GetValue(8).ToString();
-                _medya.Path = reader.GetValue(9).ToString();
-                _soru.ID = Convert.ToInt32(reader.GetValue(10));
-                _soru.KlasikSoru = reader.GetBoolean(11);
+                _soru.ID = Convert.ToInt32(reader.GetValue(9));
+                _soru.KlasikSoru = reader.GetBoolean(10);
                 BirlesikSoru soru = new BirlesikSoru();
                 soru.soru = _soru;
                 soru.secenekler = _secenekler;
-                soru.medya = _medya;
-
+                soru.medya = GetMedia(_soru.ID);
+                soru.soru.MedyaID = soru.medya.ID;
                 sorular.Add(soru);
             }
             reader.Close();
@@ -309,20 +317,51 @@ namespace EgitimUygulamasi.Database
                 _secenekler.DSecenegi = reader1.GetValue(6).ToString();
                 _secenekler.ESecenegi = reader1.GetValue(7).ToString();
                 _secenekler.DogruCevap = reader1.GetValue(8).ToString();
-                _medya.Path = reader1.GetValue(9).ToString();
-                _soru.ID = Convert.ToInt32(reader1.GetValue(10));
-                _soru.KlasikSoru = reader1.GetBoolean(11);
+                _soru.ID = Convert.ToInt32(reader1.GetValue(9));
+                _soru.KlasikSoru = reader1.GetBoolean(10);
                 BirlesikSoru soru = new BirlesikSoru();
                 soru.soru = _soru;
                 soru.secenekler = _secenekler;
-                soru.medya = _medya;
-
+                soru.medya = GetMedia(_soru.ID);
+                soru.soru.MedyaID = soru.medya.ID;
                 sorular.Add(soru);
             }
             _connection.Close();
             return sorular;
         }
+        public static Medya GetMedia(int id)
+        {
+            Medya _medya = new Medya();
+            string query = "select medya_id from sorumedyalari where sorumedyalari.soru_id = " + id;
+            MySqlConnection _connection1 = new MySqlConnection(DatabaseInf.Veritabani);
+            _connection1.Open();
+            MySqlCommand cmd = new MySqlCommand(query, _connection1);
+            MySqlDataReader reader = cmd.ExecuteReader();
 
+            _medya.Path = "-1";
+            _medya.ID = -1;
+            _medya.Ad = "-1";
+            _medya.KategoriID = -1;
+
+            if (reader.Read())
+            {
+                _medya.ID = reader.GetInt32(0);
+            }
+            reader.Close();
+            _connection1.Close();
+            _connection1.Open();
+            MySqlCommand cmd1 = new MySqlCommand("select * from medya where id = " + _medya.ID, _connection1);
+            MySqlDataReader reader1 = cmd1.ExecuteReader();
+
+            if (reader1.Read())
+            {
+                _medya.KategoriID = reader1.GetInt32(1);
+                _medya.Path = reader1.GetString(2);
+                _medya.Ad = reader1.GetString(3);
+            }
+            _connection1.Close();
+            return _medya;
+        }
         public static List<Medya> MedyaCek(int id)
         {
             List<Model.Medya> _medya = new List<Model.Medya>();
@@ -411,18 +450,28 @@ namespace EgitimUygulamasi.Database
 
         public static Medya MedyaCekForSoruDuzenleme(int id)
         {
-            Medya _medya = new Medya();
-            string query = "select * from medya where id = (select medya_id from sorular where id = " + id + ")";
+            /*Medya _medya = new Medya();
+            string query = "select * from medya where id = (select sorumedyalari from sorumedyalari where soru_id = "+id+")";
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(query, _connection);
             MySqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            _medya.ID = Convert.ToInt32(reader.GetValue(0));
-            _medya.KategoriID = Convert.ToInt32(reader.GetValue(1));
-            _medya.Path = reader.GetValue(2).ToString();
-            _medya.Ad = reader.GetValue(3).ToString();
+            _medya.Path = "-1";
+            _medya.ID = -1;
+            _medya.Ad = "-1";
+            _medya.KategoriID = -1;
+
+            if (reader.Read())
+            {
+                _medya.ID = Convert.ToInt32(reader.GetValue(0));
+                _medya.KategoriID = Convert.ToInt32(reader.GetValue(1));
+                _medya.Path = reader.GetValue(2).ToString();
+                _medya.Ad = reader.GetValue(3).ToString();
+            }
+
             _connection.Close();
-            return _medya;
+            return _medya;*/
+
+            return GetMedia(id);
         }
 
         public static List<Model.Medya> MedyaCekYeni(int id)
@@ -474,7 +523,7 @@ namespace EgitimUygulamasi.Database
             reader.Read();
 
             _connection.Close();
-            return "Ali";
+            return reader.GetString(3);
         }
 
         public static bool KullaniciGirisKontrol(string kadi, string sifre)
@@ -637,7 +686,7 @@ namespace EgitimUygulamasi.Database
             //Bu Metod sadece soruları çekmekle yükümlü Cevaplar veya Soruldumu kontrolünü sağlamaz. Sorulan sorulmayan tüm soruları çeker.
             // E günün birinde lazım olur tabi böyle şeyleri yapmak lazım.
             _connection.Open();
-            string sql = "select *from sorular,secenekler,medya where secenekler.soru_id = sorular.id and sorular.medya_id = medya.id";
+            string sql = "select *from sorular,secenekler where secenekler.soru_id = sorular.id";
             List<BirlesikSoru> sorular = new List<BirlesikSoru>();
 
             MySqlCommand cmd = new MySqlCommand(sql, _connection);
@@ -647,33 +696,26 @@ namespace EgitimUygulamasi.Database
             {
                 Soru soru = new Soru();
                 Secenekler secenekler = new Secenekler();
-                Medya medya = new Medya();
 
                 soru.ID = reader.GetInt32(0);
                 soru.KategoriID = reader.GetInt32(1);
-                soru.MedyaID = reader.GetInt32(2);
-                soru.Sure = reader.GetInt32(3);
-                soru.SoruBasligi = reader.GetString(4);
-                soru.ZorlukSeviyesi = reader.GetString(5);
-                soru.KlasikSoru = reader.GetBoolean(6);
+                soru.Sure = reader.GetInt32(2);
+                soru.SoruBasligi = reader.GetString(3);
+                soru.ZorlukSeviyesi = reader.GetString(4);
+                soru.KlasikSoru = reader.GetBoolean(5);
 
-                secenekler.SoruID = reader.GetInt32(7);
-                secenekler.ASecenegi = reader.GetString(8);
-                secenekler.BSecenegi = reader.GetString(9);
-                secenekler.CSecenegi = reader.GetString(10);
-                secenekler.DSecenegi = reader.GetString(11);
-                secenekler.ESecenegi = reader.GetString(12);
-                secenekler.DogruCevap = reader.GetString(13);
-
-                medya.ID = reader.GetInt32(14);
-                medya.KategoriID = reader.GetInt32(15);
-                medya.Path = reader.GetString(16);
-                medya.Ad = reader.GetString(17);
+                secenekler.SoruID = reader.GetInt32(6);
+                secenekler.ASecenegi = reader.GetString(7);
+                secenekler.BSecenegi = reader.GetString(8);
+                secenekler.CSecenegi = reader.GetString(9);
+                secenekler.DSecenegi = reader.GetString(10);
+                secenekler.ESecenegi = reader.GetString(11);
+                secenekler.DogruCevap = reader.GetString(12);
 
                 BirlesikSoru Soru = new BirlesikSoru();
                 Soru.soru = soru;
                 Soru.secenekler = secenekler;
-                Soru.medya = medya;
+                Soru.medya = GetMedia(soru.ID);
 
                 sorular.Add(Soru);
             }

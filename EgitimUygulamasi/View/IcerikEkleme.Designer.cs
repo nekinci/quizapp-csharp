@@ -38,6 +38,7 @@
             this.pictureMedya = new System.Windows.Forms.PictureBox();
             this.videoMedya = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnTamEkran = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureMedya)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).BeginInit();
             this.SuspendLayout();
@@ -157,10 +158,27 @@
             this.btnTamEkran.Visible = false;
             this.btnTamEkran.Click += new System.EventHandler(this.materialFlatButton3_Click);
             // 
+            // materialFlatButton3
+            // 
+            this.materialFlatButton3.AutoSize = true;
+            this.materialFlatButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton3.Depth = 0;
+            this.materialFlatButton3.Location = new System.Drawing.Point(373, 385);
+            this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton3.Name = "materialFlatButton3";
+            this.materialFlatButton3.Primary = false;
+            this.materialFlatButton3.Size = new System.Drawing.Size(73, 36);
+            this.materialFlatButton3.TabIndex = 11;
+            this.materialFlatButton3.Text = "Geri Dön";
+            this.materialFlatButton3.UseVisualStyleBackColor = true;
+            this.materialFlatButton3.Click += new System.EventHandler(this.materialFlatButton3_Click_1);
+            // 
             // IcerikEkleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.materialFlatButton3);
             this.Controls.Add(this.btnTamEkran);
             this.Controls.Add(this.videoMedya);
             this.Controls.Add(this.pictureMedya);
@@ -190,5 +208,6 @@
         private System.Windows.Forms.PictureBox pictureMedya;
         private AxWMPLib.AxWindowsMediaPlayer videoMedya;
         private MaterialSkin.Controls.MaterialFlatButton btnTamEkran;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton3;
     }
 }

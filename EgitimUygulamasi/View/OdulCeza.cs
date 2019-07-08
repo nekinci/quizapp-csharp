@@ -17,8 +17,6 @@ namespace EgitimUygulamasi.View
         {
             InitializeComponent();
 
-            Yukle();
-
         }
 
         public void setMain(Main main)
@@ -27,43 +25,18 @@ namespace EgitimUygulamasi.View
         }
         private void Yukle()
         {
-            List<Model.Puan> Puanlar = Database.Select.Puanlar();
-            Model.OdulCeza odulceza = Database.Select.OdulCezaCek();
-            List<Model.Calisan> Calisanlar = Database.Select.Calisanlar();
-            flowLayoutPanel1.Controls.Clear();
-            flowLayoutPanel2.Controls.Clear();
-            flowLayoutPanel3.Controls.Clear();
-            foreach (var i in Puanlar.FindAll(x => x.CalisanPuani >= odulceza.Ceza1 && x.CalisanPuani <= odulceza.Ceza2))
-            {
-                Model.Calisan calisan = Calisanlar.Find(x => x.ID == i.CalisanID);
-                string isim = calisan.Ad + " " + calisan.Soyad;
-                PuanProfil profil = new PuanProfil();
-                profil.setValues(isim, i.CalisanPuani.ToString());
-                flowLayoutPanel1.Controls.Add(profil);
-
-            }
-            foreach (var i in Puanlar.FindAll(x => x.CalisanPuani >= odulceza.Odul1 && x.CalisanPuani <= odulceza.Odul2))
-            {
-                Model.Calisan calisan = Calisanlar.Find(x => x.ID == i.CalisanID);
-                string isim = calisan.Ad + " " + calisan.Soyad;
-                PuanProfil profil = new PuanProfil();
-                profil.setValues(isim, i.CalisanPuani.ToString());
-                flowLayoutPanel2.Controls.Add(profil);
-
-            }
-            foreach (var i in Puanlar.FindAll(x => x.CalisanPuani < odulceza.Ceza1 || x.CalisanPuani > odulceza.Odul2))
-            {
-                Model.Calisan calisan = Calisanlar.Find(x => x.ID == i.CalisanID);
-                string isim = calisan.Ad + " " + calisan.Soyad;
-                PuanProfil profil = new PuanProfil();
-                profil.setValues(isim, i.CalisanPuani.ToString());
-                flowLayoutPanel3.Controls.Add(profil);
-            }
+            
 
         }
         private void OdulCeza_Load(object sender, EventArgs e)
         {
-            
+            OdulVeCezaTablosu.DataSource = Database.Select.odulveCezaCek();
+            OdulVeCezaTablosu.Update();
+            OdulVeCezaTablosu.Columns[0].HeaderText = "ID";
+            OdulVeCezaTablosu.Columns[1].HeaderText = "Ad";
+            OdulVeCezaTablosu.Columns[2].HeaderText = "Tür";
+            OdulVeCezaTablosu.Columns[3].HeaderText = "Aralık 1";
+            OdulVeCezaTablosu.Columns[4].HeaderText = "Aralık 2";
         }
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
@@ -82,7 +55,33 @@ namespace EgitimUygulamasi.View
 
         public void yenidenCiz()
         {
-            Yukle();
+            OdulVeCezaTablosu.DataSource = Database.Select.odulveCezaCek();
+            OdulVeCezaTablosu.Update();
+        }
+
+        private void OdulVeCezaTablosu_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+            string tur = OdulVeCezaTablosu.Rows[e.RowIndex].Cells[2].Value.ToString();
+            if (tur == "Ödül")
+                lblBilgi.ForeColor = Color.Blue;
+            else
+                lblBilgi.ForeColor = Color.Red;
+            lblBilgi.Text = tur;
+            int aralik1 = Int32.Parse(OdulVeCezaTablosu.Rows[e.RowIndex].Cells[3].Value.ToString());
+            int aralik2 = Int32.Parse(OdulVeCezaTablosu.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+            List<Model.Calisan> Calisanlar = Database.Select.Calisanlar();
+            List<Model.Puan> Puanlar = Database.Select.Puanlar();
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var i in Puanlar.FindAll(x => x.CalisanPuani >= aralik1 && x.CalisanPuani <= aralik2))
+            {
+                PuanProfil profil = new PuanProfil();
+                Model.Calisan calisan = Calisanlar.Find(x => x.ID == i.CalisanID);
+                profil.setValues(calisan.Ad + " " + calisan.Soyad, i.CalisanPuani.ToString());
+                flowLayoutPanel1.Controls.Add(profil);
+            }
         }
     }
 }
