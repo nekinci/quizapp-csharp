@@ -28,23 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedyaDegistir));
             this.imageLists = new System.Windows.Forms.ListBox();
             this.cmbKategori = new MetroFramework.Controls.MetroComboBox();
             this.groupSeciliResim = new System.Windows.Forms.GroupBox();
-            this.btnTamEkran = new MaterialSkin.Controls.MaterialFlatButton();
-            this.videoMedya = new AxWMPLib.AxWindowsMediaPlayer();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.lblPath = new System.Windows.Forms.Label();
             this.txtIsim = new System.Windows.Forms.TextBox();
             this.lblMedyaismi = new System.Windows.Forms.Label();
-            this.secilenResim = new System.Windows.Forms.PictureBox();
             this.btnYeniMedya = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnDuzenle = new MaterialSkin.Controls.MaterialFlatButton();
+            this.vlcPlayer1 = new EgitimUygulamasi.View.VlcPlayer();
             this.groupSeciliResim.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.secilenResim)).BeginInit();
             this.SuspendLayout();
             // 
             // imageLists
@@ -69,13 +64,11 @@
             // 
             // groupSeciliResim
             // 
-            this.groupSeciliResim.Controls.Add(this.btnTamEkran);
-            this.groupSeciliResim.Controls.Add(this.videoMedya);
+            this.groupSeciliResim.Controls.Add(this.vlcPlayer1);
             this.groupSeciliResim.Controls.Add(this.txtPath);
             this.groupSeciliResim.Controls.Add(this.lblPath);
             this.groupSeciliResim.Controls.Add(this.txtIsim);
             this.groupSeciliResim.Controls.Add(this.lblMedyaismi);
-            this.groupSeciliResim.Controls.Add(this.secilenResim);
             this.groupSeciliResim.Location = new System.Drawing.Point(310, 20);
             this.groupSeciliResim.Name = "groupSeciliResim";
             this.groupSeciliResim.Size = new System.Drawing.Size(292, 305);
@@ -83,42 +76,13 @@
             this.groupSeciliResim.TabStop = false;
             this.groupSeciliResim.Text = "Seçilen Medya:";
             // 
-            // btnTamEkran
-            // 
-            this.btnTamEkran.AutoSize = true;
-            this.btnTamEkran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTamEkran.Depth = 0;
-            this.btnTamEkran.Location = new System.Drawing.Point(188, 196);
-            this.btnTamEkran.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnTamEkran.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnTamEkran.Name = "btnTamEkran";
-            this.btnTamEkran.Primary = false;
-            this.btnTamEkran.Size = new System.Drawing.Size(89, 36);
-            this.btnTamEkran.TabIndex = 6;
-            this.btnTamEkran.Text = "Tam Ekran";
-            this.btnTamEkran.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTamEkran.UseVisualStyleBackColor = true;
-            this.btnTamEkran.Visible = false;
-            this.btnTamEkran.Click += new System.EventHandler(this.btnTamEkran_Click);
-            // 
-            // videoMedya
-            // 
-            this.videoMedya.Dock = System.Windows.Forms.DockStyle.Top;
-            this.videoMedya.Enabled = true;
-            this.videoMedya.Location = new System.Drawing.Point(3, 16);
-            this.videoMedya.Name = "videoMedya";
-            this.videoMedya.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoMedya.OcxState")));
-            this.videoMedya.Size = new System.Drawing.Size(286, 171);
-            this.videoMedya.TabIndex = 5;
-            this.videoMedya.Visible = false;
-            // 
             // txtPath
             // 
             this.txtPath.Enabled = false;
             this.txtPath.Location = new System.Drawing.Point(77, 274);
             this.txtPath.MinimumSize = new System.Drawing.Size(200, 27);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(200, 27);
+            this.txtPath.Size = new System.Drawing.Size(200, 20);
             this.txtPath.TabIndex = 4;
             // 
             // lblPath
@@ -136,7 +100,7 @@
             this.txtIsim.Location = new System.Drawing.Point(77, 241);
             this.txtIsim.MinimumSize = new System.Drawing.Size(200, 27);
             this.txtIsim.Name = "txtIsim";
-            this.txtIsim.Size = new System.Drawing.Size(200, 27);
+            this.txtIsim.Size = new System.Drawing.Size(200, 20);
             this.txtIsim.TabIndex = 2;
             // 
             // lblMedyaismi
@@ -147,16 +111,6 @@
             this.lblMedyaismi.Size = new System.Drawing.Size(63, 13);
             this.lblMedyaismi.TabIndex = 1;
             this.lblMedyaismi.Text = "Medya İsmi:";
-            // 
-            // secilenResim
-            // 
-            this.secilenResim.Location = new System.Drawing.Point(3, 19);
-            this.secilenResim.Name = "secilenResim";
-            this.secilenResim.Size = new System.Drawing.Size(288, 171);
-            this.secilenResim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.secilenResim.TabIndex = 0;
-            this.secilenResim.TabStop = false;
-            this.secilenResim.Visible = false;
             // 
             // btnYeniMedya
             // 
@@ -207,6 +161,13 @@
             this.btnDuzenle.UseVisualStyleBackColor = true;
             this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
+            // vlcPlayer1
+            // 
+            this.vlcPlayer1.Location = new System.Drawing.Point(11, 19);
+            this.vlcPlayer1.Name = "vlcPlayer1";
+            this.vlcPlayer1.Size = new System.Drawing.Size(266, 195);
+            this.vlcPlayer1.TabIndex = 5;
+            // 
             // MedyaDegistir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,8 +196,6 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MedyaDegistir_KeyPress);
             this.groupSeciliResim.ResumeLayout(false);
             this.groupSeciliResim.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.secilenResim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,11 +210,9 @@
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.TextBox txtIsim;
         private System.Windows.Forms.Label lblMedyaismi;
-        private System.Windows.Forms.PictureBox secilenResim;
         private MaterialSkin.Controls.MaterialRaisedButton btnYeniMedya;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private AxWMPLib.AxWindowsMediaPlayer videoMedya;
-        private MaterialSkin.Controls.MaterialFlatButton btnTamEkran;
         private MaterialSkin.Controls.MaterialFlatButton btnDuzenle;
+        private VlcPlayer vlcPlayer1;
     }
 }

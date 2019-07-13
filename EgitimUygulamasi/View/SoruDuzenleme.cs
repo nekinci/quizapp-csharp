@@ -105,6 +105,14 @@ namespace EgitimUygulamasi.View
             _tmp_medya = Database.Select.MedyaCekForSoruDuzenleme(selectedId);
             materialFlatButton1.Enabled = true;
             materialFlatButton2.Enabled = true;
+            if (_tmp_medya.ID == -1)
+            {
+                chkMedya.Checked = true;
+                materialFlatButton1.Enabled = false;
+                materialFlatButton2.Enabled = false;
+            }
+            else
+                chkMedya.Checked = false;
         }
 
         private void btnKayitSil_Click(object sender, EventArgs e)
@@ -153,9 +161,9 @@ namespace EgitimUygulamasi.View
             {
                 message += "Zorluk seviyesi seçilmedi. \n"; kontrol = false;
             }
-            if (txtMedya.Text == "")
+            if (!chkMedya.Checked && _medya == null)
             {
-                message += "Medya seçilmedi. \n"; kontrol = false;
+                message += "\nMedya eklemediniz, eğer medya eklemeden soruyu güncellemek istiyorsanız (Medya yok(boş)) seçeneğini işaretleyerek güncelleyebilirsiniz."; kontrol = false;
             }
 
             if (!kontrol)
@@ -194,6 +202,7 @@ namespace EgitimUygulamasi.View
             {
                 message += "Doğru cevap seçilmedi."; kontrol = false;
             }
+            
 
             if (!kontrol)
                 MessageBox.Show(message);
@@ -223,6 +232,10 @@ namespace EgitimUygulamasi.View
                 else
                     _secenekler.DogruCevap = cmbDogru.SelectedItem.ToString();
 
+                if (chkMedya.Checked)
+                {
+                    _soru.MedyaID = -1;
+                }
                 temizle();
 
                 Database.Update.SoruGuncelle(_soru, _secenekler);
@@ -380,6 +393,21 @@ namespace EgitimUygulamasi.View
             medyaDegistir.setSoruDuzenleme1(this, x.ID);
             medyaDegistir.KategoriDegisti(true);
             medyaDegistir.Show();
+        }
+
+        private void chkMedya_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMedya.Checked)
+            {
+                materialFlatButton1.Enabled = false;
+                materialFlatButton2.Enabled = false;
+            }
+            else
+            {
+                materialFlatButton1.Enabled = true;
+                materialFlatButton2.Enabled = true;
+
+            }
         }
 
         private void cmbFiltreKategori_SelectedIndexChanged(object sender, EventArgs e)

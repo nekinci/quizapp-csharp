@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoruEkleme));
             this.imageLists = new System.Windows.Forms.ListBox();
             this.txtAra = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btnYukle = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -48,15 +47,11 @@
             this.txtC = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtB = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtA = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkKlasik = new MaterialSkin.Controls.MaterialCheckBox();
-            this.btnTamEkran = new MaterialSkin.Controls.MaterialFlatButton();
-            this.videoMedya = new AxWMPLib.AxWindowsMediaPlayer();
+            this.vlcPlayer1 = new EgitimUygulamasi.View.VlcPlayer();
             this.soru.SuspendLayout();
             this.sorupage.SuspendLayout();
             this.secenektab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).BeginInit();
             this.SuspendLayout();
             // 
             // imageLists
@@ -351,16 +346,6 @@
             this.txtA.UseSystemPasswordChar = false;
             this.txtA.Click += new System.EventHandler(this.txtA_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 68);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(223, 138);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // checkKlasik
             // 
             this.checkKlasik.AutoSize = true;
@@ -378,43 +363,21 @@
             this.checkKlasik.UseVisualStyleBackColor = true;
             this.checkKlasik.CheckedChanged += new System.EventHandler(this.checkKlasik_CheckedChanged);
             // 
-            // btnTamEkran
+            // vlcPlayer1
             // 
-            this.btnTamEkran.AutoSize = true;
-            this.btnTamEkran.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTamEkran.Depth = 0;
-            this.btnTamEkran.Location = new System.Drawing.Point(176, 30);
-            this.btnTamEkran.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnTamEkran.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnTamEkran.Name = "btnTamEkran";
-            this.btnTamEkran.Primary = false;
-            this.btnTamEkran.Size = new System.Drawing.Size(89, 36);
-            this.btnTamEkran.TabIndex = 17;
-            this.btnTamEkran.Text = "tam ekran";
-            this.btnTamEkran.UseVisualStyleBackColor = true;
-            this.btnTamEkran.Visible = false;
-            this.btnTamEkran.Click += new System.EventHandler(this.materialFlatButton2_Click);
-            // 
-            // videoMedya
-            // 
-            this.videoMedya.Enabled = true;
-            this.videoMedya.Location = new System.Drawing.Point(10, 68);
-            this.videoMedya.Name = "videoMedya";
-            this.videoMedya.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("videoMedya.OcxState")));
-            this.videoMedya.Size = new System.Drawing.Size(223, 150);
-            this.videoMedya.TabIndex = 18;
-            this.videoMedya.Visible = false;
+            this.vlcPlayer1.Location = new System.Drawing.Point(10, 68);
+            this.vlcPlayer1.Name = "vlcPlayer1";
+            this.vlcPlayer1.Size = new System.Drawing.Size(223, 150);
+            this.vlcPlayer1.TabIndex = 17;
             // 
             // SoruEkleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.videoMedya);
-            this.Controls.Add(this.btnTamEkran);
+            this.Controls.Add(this.vlcPlayer1);
             this.Controls.Add(this.checkKlasik);
             this.Controls.Add(this.soru);
             this.Controls.Add(this.btnYukle);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtAra);
             this.Controls.Add(this.imageLists);
             this.Name = "SoruEkleme";
@@ -425,8 +388,6 @@
             this.sorupage.PerformLayout();
             this.secenektab.ResumeLayout(false);
             this.secenektab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.videoMedya)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,9 +414,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtA;
         private MetroFramework.Controls.MetroComboBox cmbDogru;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private MaterialSkin.Controls.MaterialCheckBox checkKlasik;
-        private MaterialSkin.Controls.MaterialFlatButton btnTamEkran;
-        private AxWMPLib.AxWindowsMediaPlayer videoMedya;
+        private VlcPlayer vlcPlayer1;
     }
 }

@@ -97,5 +97,33 @@ namespace EgitimUygulamasi.View
             medya.setMedya(this.updatedMedya);
             medya.Show();
         }
+
+        private void txtURL_TextChanged(object sender, EventArgs e)
+        {
+            updatedMedya = new Model.Medya();
+            updatedMedya.ID = medya.ID;
+            updatedMedya.KategoriID = medya.KategoriID;
+            updatedMedya.Path = txtURL.Text;
+            btnGoruntule2.Enabled = true;
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            updatedMedya.Ad = txtAd.Text;
+            updatedMedya.Path = null;
+            updatedMedya.Path = txtURL.Text;
+            try
+            {
+                if (Database.Update.MedyaGuncelleme(updatedMedya))
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir sorun oluştu: " + ex.Message);
+            }
+            media.Guncelle();
+            this.Dispose();
+        }
     }
 }

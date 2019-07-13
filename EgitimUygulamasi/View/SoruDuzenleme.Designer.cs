@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SorularTablosu = new System.Windows.Forms.DataGridView();
             this.txtAra = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabSorular = new System.Windows.Forms.TabControl();
@@ -56,6 +56,7 @@
             this.cmbFiltreKategori = new MetroFramework.Controls.MetroComboBox();
             this.lblFiltre = new System.Windows.Forms.Label();
             this.chkKlasik = new MaterialSkin.Controls.MaterialCheckBox();
+            this.chkMedya = new MaterialSkin.Controls.MaterialCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.SorularTablosu)).BeginInit();
             this.tabSorular.SuspendLayout();
             this.sorutab.SuspendLayout();
@@ -69,14 +70,14 @@
             this.SorularTablosu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SorularTablosu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.SorularTablosu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SorularTablosu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(240)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SorularTablosu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.SorularTablosu.ColumnHeadersHeight = 45;
             this.SorularTablosu.Cursor = System.Windows.Forms.Cursors.Default;
             this.SorularTablosu.GridColor = System.Drawing.SystemColors.ControlLightLight;
@@ -126,6 +127,7 @@
             // 
             this.sorutab.AllowDrop = true;
             this.sorutab.BackColor = System.Drawing.Color.White;
+            this.sorutab.Controls.Add(this.chkMedya);
             this.sorutab.Controls.Add(this.materialFlatButton2);
             this.sorutab.Controls.Add(this.materialFlatButton1);
             this.sorutab.Controls.Add(this.materialLabel1);
@@ -503,6 +505,23 @@
             this.chkKlasik.UseVisualStyleBackColor = true;
             this.chkKlasik.CheckedChanged += new System.EventHandler(this.chkKlasik_CheckedChanged);
             // 
+            // chkMedya
+            // 
+            this.chkMedya.AutoSize = true;
+            this.chkMedya.Depth = 0;
+            this.chkMedya.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chkMedya.Location = new System.Drawing.Point(34, 262);
+            this.chkMedya.Margin = new System.Windows.Forms.Padding(0);
+            this.chkMedya.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chkMedya.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chkMedya.Name = "chkMedya";
+            this.chkMedya.Ripple = true;
+            this.chkMedya.Size = new System.Drawing.Size(131, 30);
+            this.chkMedya.TabIndex = 8;
+            this.chkMedya.Text = "Medya Yok(Boş)";
+            this.chkMedya.UseVisualStyleBackColor = true;
+            this.chkMedya.CheckedChanged += new System.EventHandler(this.chkMedya_CheckedChanged);
+            // 
             // SoruDuzenleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,5 +578,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMedya;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
         private MaterialSkin.Controls.MaterialCheckBox chkKlasik;
+        private MaterialSkin.Controls.MaterialCheckBox chkMedya;
     }
 }

@@ -152,15 +152,43 @@ namespace EgitimUygulamasi.Database
                 " secenekler.bsecenegi = '" + _secenekler.BSecenegi + "'" +
                 " , secenekler.csecenegi = '" + _secenekler.CSecenegi + "' , secenekler.dsecenegi = '" + _secenekler.DSecenegi + "'," +
                 " secenekler.esecenegi = '" + _secenekler.ESecenegi + "', secenekler.dogru = '" + _secenekler.DogruCevap + "',sorular.klasiksoru=" + _soru.KlasikSoru + " where sorular.id = " + _soru.ID + " and secenekler.soru_id = " + _soru.ID;
-            string updateSQL1 = "UPDATE sorumedyalari set medya_id = " + _soru.MedyaID + " where sorumedyalari.soru_id = " + _soru.ID;
             _connection.Open();
             MySqlCommand cmd = new MySqlCommand(updateSQL, _connection);
             int result = cmd.ExecuteNonQuery(); int result1 = 0;
-            MySqlCommand cmd1 = new MySqlCommand(updateSQL1, _connection);
-            if (_soru.MedyaID != -1)
+
+            if(_soru.MedyaID == -1)
             {
-                result1 = cmd1.ExecuteNonQuery();
+                MessageBox.Show("Girdi");
+                string sql = "delete from sorumedyalari where soru_id = " + _soru.ID;
+                MySqlCommand cmds = new MySqlCommand(sql, _connection);
+                result1 = cmds.ExecuteNonQuery();
             }
+            else
+            {
+                string sqlt = "select *from sorumedyalari where soru_id = " + _soru.ID + " and medya_id = " + _soru.MedyaID;
+                MySqlCommand cmdt = new MySqlCommand(sqlt, _connection);
+                MySqlDataReader readert = cmdt.ExecuteReader();
+                bool durum = readert.Read();
+                readert.Close();
+
+                if (durum)
+                {
+                    //Güncelle
+                    string sqlu = "update sorumedyalari set medya_id = " + _soru.MedyaID + " where soru_id = " + _soru.ID;
+                    MySqlCommand cmdu = new MySqlCommand(sqlu, _connection);
+                    result1 = cmdu.ExecuteNonQuery();
+
+                }
+                else
+                {
+                    //Ekle
+                    string sqla = "insert into sorumedyalari values(0," + _soru.ID + "," + _soru.MedyaID + ")";
+                    MySqlCommand cmda = new MySqlCommand(sqla, _connection);
+                    result1 = cmda.ExecuteNonQuery();
+                }
+                
+            }
+
             if (result != -1)
                 MessageBox.Show("Başarıyla Güncellendi");
             else

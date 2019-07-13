@@ -60,24 +60,8 @@ namespace EgitimUygulamasi.View
                 _medya = (Medya)imageLists.SelectedItem;
                 if (_medya == null)
                     return;
-                if (MedyaKontrol.ResimKontrol(_medya.Path))
-                {
-                    secilenResim.ImageLocation = _medya.Path;
-                    secilenResim.Visible = true;
-                    videoMedya.Visible = false;
-                    videoMedya.URL = "";
-                    videoMedya.Ctlcontrols.stop();
-                    btnTamEkran.Visible = false;
-                }
-                if (MedyaKontrol.VideoKontrol(_medya.Path))
-                {
-                    videoMedya.URL = _medya.Path;
-                    videoMedya.Visible = true;
-                    secilenResim.Visible = false;
-                    secilenResim.ImageLocation = "";
-                    videoMedya.Ctlcontrols.stop();
-                    btnTamEkran.Visible = true;
-                }
+
+                vlcPlayer1.SetMedia(_medya);
                 guncelleme = new MedyaGuncelleme();
                 guncelleme.SetMedya(_medya,this);
                 txtIsim.Text = _medya.Ad;
@@ -143,10 +127,6 @@ namespace EgitimUygulamasi.View
 
         private void btnTamEkran_Click(object sender, EventArgs e)
         {
-            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
-                videoMedya.fullScreen = true;
-            else
-                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnDuzenle_Click(object sender, EventArgs e)

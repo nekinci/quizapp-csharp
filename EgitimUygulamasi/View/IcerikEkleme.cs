@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using EgitimUygulamasi.Properties;
 using System.Diagnostics;
+using EgitimUygulamasi.Model;
 
 namespace EgitimUygulamasi.View
 {
@@ -55,24 +56,13 @@ namespace EgitimUygulamasi.View
                 txtDosya.Text = dosyayolu;
             }
 
-            if (MedyaKontrol.ResimKontrol(dosyaadi))
-            {
-                videoMedya.Ctlcontrols.stop();
-                videoMedya.URL = "";
-                videoMedya.Visible = false;
-                pictureMedya.ImageLocation = dosyayolu;
-                pictureMedya.Visible = true;
-                btnTamEkran.Visible = false;
+            Medya _medya = new Medya();
+            _medya.ID = 0;
+            _medya.KategoriID = 0;
+            _medya.Path = dosyayolu;
+            _medya.Ad = "0";
 
-            }
-
-            if (MedyaKontrol.VideoKontrol(dosyaadi))
-            {
-                pictureMedya.ImageLocation = "";
-                videoMedya.URL = dosyayolu;
-                videoMedya.Visible = true;
-                btnTamEkran.Visible = true;
-            }
+            vlcPlayer1.SetMedia(_medya);
         }
 
         private void materialFlatButton2_Click(object sender, EventArgs e)
@@ -101,7 +91,31 @@ namespace EgitimUygulamasi.View
                
             }
         }
+        public bool VerifyTexts1()
+        {
+            bool kontrol = true;
+            string message = "";
 
+            if(txtIsim1.Text == "")
+            {
+                message += "Medya ismi girilmedi.\n";kontrol = false;
+            }
+            if(txtURL.Text == "")
+            {
+                message += "URL girilmedi.\n"; kontrol = false;
+            }
+
+            if(cmbKategori1.SelectedIndex < 0)
+            {
+                message += "Kategori seçilmedi.\n";
+                kontrol = false;
+            }
+
+            if (!kontrol)
+                MessageBox.Show(message);
+            return kontrol;
+
+        }
         public bool VerifyTexts()
         {
             bool kontrol = true;
@@ -146,19 +160,8 @@ namespace EgitimUygulamasi.View
 
             cmbKategori.DataSource = strkategori;
             cmbKategori.SelectedIndex = -1;
-
-        }
-
-        private void materialFlatButton3_Click(object sender, EventArgs e)
-        {
-            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
-                videoMedya.fullScreen = true;
-            else
-                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void videoMedya_Enter(object sender, EventArgs e)
-        {
+            cmbKategori1.DataSource = strkategori;
+            cmbKategori1.SelectedIndex = -1;
 
         }
 
@@ -166,5 +169,47 @@ namespace EgitimUygulamasi.View
         {
             this.main1.CloseWindow();
         }
+
+        private void materialFlatButton7_Click(object sender, EventArgs e)
+        {
+            if (VerifyTexts1())
+            {
+                Model.Medya medya = new Model.Medya();
+                medya.ID = 0;
+                medya.Ad = txtIsim1.Text;
+                medya.KategoriID = _kategori.ElementAt(cmbKategori1.SelectedIndex).ID;
+                medya.Path = txtURL.Text;
+                try
+                {
+                    if (Database.Insert.MedyaEkleme(medya))
+                    {
+
+                        this.soruEkleme.MedyaYukle();
+                        this.main1.CloseWindow();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Bir sorun oluştu: " + ex.Message);
+                }
+
+            }
+        }
+
+        private void txtURL_TextChanged(object sender, EventArgs e)
+        {
+            Medya _medya = new Medya();
+            _medya.ID = 0;
+            _medya.KategoriID = 0;
+            _medya.Path = txtURL.Text;
+            _medya.Ad = "0";
+            vlcPlayer2.SetMedia(_medya);
+        }
+
+        private void urlpage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-}
+    }
+

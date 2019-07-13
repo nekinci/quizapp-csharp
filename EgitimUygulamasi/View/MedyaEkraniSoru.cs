@@ -26,8 +26,7 @@ namespace EgitimUygulamasi.View
 
         private void btnSoruyaGec_Click(object sender, EventArgs e)
         {
-            
-            videoMedya.Ctlcontrols.stop();
+            vlcPlayer1.Stop();
             this.Visible = false;
             main.SoruGoster();
         }
@@ -40,32 +39,11 @@ namespace EgitimUygulamasi.View
         public void Goster(BirlesikSoru soru)
         {
             this.Visible = true;
-            if (MedyaKontrol.ResimKontrol(soru.medya.Path))
-            {
-                pictureBox1.ImageLocation = soru.medya.Path;
-                pictureBox1.Visible = true;
-                videoMedya.Visible = false;
-                videoMedya.URL = "";
-                btnTamEkran.Visible = false;
-                videoMedya.Ctlcontrols.stop();
-            }
-            if (MedyaKontrol.VideoKontrol(soru.medya.Path))
-            {
-                pictureBox1.Visible = false;
-                pictureBox1.ImageLocation = "";
-                videoMedya.URL = soru.medya.Path;
-                videoMedya.Ctlcontrols.stop();
-                videoMedya.Visible = true;
-                btnTamEkran.Visible = true;
-            }
+            vlcPlayer1.SetMedia(soru.medya);
         }
 
         private void btnTamEkran_Click(object sender, EventArgs e)
         {
-            if (videoMedya.playState == WMPLib.WMPPlayState.wmppsPlaying)
-                videoMedya.fullScreen = true;
-            else
-                MessageBox.Show("Video başlatılmadan tam ekran yapamazsınız!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

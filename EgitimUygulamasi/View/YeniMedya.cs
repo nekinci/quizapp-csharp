@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EgitimUygulamasi.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,7 @@ namespace EgitimUygulamasi.View
             this.medyaDegistir1 = medyaDegistir1;
             this.selectedId = selectedId;
             cmbKategori.Items.Add(Database.Select.KategoriCekMedya(selectedId).Ad);
+            cmbKategori.Items.Add(Database.Select.KategoriCekMedya(selectedId).Ad);
         }
 
         private void YeniMedya_Load(object sender, EventArgs e)
@@ -53,6 +55,10 @@ namespace EgitimUygulamasi.View
                 dosyaadi = openFileDialog1.SafeFileName;
                 txtDosya.Text = dosyayolu;
             }
+
+            Medya medya = new Medya();
+            medya.Path = dosyayolu;
+            vlcPlayer1.SetMedia(medya);
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
@@ -116,6 +122,64 @@ namespace EgitimUygulamasi.View
         private void btnBitir_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void txtURL_TextChanged(object sender, EventArgs e)
+        {
+            Medya medya = new Medya();
+            medya.Path = txtURL.Text;
+            vlcPlayer2.SetMedia(medya);
+        }
+
+        public bool VerifyTexts1()
+        {
+            bool kontrol = true;
+            string message = "";
+
+            if (txtIsim.Text == "")
+            {
+                message += "Medya adi girilmedi.\n"; kontrol = false;
+            }
+            if (cmbKategori.SelectedIndex < 0)
+            {
+                message += "Kategori seçilmedi.\n"; kontrol = false;
+            }
+            if (txtURL.Text == "")
+            {
+                message += "URL girilmedi!\n"; kontrol = false;
+            }
+
+            if (!kontrol)
+                MessageBox.Show(message);
+            return kontrol;
+        }
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            if (VerifyTexts1())
+            {
+                Model.Medya _medya = new Model.Medya();
+
+                _medya.Ad = txtIsim.Text;
+                _medya.ID = 0;
+                _medya.KategoriID = Database.Select.KategoriCekMedya(selectedId).ID;
+                _medya.Path = txtURL.Text;
+                try
+                {
+                    if (Database.Insert.MedyaEkleme(_medya))
+                    {
+                        MessageBox.Show("Başarıyla eklendi");
+                        medyaDegistir1.MedyaYukle();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Eklenirken bir sorun oluştu!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + ": Dosya yüklenirken bir sorun oluştu!");
+                }
+            }
         }
     }
 }
