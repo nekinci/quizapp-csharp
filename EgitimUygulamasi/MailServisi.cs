@@ -16,7 +16,7 @@ namespace EgitimUygulamasi
         {
             var client = new SmtpClient("smtp.gmail.com", 587)
             {
-                Credentials = new NetworkCredential("niyaziekinci5050@gmail.com", "++-5432704++-"),
+                Credentials = new NetworkCredential("niyaziekinci5050@gmail.com", "+"),
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network
             };
