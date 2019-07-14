@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
 using System.Text.RegularExpressions;
+using YoutubeExplode;
+using YoutubeExplode.Models.MediaStreams;
+using System.Diagnostics;
 
 namespace EgitimUygulamasi.View
 {
@@ -30,39 +33,63 @@ namespace EgitimUygulamasi.View
                 return yMatch.Success ? yMatch.Groups[1].Value : String.Empty;
             }
         }
-        public void SetMedia(Model.Medya medya)
+        public async void SetMedia(Model.Medya medya)
         {
+            vlcControl1.Visible = true;
+            panel2.Visible = true;
+            axVLCPlugin21.Visible = false;
             this.medya = medya;
-            if (MedyaKontrol.ResimKontrol(medya.Path))
+            if (MedyaKontrol.ResimKontrol(medya.Path) && !medya.Path.StartsWith("http")) //TODO buraya bak.
             {
-                vlcControl1.SetMedia(medya.Path);
+                vlcControl1.SetMedia(new FileInfo(@medya.Path));
                 panel2.Visible = false;
+                vlcControl1.Play();
+
             }
-            else if (MedyaKontrol.VideoKontrol(medya.Path))
+            else if (MedyaKontrol.VideoKontrol(medya.Path) && !medya.Path.StartsWith("http"))
             {
-                vlcControl1.SetMedia(medya.Path);
+                vlcControl1.SetMedia(new FileInfo(@medya.Path));
+                panel2.Visible = true;
+                vlcControl1.Play();
+
             }
             else if (medya == null || medya.Path == null || medya.Path == "" || medya.Path == "-1")
             {
                 MessageBox.Show("Medya boş veya hatalı!");
             }
             else
-            {
-                panel2.Visible = false;
-                vlcControl1.SetMedia(new Uri("https://www.dailymotion.com/video/x7bm45u?playlist=x6ffqw").AbsoluteUri);
+            { 
+                _url = medya.Path;
+                btnLink.Visible = true;
+                if (YoutubeVideoID != String.Empty)
+                {
+                    var url = medya.Path;
+                    var youtubeVidId = YoutubeClient.ParseVideoId(url);
+                    var yt = new YoutubeClient();
+                    var video = await yt.GetVideoMediaStreamInfosAsync(youtubeVidId);
+                    var muxed = video.Muxed.WithHighestVideoQuality();
+
+                    vlcControl1.SetMedia(new Uri(muxed.Url));
+                    vlcControl1.Play();
+
+                }
+                else
+                {
+                    vlcControl1.Visible = false;
+                    panel2.Visible = false;
+                    axVLCPlugin21.Visible = true;
+                    axVLCPlugin21.playlist.add(medya.Path);
+                    axVLCPlugin21.playlist.play();
+                }
 
             }
-
-            _url = "https://www.youtube.com/watch?v=85S_8suOpvs";
-            // webBrowser2.DocumentText = String.Format("<meta http-equiv=\"X-UA Compatible \" Content = \"IE=Edge\" /><iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/{0}\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",YoutubeVideoID);
-
-            vlcControl1.VlcMediaPlayer.SetMedia(new Uri("http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi"));
-            vlcControl1.VlcMediaPlayer.Play();
+            
         }
         public void Stop()
         {
             vlcControl1.Stop();
             vlcControl1.VlcMediaPlayer.Stop();
+            axVLCPlugin21.playlist.stop();
         }
         private void vlcControl1_VlcLibDirectoryNeeded(object sender, Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs e)
         {
@@ -70,6 +97,7 @@ namespace EgitimUygulamasi.View
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
             // Default installation path of VideoLAN.LibVLC.Windows
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -85,6 +113,21 @@ namespace EgitimUygulamasi.View
         private void btnStop_Click(object sender, EventArgs e)
         {
             vlcControl1.Stop();
+        }
+
+        private void vlcControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void metroTrackBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Process.Start(_url);
         }
     }
 }

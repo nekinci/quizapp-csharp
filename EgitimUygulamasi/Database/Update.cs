@@ -158,7 +158,6 @@ namespace EgitimUygulamasi.Database
 
             if(_soru.MedyaID == -1)
             {
-                MessageBox.Show("Girdi");
                 string sql = "delete from sorumedyalari where soru_id = " + _soru.ID;
                 MySqlCommand cmds = new MySqlCommand(sql, _connection);
                 result1 = cmds.ExecuteNonQuery();

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EgitimUygulamasi.View
 {
@@ -121,6 +122,8 @@ namespace EgitimUygulamasi.View
         }
 
         string dosyayolu = "";
+        private string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\Media\";
+        private string backup_files = "";
         private void materialFlatButton6_Click(object sender, EventArgs e)
         {
             saveFileDialog1.Title = "Veritabanını yedeklemek istediğiniz yeri seçiniz";
@@ -129,9 +132,9 @@ namespace EgitimUygulamasi.View
 
             DialogResult result = saveFileDialog1.ShowDialog();
             dosyayolu = saveFileDialog1.FileName;
+            backup_files = Path.GetDirectoryName(saveFileDialog1.FileName) + @"\backup_files\";
 
-
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 txtPath.Text = dosyayolu;
                 btnYedekle.Enabled = true;
@@ -144,10 +147,23 @@ namespace EgitimUygulamasi.View
         {
             txtPath.Clear();
             Database.Backup.Yedekle(dosyayolu);
+            var dosyalar = new DirectoryInfo(appPath).GetFiles("*.*");
+            if (!Directory.Exists(backup_files)) Directory.CreateDirectory(backup_files); // Path yoksa oluştur
+            try
+            {
+                foreach (FileInfo dosya in dosyalar)
+                {
+                    dosya.CopyTo(backup_files + dosya.Name, true);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Veritabanı tamam ama medya dosyaları yedeklenirken sorun oluştu büyük ihtimalle dosya izin yetkilerinde sorun var. " + ex.Message);
+            }
             btnYedekle.Enabled = false;
         }
 
         string yuklenendosya = "";
+        string backupfiles = "";
         private void btnGozatYukle_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Yüklenecek veritabanını seçin";
@@ -156,6 +172,8 @@ namespace EgitimUygulamasi.View
 
             DialogResult result = openFileDialog1.ShowDialog();
             yuklenendosya = openFileDialog1.FileName;
+            backupfiles = Path.GetDirectoryName(openFileDialog1.FileName) + @"\backup_files\";
+
             if(result == DialogResult.OK)
             {
                 txtYuklePath.Text = yuklenendosya;
@@ -172,7 +190,18 @@ namespace EgitimUygulamasi.View
             if (result == DialogResult.No)
                 return;
 
+            var dosyalar = new DirectoryInfo(backupfiles).GetFiles("*.*");
 
+            try
+            {
+                foreach (FileInfo dosya in dosyalar)
+                {
+                    dosya.CopyTo(appPath + dosya.Name, true);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Medya dosyalarının geri yüklenmesinde sorun var: " + ex.Message);
+            }
             Database.Backup.GeriYukle(yuklenendosya);
             txtYuklePath.Clear();
             btnYukle.Enabled = false;

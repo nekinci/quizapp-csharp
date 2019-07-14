@@ -31,6 +31,7 @@
             this.imageLists = new System.Windows.Forms.ListBox();
             this.cmbKategori = new MetroFramework.Controls.MetroComboBox();
             this.groupSeciliResim = new System.Windows.Forms.GroupBox();
+            this.vlcPlayer1 = new EgitimUygulamasi.View.VlcPlayer();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.lblPath = new System.Windows.Forms.Label();
             this.txtIsim = new System.Windows.Forms.TextBox();
@@ -38,7 +39,6 @@
             this.btnYeniMedya = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnDuzenle = new MaterialSkin.Controls.MaterialFlatButton();
-            this.vlcPlayer1 = new EgitimUygulamasi.View.VlcPlayer();
             this.groupSeciliResim.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +75,13 @@
             this.groupSeciliResim.TabIndex = 3;
             this.groupSeciliResim.TabStop = false;
             this.groupSeciliResim.Text = "Seçilen Medya:";
+            // 
+            // vlcPlayer1
+            // 
+            this.vlcPlayer1.Location = new System.Drawing.Point(11, 19);
+            this.vlcPlayer1.Name = "vlcPlayer1";
+            this.vlcPlayer1.Size = new System.Drawing.Size(266, 195);
+            this.vlcPlayer1.TabIndex = 5;
             // 
             // txtPath
             // 
@@ -161,20 +168,12 @@
             this.btnDuzenle.UseVisualStyleBackColor = true;
             this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
-            // vlcPlayer1
-            // 
-            this.vlcPlayer1.Location = new System.Drawing.Point(11, 19);
-            this.vlcPlayer1.Name = "vlcPlayer1";
-            this.vlcPlayer1.Size = new System.Drawing.Size(266, 195);
-            this.vlcPlayer1.TabIndex = 5;
-            // 
             // MedyaDegistir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.materialFlatButton1;
             this.ClientSize = new System.Drawing.Size(614, 386);
-            this.ControlBox = false;
             this.Controls.Add(this.btnDuzenle);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.btnYeniMedya);
@@ -182,7 +181,6 @@
             this.Controls.Add(this.cmbKategori);
             this.Controls.Add(this.imageLists);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.HelpButton = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MedyaDegistir";

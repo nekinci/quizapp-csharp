@@ -14,12 +14,11 @@ namespace EgitimUygulamasi.View
     public partial class Login : Form
     {
 
-
         private bool mouseDown;
         private Point lastLocation;
         public Login()
         {
-            InitialCreate creator = new InitialCreate();
+            //ExcelProcess.ExcelWork.VeriAl("");
             if (!Database.Select.AdminVarmi())
             {
                 AdminKaydi kayit = new AdminKaydi();

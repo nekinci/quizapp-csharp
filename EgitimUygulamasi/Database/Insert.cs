@@ -129,7 +129,6 @@ namespace EgitimUygulamasi.Database
             cmd1.Parameters.AddWithValue("@medyaid", _soru.soru.MedyaID);
             int res1 = command.ExecuteNonQuery();
             int res2 = 0;
-                MessageBox.Show(""+_soru.soru.MedyaID);
             if (_soru.soru.MedyaID != -1)
             {
                 res2 = cmd1.ExecuteNonQuery();
