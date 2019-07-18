@@ -129,6 +129,43 @@ namespace EgitimUygulamasi
             board1.yenidenCiz();
             cezaOdulBelirleme1.yenidenCiz();
             odulCeza1.yenidenCiz();
+            FlowLayoutPanelCiz();
+        }
+
+        public void FlowLayoutPanelCiz()
+        {
+            flowLayoutPanel1.Controls.Clear();
+            bildirimler = Database.Select.BildirimleriCek();
+            if (bildirimler.FindAll(x => x.GorulduMu == false).Count > 0)
+                btnBildirim.Image = Properties.Resources.bildirimvar;
+            else
+                btnBildirim.Image = Properties.Resources.bildirimyok;
+
+            bildirimler = bildirimler.OrderByDescending(x => x.Tarih).ToList();
+            foreach (var i in bildirimler.FindAll(x => x.OkunduMu == false).Take(Sinir))
+            {
+                UCBildirim bildirim = new UCBildirim();
+                bildirim.Main = this;
+                bildirim.SetBildirim(i);
+                flowLayoutPanel1.Controls.Add(bildirim);
+            }
+
+            if (bildirimler.FindAll(x => x.OkunduMu == false).Count <= 0)
+            {
+                Label label = new Label();
+                label.Text = "Okunmamış bildiriminiz yok.";
+                label.TextAlign = ContentAlignment.MiddleCenter;
+                label.AutoSize = false;
+                label.Size = new Size(flowLayoutPanel1.Size.Width, 30);
+                flowLayoutPanel1.Controls.Add(label);
+            }
+
+            MaterialFlatButton tumunugor = new MaterialFlatButton();
+            tumunugor.Text = "Tümünü gör";
+            tumunugor.Dock = DockStyle.Bottom;
+
+            tumunugor.Click += Tumunugor_Click;
+            flowLayoutPanel1.Controls.Add(tumunugor);
         }
 
         private void btnCikis_Click(object sender, EventArgs e)
