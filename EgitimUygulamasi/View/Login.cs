@@ -18,6 +18,7 @@ namespace EgitimUygulamasi.View
         private Point lastLocation;
         public Login()
         {
+            InitialCreate creator = new InitialCreate();
             //ExcelProcess.ExcelWork.VeriAl("");
             if (!Database.Select.AdminVarmi())
             {

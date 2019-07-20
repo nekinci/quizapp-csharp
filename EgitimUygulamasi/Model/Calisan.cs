@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EgitimUygulamasi.Model
 {
-    class Calisan
+    public class Calisan
     {
         public int ID { get; set; }
         public string Ad { get; set; }

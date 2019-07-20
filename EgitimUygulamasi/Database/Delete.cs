@@ -23,7 +23,14 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
             return result != -1;
         }
-
+        public static bool CalisanSoruSil(int soru_id)
+        {
+            _connection.Open();
+            MySqlCommand cmd = new MySqlCommand("delete from calisansoru where calisansoru.soru_id = " + soru_id, _connection);
+            int result = cmd.ExecuteNonQuery();
+            _connection.Close();
+            return result != -1;
+        }
         public static bool OdulveCezaSil(int id)
         {
             _connection.Open();

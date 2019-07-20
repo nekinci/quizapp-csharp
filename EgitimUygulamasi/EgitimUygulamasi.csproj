@@ -185,6 +185,7 @@
     <Compile Include="Model\Puan.cs" />
     <Compile Include="Model\Secenekler.cs" />
     <Compile Include="Model\Soru.cs" />
+    <Compile Include="Model\SoruCalisan.cs" />
     <Compile Include="Model\SoruSorulma.cs" />
     <Compile Include="Model\ZorlukPuanlari.cs" />
     <Compile Include="Resource1.Designer.cs">
@@ -224,12 +225,19 @@
     <Compile Include="View\CalisanDuzenle.Designer.cs">
       <DependentUpon>CalisanDuzenle.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CalisanSec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CalisanSec.Designer.cs">
+      <DependentUpon>CalisanSec.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CezaOdulBelirleme.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\CezaOdulBelirleme.Designer.cs">
       <DependentUpon>CezaOdulBelirleme.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ICalisanSec.cs" />
     <Compile Include="View\IcerikEkleme.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -438,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CalisanDuzenle.resx">
       <DependentUpon>CalisanDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CalisanSec.resx">
+      <DependentUpon>CalisanSec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CezaOdulBelirleme.resx">
       <DependentUpon>CezaOdulBelirleme.cs</DependentUpon>

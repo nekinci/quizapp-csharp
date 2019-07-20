@@ -9,36 +9,34 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Default = Debug|Default
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
 		Release|Default = Release|Default
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|Default.ActiveCfg = Debug|Any CPU
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|Default.Build.0 = Debug|Any CPU
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|x64.ActiveCfg = Debug|x64
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|x64.Build.0 = Debug|x64
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Debug|x86.Build.0 = Debug|Any CPU
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|Default.ActiveCfg = Release|Any CPU
 		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|Default.Build.0 = Release|Any CPU
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|x64.ActiveCfg = Release|x64
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|x64.Build.0 = Release|x64
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|x86.ActiveCfg = Release|x86
-		{6CC597E7-4F92-438D-AC92-521545EBCB65}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EE4129B-7F6E-4916-95AA-690CDDD7C2F4}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Default = Debug|Default
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Default = Release|Default
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

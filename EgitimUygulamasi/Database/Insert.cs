@@ -133,6 +133,16 @@ namespace EgitimUygulamasi.Database
             {
                 res2 = cmd1.ExecuteNonQuery();
             }
+
+            if(_soru.calisanlar.Count > 0)
+            {
+                foreach(var i in _soru.calisanlar)
+                {
+                    SoruCalisaniEkleme(i, cmd.LastInsertedId);
+                }
+            }
+
+
             _connection.Close();
             if (res != -1 && res1 != -1 && res2 != -1)
             {
@@ -156,7 +166,23 @@ namespace EgitimUygulamasi.Database
                 MessageBox.Show("Kaydedilemedi.");
             return;
         }
+        public static void SoruCalisaniEkleme(int calisanid,long soruid)
+        {
+            MySqlConnection conn = new MySqlConnection(DatabaseInf.Veritabani);
+            conn.Open();
+            string sql = "insert into calisansoru values(0,@soruid,@calisanid)";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@soruid", soruid);
+            cmd.Parameters.AddWithValue("@calisanid", calisanid);
 
+            int res = cmd.ExecuteNonQuery();
+
+            if (res == -1)
+                MessageBox.Show("Bir şeyler yolunda gitmedi. Soru Çalışanı Ekleme.");
+
+            conn.Close();
+
+        }
         public static bool MedyaEkleme(Model.Medya _medya)
         {
             string sql = "insert into medya values(0,@kategoriid,@medyapath,@medyaismi)";

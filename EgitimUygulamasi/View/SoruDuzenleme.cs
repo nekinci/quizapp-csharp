@@ -12,7 +12,7 @@ using EgitimUygulamasi.Model;
 
 namespace EgitimUygulamasi.View
 {
-    public partial class SoruDuzenleme : UserControl
+    public partial class SoruDuzenleme : UserControl, ICalisanSec
     {
 
         private List<Model.Kategori> Kategoriler = null;
@@ -202,7 +202,7 @@ namespace EgitimUygulamasi.View
             {
                 message += "Doğru cevap seçilmedi."; kontrol = false;
             }
-            
+
 
             if (!kontrol)
                 MessageBox.Show(message);
@@ -236,9 +236,17 @@ namespace EgitimUygulamasi.View
                 {
                     _soru.MedyaID = -1;
                 }
-                temizle();
 
-                Database.Update.SoruGuncelle(_soru, _secenekler);
+                if(CalisanIdleri.Count <= 0)
+                {
+                    CalisanSec sec = new CalisanSec();
+                    sec.SetMain(this);
+                    sec.HepsiniSec();
+                    sec.Sec();
+                }
+
+                Database.Update.SoruGuncelle(_soru, _secenekler, CalisanIdleri,materialCheckBox1.Checked);
+                temizle();
                 this.main.YenidenCiz();
             }
         }
@@ -311,6 +319,9 @@ namespace EgitimUygulamasi.View
             cmbFiltreKategori.DataSource = KategoriIsimler;
 
             cmbFiltreKategori.SelectedIndex = -1;
+
+            materialCheckBox1.Checked = false;
+            materialFlatButton4.Enabled = false;
         }
 
         private void txtSure_TextChanged(object sender, EventArgs e)
@@ -410,6 +421,18 @@ namespace EgitimUygulamasi.View
             }
         }
 
+        private void sorutab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialFlatButton4_Click(object sender, EventArgs e)
+        {
+            CalisanSec sec = new CalisanSec();
+            sec.SetMain(this);
+            sec.Show();
+        }
+
         private void cmbFiltreKategori_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -433,12 +456,31 @@ namespace EgitimUygulamasi.View
             SorularTablosu.DataSource = table;
         }
 
+        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (materialCheckBox1.Checked == true)
+                materialFlatButton4.Enabled = true;
+            else
+                materialFlatButton4.Enabled = false;
+        }
+
         private void chkKlasik_CheckedChanged(object sender, EventArgs e)
         {
             //TODO
             KlasikMi = chkKlasik.Checked;
             SeceneklerOnOff();
 
+        }
+
+        private List<int> CalisanIdleri = new List<int>();
+        public void CalisanSecildi(List<int> CalisanIDleri)
+        {
+            this.CalisanIdleri = CalisanIDleri;
+        }
+
+        public void CalisanSecildi(List<Model.Calisan> Calisanlar)
+        {
+            throw new NotImplementedException();
         }
     }
 }

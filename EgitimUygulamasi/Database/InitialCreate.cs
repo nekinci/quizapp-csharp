@@ -34,6 +34,8 @@ namespace EgitimUygulamasi.Database
 
         private string sorumedyalari = "create table if not exists sorumedyalari(id int primary key auto_increment, soru_id int, medya_id int,foreign key(soru_id) references sorular(id) ON DELETE CASCADE,foreign key(medya_id) references medya(id) ON DELETE CASCADE) engine = innodb;";
 
+        private string calisansoru = "create table if not exists calisansoru(id int primary key auto_increment,soru_id int,calisan_id int,foreign key(soru_id) references sorular(id) on delete cascade,foreign key(calisan_id) references calisan(id) on delete cascade) engine = innodb;";
+
         MySqlConnection _connection = new MySqlConnection(DatabaseInf.Veritabani0);
         MySqlConnection _connection1 = null;
         public void veritabaniOlustur()
@@ -93,6 +95,8 @@ namespace EgitimUygulamasi.Database
                 cmdTablolar.CommandText = loginmain;
                 cmdTablolar.ExecuteNonQuery();
                 cmdTablolar.CommandText = odulveceza;
+                cmdTablolar.ExecuteNonQuery();
+                cmdTablolar.CommandText = calisansoru;
                 cmdTablolar.ExecuteNonQuery();
                 _connection1.Close();
 
@@ -160,11 +164,11 @@ namespace EgitimUygulamasi.Database
 
         public InitialCreate()
         {
-            veritabaniOlustur();
+            //veritabaniOlustur();
             tablolariOlustur();
-            adminOlustur();
-            PuanlariAta();
-            AyarlariAta();
+           // adminOlustur();
+           // PuanlariAta();
+           // AyarlariAta();
         }
 
 

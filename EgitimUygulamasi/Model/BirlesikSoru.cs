@@ -11,5 +11,6 @@ namespace EgitimUygulamasi.Model
         public Soru soru { get; set; }
         public Secenekler secenekler { get; set; }
         public Medya medya { get; set; }
+        public List<int> calisanlar { get; set; }
     }
 }

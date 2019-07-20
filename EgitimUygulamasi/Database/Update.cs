@@ -76,7 +76,7 @@ namespace EgitimUygulamasi.Database
 
         public static bool OdulveCezaGuncelle(OdulCezaModel model)
         {
-            string sql = "UPDATE odulveceza set ad = '" + model.Ad + "',tur = '" + model.Tur + "', aralik1 = '" + model.Aralik1 + "',aralik2 = '" + model.Aralik2 + "' where id = "+model.ID;
+            string sql = "UPDATE odulveceza set ad = '" + model.Ad + "',tur = '" + model.Tur + "', aralik1 = '" + model.Aralik1 + "',aralik2 = '" + model.Aralik2 + "' where id = " + model.ID;
 
             _connection.Open();
 
@@ -90,7 +90,7 @@ namespace EgitimUygulamasi.Database
             _connection.Close();
 
 
-            return res != -1; 
+            return res != -1;
         }
         public static void ZorlukPuaniGuncelle(Model.ZorlukPuanlari z)
         {
@@ -144,7 +144,7 @@ namespace EgitimUygulamasi.Database
 
 
 
-        public static int SoruGuncelle(Model.Soru _soru, Model.Secenekler _secenekler)
+        public static int SoruGuncelle(Model.Soru _soru, Model.Secenekler _secenekler, List<int> calisanlar, bool durum1)
         {
             string updateSQL = "Update sorular inner join secenekler on secenekler.soru_id = sorular.id set " +
                 "sorular.kategori_id =" + _soru.KategoriID + ",  sorular.sure = " + _soru.Sure + ", soruBasligi = '" + _soru.SoruBasligi + "'" +
@@ -156,7 +156,7 @@ namespace EgitimUygulamasi.Database
             MySqlCommand cmd = new MySqlCommand(updateSQL, _connection);
             int result = cmd.ExecuteNonQuery(); int result1 = 0;
 
-            if(_soru.MedyaID == -1)
+            if (_soru.MedyaID == -1)
             {
                 string sql = "delete from sorumedyalari where soru_id = " + _soru.ID;
                 MySqlCommand cmds = new MySqlCommand(sql, _connection);
@@ -185,14 +185,22 @@ namespace EgitimUygulamasi.Database
                     MySqlCommand cmda = new MySqlCommand(sqla, _connection);
                     result1 = cmda.ExecuteNonQuery();
                 }
-                
+
+            }
+            if (durum1)
+            {
+                Database.Delete.CalisanSoruSil(_soru.ID);
+                foreach (var i in calisanlar)
+                {
+                    Database.Insert.SoruCalisaniEkleme(i, _soru.ID);
+                }
             }
 
             if (result != -1)
                 MessageBox.Show("Başarıyla Güncellendi");
             else
                 MessageBox.Show("Güncellenemedi");
-            if(result1 == -1)
+            if (result1 == -1)
                 MessageBox.Show("Medya güncellemesinde sorun var.");
             _connection.Close();
             return result;

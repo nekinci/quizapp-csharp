@@ -48,6 +48,7 @@
             this.txtB = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtA = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.checkKlasik = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.vlcPlayer1 = new EgitimUygulamasi.View.VlcPlayer();
             this.soru.SuspendLayout();
             this.sorupage.SuspendLayout();
@@ -106,6 +107,7 @@
             // sorupage
             // 
             this.sorupage.BackColor = System.Drawing.Color.White;
+            this.sorupage.Controls.Add(this.materialFlatButton2);
             this.sorupage.Controls.Add(this.btnIlerle);
             this.sorupage.Controls.Add(this.lblSaniye);
             this.sorupage.Controls.Add(this.cmbZorluk);
@@ -124,7 +126,7 @@
             this.btnIlerle.AutoSize = true;
             this.btnIlerle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnIlerle.Depth = 0;
-            this.btnIlerle.Location = new System.Drawing.Point(385, 263);
+            this.btnIlerle.Location = new System.Drawing.Point(385, 323);
             this.btnIlerle.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIlerle.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIlerle.Name = "btnIlerle";
@@ -139,12 +141,12 @@
             // 
             this.lblSaniye.AutoSize = true;
             this.lblSaniye.Depth = 0;
-            this.lblSaniye.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblSaniye.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblSaniye.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblSaniye.Location = new System.Drawing.Point(415, 235);
             this.lblSaniye.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblSaniye.Name = "lblSaniye";
-            this.lblSaniye.Size = new System.Drawing.Size(25, 19);
+            this.lblSaniye.Size = new System.Drawing.Size(24, 18);
             this.lblSaniye.TabIndex = 3;
             this.lblSaniye.Text = "sn";
             // 
@@ -350,7 +352,7 @@
             // 
             this.checkKlasik.AutoSize = true;
             this.checkKlasik.Depth = 0;
-            this.checkKlasik.Font = new System.Drawing.Font("Roboto", 10F);
+            this.checkKlasik.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.checkKlasik.Location = new System.Drawing.Point(604, 57);
             this.checkKlasik.Margin = new System.Windows.Forms.Padding(0);
             this.checkKlasik.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -362,6 +364,22 @@
             this.checkKlasik.Text = "Klasik Soru/Görev";
             this.checkKlasik.UseVisualStyleBackColor = true;
             this.checkKlasik.CheckedChanged += new System.EventHandler(this.checkKlasik_CheckedChanged);
+            // 
+            // materialFlatButton2
+            // 
+            this.materialFlatButton2.AutoSize = true;
+            this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton2.Depth = 0;
+            this.materialFlatButton2.Location = new System.Drawing.Point(343, 265);
+            this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton2.Name = "materialFlatButton2";
+            this.materialFlatButton2.Primary = false;
+            this.materialFlatButton2.Size = new System.Drawing.Size(97, 36);
+            this.materialFlatButton2.TabIndex = 7;
+            this.materialFlatButton2.Text = "Çalışan Seç";
+            this.materialFlatButton2.UseVisualStyleBackColor = true;
+            this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click_1);
             // 
             // vlcPlayer1
             // 
@@ -416,5 +434,6 @@
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialCheckBox checkKlasik;
         private VlcPlayer vlcPlayer1;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
     }
 }

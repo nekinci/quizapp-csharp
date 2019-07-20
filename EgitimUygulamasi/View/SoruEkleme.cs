@@ -12,7 +12,7 @@ using EgitimUygulamasi.Model;
 
 namespace EgitimUygulamasi.View
 {
-    public partial class SoruEkleme : UserControl
+    public partial class SoruEkleme : UserControl,ICalisanSec
     {
         private Main main;
         public SoruEkleme()
@@ -173,10 +173,18 @@ namespace EgitimUygulamasi.View
                 BirlesikSoru soru = new BirlesikSoru();
                 soru.soru = _soru;
                 soru.secenekler = _secenekler;
-
+                if(CalisanIdleri.Count <= 0)
+                {
+                    CalisanSec sec = new CalisanSec();
+                    sec.SetMain(this);
+                    sec.HepsiniSec();
+                    sec.Sec();
+                }
+                soru.calisanlar = CalisanIdleri;
                 Database.Insert.SoruEkleme(soru);
                 this.temizle();
                 this.main.YenidenCiz();
+                this.CalisanIdleri.Clear();
             }
         }
         private void temizle()
@@ -254,6 +262,24 @@ namespace EgitimUygulamasi.View
                 txtA.Enabled = true; txtB.Enabled = true; txtC.Enabled = true; txtD.Enabled = true; txtE.Enabled = true; cmbDogru.Enabled = true;
 
             }
+        }
+
+        private void materialFlatButton2_Click_1(object sender, EventArgs e)
+        {
+            CalisanSec sec = new CalisanSec();
+            sec.SetMain(this);
+            sec.Show();
+        }
+
+        private List<int> CalisanIdleri = new List<int>();
+        public void CalisanSecildi(List<int> CalisanIdleri)
+        {
+            this.CalisanIdleri = CalisanIdleri;
+        }
+        private List<Model.Calisan> Calisanlar = new List<Model.Calisan>();
+        public void CalisanSecildi(List<EgitimUygulamasi.Model.Calisan> Calisanlar)
+        {
+            this.Calisanlar = Calisanlar;
         }
     }
 }
